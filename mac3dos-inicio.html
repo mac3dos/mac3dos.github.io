@@ -1,0 +1,429 @@
+<title>MAC3DOS Catálogos</title>
+<link rel="artifact-thumbnail" href="media/hub/thumb.jpg">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Oxanium:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Tela de seleção de fase: piso de grade em perspectiva, dois "mundos" lado a lado, cursor de jogo */
+:root{
+  --bg:#0B0A0E; --surface:#15131B; --line:#2A2635;
+  --fg:#F2F0F7; --muted:#A49FB2;
+  --purple:#8E3BF5; --purple-soft:#B88BFF; --purple-deep:#3A1C61;
+  --gold:#E8C26A;
+  --f-title:"Oxanium","Rajdhani",system-ui,sans-serif;
+  --f-display:"Rajdhani","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;overflow-x:hidden}
+a{color:inherit}
+*{box-sizing:border-box}
+
+/* fundo: brilho roxo e piso de grade */
+.arena{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.arena::before{content:"";position:absolute;left:50%;top:-30%;width:120vmax;height:80vmax;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(142,59,245,.32),rgba(142,59,245,0) 70%)}
+.floor{position:absolute;left:-50%;right:-50%;bottom:-10%;height:62%;transform:perspective(420px) rotateX(62deg);transform-origin:50% 100%;
+  background-image:linear-gradient(rgba(184,139,255,.28) 1px,transparent 1px),linear-gradient(90deg,rgba(184,139,255,.28) 1px,transparent 1px);
+  background-size:56px 56px;animation:run 2.4s linear infinite;
+  -webkit-mask-image:linear-gradient(to top,#000 10%,transparent 85%);mask-image:linear-gradient(to top,#000 10%,transparent 85%)}
+@keyframes run{to{background-position:0 56px}}
+.scan{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
+
+.page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px;display:grid;gap:clamp(28px,5vw,48px)}
+
+/* topo */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:26px;height:39px}
+.wordmark{font-family:var(--f-display);font-weight:500;font-size:1.5rem;letter-spacing:.14em}
+.wordmark b{font-weight:700;color:#fff;border-bottom:2px solid var(--purple)}
+.hud{display:flex;gap:18px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hud b{color:var(--purple-soft);font-weight:500}
+.hud a{text-decoration:none;color:var(--purple-soft)}
+
+/* título */
+.intro{text-align:center;display:grid;gap:12px;justify-items:center}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-soft);margin:0}
+h1{font-family:var(--f-title);font-weight:800;font-size:clamp(2.1rem,6.4vw,4.2rem);line-height:1.02;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h1 span{color:var(--purple-soft)}
+.press{font-family:var(--f-mono);font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);margin:4px 0 0}
+.press i{font-style:normal;color:var(--gold);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* mundos */
+.worlds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,32px)}
+.world{position:relative;display:grid;grid-template-rows:auto 1fr;text-decoration:none;color:var(--fg);background:linear-gradient(170deg,rgba(58,28,97,.55),rgba(21,19,27,.92) 55%);border:2px solid var(--line);border-radius:18px;overflow:hidden;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .25s,box-shadow .35s;outline:none}
+.world.sel{border-color:var(--purple-soft);transform:translateY(-6px);box-shadow:0 0 0 4px rgba(142,59,245,.25),0 30px 70px rgba(0,0,0,.6),0 0 70px rgba(142,59,245,.35)}
+.world:focus-visible{border-color:var(--gold)}
+.shot{position:relative;aspect-ratio:16/11;overflow:hidden;background:#000}
+.pix{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;image-rendering:crisp-edges;transition:filter .4s}
+.world:not(.sel) .pix{filter:saturate(.7) brightness(.78)}
+.shot::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(11,10,14,.9),rgba(11,10,14,0) 38%)}
+.tag{position:absolute;top:12px;left:12px;z-index:1;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;background:rgba(11,10,14,.82);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:4px 8px}
+.cursor{position:absolute;top:12px;right:12px;z-index:1;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#120b1f;background:var(--gold);border-radius:4px;padding:4px 8px;opacity:0;transform:translateY(-4px);transition:.25s}
+.world.sel .cursor{opacity:1;transform:none}
+.name{position:absolute;left:18px;right:18px;bottom:14px;z-index:1;margin:0;font-family:var(--f-title);font-weight:800;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1;letter-spacing:.01em;text-transform:uppercase}
+.info{display:grid;gap:16px;padding:18px 18px 20px;align-content:start}
+.info p{margin:0;color:var(--muted);font-size:.95rem;max-width:46ch}
+.loot{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.loot li{display:grid;grid-template-columns:20px 1fr;gap:8px;align-items:baseline;font-size:.9rem}
+.loot li::before{content:"◆";color:var(--purple-soft);font-size:.7rem}
+.go{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:4px;padding:12px 16px;border-radius:12px;background:var(--purple);font-family:var(--f-title);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.95rem;transition:background .2s}
+.go span:last-child{font-family:var(--f-mono);font-weight:500}
+.world:not(.sel) .go{background:rgba(142,59,245,.22)}
+
+/* outro segmento */
+.other{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 20px;border:1px dashed rgba(184,139,255,.4);border-radius:14px;background:rgba(21,19,27,.7)}
+.other b{font-family:var(--f-title);font-size:1.15rem}
+.other p{margin:2px 0 0;color:var(--muted);font-size:.92rem}
+.other a{flex:none;text-decoration:none;font-family:var(--f-title);font-weight:700;font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;padding:10px 16px;border-radius:10px;border:1px solid var(--purple-soft);color:var(--purple-soft)}
+.other a:hover,.other a:focus-visible{background:var(--purple-soft);color:#120b1f;outline:none}
+.slogan{text-align:center;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0}
+
+@media (max-width:760px){
+  .worlds{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .hud .p1{display:none}
+  .page{gap:24px}
+  .world{border-radius:14px}
+  .shot{aspect-ratio:1/1}
+  .info{padding:10px;gap:8px}
+  .info p,.loot{display:none}
+  .name{font-size:clamp(.92rem,4.6vw,1.3rem);line-height:1.05;bottom:8px;left:10px;right:10px}
+  .tag{top:8px;left:8px;font-size:.58rem;padding:3px 6px;letter-spacing:.12em}
+  .cursor{display:none}
+  .go{padding:9px 12px;font-size:.82rem;border-radius:10px;margin-top:0}
+  .world.sel{transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .floor,.press i{animation:none}
+  .world,.pix{transition:none}
+}
+</style>
+
+<div class="arena" aria-hidden="true"><div class="floor"></div><div class="scan"></div></div>
+
+<div class="page">
+  <header class="top">
+    <a class="brand" href="https://www.instagram.com/mac3dos/" target="_blank" rel="noopener" aria-label="MAC3DOS no Instagram">
+      <svg viewBox="0 0 56 84" aria-hidden="true"><polygon points="0,2 27,31 0,58" fill="#D6D5DC"/><polygon points="56,0 56,58 6,58" fill="#8E3BF5"/><polygon points="0,58 56,58 28,84" fill="#3A1C61"/></svg>
+      <span class="wordmark">MAC<b>3D</b>OS</span>
+    </a>
+    <div class="hud"><span class="p1"><b>P1</b> · sua marca</span><span>Mundos <b>2</b></span><a href="https://www.instagram.com/mac3dos/" target="_blank" rel="noopener">@mac3dos</a></div>
+  </header>
+
+  <section class="intro">
+    <p class="eyebrow">Catálogo interativo de brindes 3D</p>
+    <h1>Escolha o seu <span>segmento</span></h1>
+    <p class="press"><i>▶</i> Toque num mundo para entrar</p>
+  </section>
+
+  <nav class="worlds" id="worlds" aria-label="Segmentos">
+    <a class="world sel" href="https://claude.ai/artifact/4U7TmaHNAs8AMwY5WEkDiG" target="_blank" rel="noopener" data-i="0">
+      <div class="shot">
+        <canvas class="pix" data-scene="academia" role="img" aria-label="Cena em pixel art: kettlebell dourado, anilha e halter sobre um piso de grade com sol retrô"></canvas>
+        <span class="tag">Mundo 1</span><span class="cursor">Selecionado</span>
+        <h2 class="name">Esportes e bem&#8209;estar</h2>
+      </div>
+      <div class="info">
+        <p>Para academias, estúdios, personal trainers, lutas e eventos esportivos. Brindes que o aluno usa no treino e leva para todo lugar.</p>
+        <ul class="loot">
+          <li>Anilha e kettlebell em 3D com o nome da sua marca</li>
+          <li>Troféus e medalhas para campeonatos</li>
+          <li>Expositor de balcão para vender chaveiros</li>
+          <li>Brindes com NFC para Instagram e WhatsApp</li>
+        </ul>
+        <span class="go"><span>Entrar</span><span>▶</span></span>
+      </div>
+    </a>
+
+    <a class="world" href="https://claude.ai/artifact/ETYvWHitponzAwtcAbSjir" target="_blank" rel="noopener" data-i="1">
+      <div class="shot">
+        <canvas class="pix" data-scene="estetica" role="img" aria-label="Cena em pixel art: batom, boca vermelha e esmalte rosa com corações flutuando"></canvas>
+        <span class="tag">Mundo 2</span><span class="cursor">Selecionado</span>
+        <h2 class="name">Estética e beleza</h2>
+      </div>
+      <div class="info">
+        <p>Para salões, clínicas de estética, manicures e lash designers. Brindes que vão direto para a bolsa da cliente.</p>
+        <ul class="loot">
+          <li>Chaveiro de boca e esmalte em 3D com o nome da sua marca</li>
+          <li>Certificados para quem dá cursos</li>
+          <li>Displays e placas para a recepção</li>
+          <li>Brindes com NFC para agenda e redes</li>
+        </ul>
+        <span class="go"><span>Entrar</span><span>▶</span></span>
+      </div>
+    </a>
+  </nav>
+
+  <aside class="other">
+    <div><b>Seu segmento não está aqui?</b><p>Criamos brindes úteis para qualquer área. Conta pra gente o que você faz.</p></div>
+    <a href="https://wa.me/5521985101880?text=Ol%C3%A1!%20Vi%20o%20cat%C3%A1logo%20da%20MAC3DOS%20e%20quero%20brindes%20para%20o%20meu%20segmento." target="_blank" rel="noopener">Falar no WhatsApp</a>
+  </aside>
+
+  <p class="slogan">Brindes úteis. Marcas inesquecíveis.</p>
+</div>
+
+<script>
+(function(){
+  const worlds = [...document.querySelectorAll(".world")];
+  let cur = 0;
+  function select(i, focus){
+    cur = (i + worlds.length) % worlds.length;
+    worlds.forEach((w, j) => w.classList.toggle("sel", j === cur));
+    if (focus) worlds[cur].focus({preventScroll:false});
+  }
+  worlds.forEach((w, i) => {
+    w.addEventListener("mouseenter", () => select(i));
+    w.addEventListener("focus", () => select(i));
+  });
+  // setas escolhem, Enter entra (como num jogo)
+  document.addEventListener("keydown", e => {
+    if (["ArrowRight","ArrowDown"].includes(e.key)) { e.preventDefault(); select(cur + 1, true); }
+    if (["ArrowLeft","ArrowUp"].includes(e.key)) { e.preventDefault(); select(cur - 1, true); }
+  });
+  document.querySelectorAll("canvas.pix").forEach(c => pixelScene(c, c.dataset.scene));
+})();
+
+// ---------- cenas em pixel art (desenhadas pixel a pixel, estilo videogame 2D) ----------
+function pixelScene(cv, kind){
+  const ctx = cv.getContext("2d");
+  const col = h => { const n = parseInt(h.slice(1), 16); return (255 << 24) | ((n & 255) << 16) | (n & 0xff00) | (n >> 16); };
+  const BAYER = [0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5].map(v => v / 16);
+  const dith = (x, y) => BAYER[(y & 3) * 4 + (x & 3)];
+  const C = {
+    sky: ["#0d0818","#170d2b","#251448","#3a1c61"].map(col),
+    sun: (kind === "academia" ? ["#d6fff7","#7fe9dc","#35b6c9","#1f6f9e"] : ["#f3ecff","#cdb6ff","#9d7cf0","#5f45c4"]).map(col),
+    floor: col("#110a1d"), gridFar: col("#3b1f70"), gridNear: col("#7a46d6"), horizon: col("#b88bff"),
+    star: col("#ffffff"), star2: col("#b88bff"), shadow: col("#07040d"), out: col("#07040d")
+  };
+  let W = 160, H = 110, img, buf;
+  function size(){
+    const r = cv.getBoundingClientRect();
+    const h = r.width ? Math.max(60, Math.min(170, Math.round(160 * r.height / r.width))) : 110;
+    if (img && h === H) return;
+    W = 160; H = h; cv.width = W; cv.height = H;
+    img = ctx.createImageData(W, H); buf = new Uint32Array(img.data.buffer);
+  }
+  const put = (x, y, c) => { x |= 0; y |= 0; if (x >= 0 && y >= 0 && x < W && y < H) buf[y * W + x] = c; };
+  function line(x0, y0, x1, y1, c){
+    x0 |= 0; y0 |= 0; x1 |= 0; y1 |= 0;
+    const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1; let e = dx + dy;
+    for (;;) { put(x0, y0, c); if (x0 === x1 && y0 === y1) break; const e2 = 2 * e; if (e2 >= dy) { e += dy; x0 += sx; } if (e2 <= dx) { e += dx; y0 += sy; } }
+  }
+  // desenha uma forma a partir de uma função que diz se o pixel está dentro, com contorno de 1 pixel
+  function shape(x0, y0, x1, y1, inside, paint){
+    for (let y = y0 - 1; y <= y1 + 1; y++) for (let x = x0 - 1; x <= x1 + 1; x++) {
+      if (inside(x, y)) paint(x, y);
+      else if (inside(x + 1, y) || inside(x - 1, y) || inside(x, y + 1) || inside(x, y - 1)) put(x, y, C.out);
+    }
+  }
+  // bola com luz vinda de cima à esquerda
+  function ball(cx, cy, r, pal){
+    const inside = (x, y) => { const dx = x - cx + .5, dy = y - cy + .5; return dx * dx + dy * dy <= r * r; };
+    shape(cx - r, cy - r, cx + r, cy + r, inside, (x, y) => {
+      const nx = (x - cx + .5) / r, ny = (y - cy + .5) / r, nz = Math.sqrt(Math.max(0, 1 - nx * nx - ny * ny));
+      const v = -.45 * nx - .6 * ny + .65 * nz + (dith(x, y) - .5) * .2;
+      put(x, y, v > .98 ? pal[4] : v > .72 ? pal[3] : v > .42 ? pal[2] : v > .14 ? pal[1] : pal[0]);
+    });
+  }
+  function box(x0, y0, x1, y1, pal){
+    shape(x0, y0, x1, y1, (x, y) => x >= x0 && x <= x1 && y >= y0 && y <= y1, (x, y) => {
+      const u = (x - x0) / Math.max(1, x1 - x0);
+      put(x, y, u < .2 ? pal[2] : u > .78 ? pal[0] : pal[1]);
+    });
+  }
+  // logo da MAC3DOS (os três triângulos) em pixels, centrada em cx, a partir do topo y0, com contorno
+  const LOGO = [[[0,2],[27,31],[0,58],"#D6D5DC"],[[56,0],[56,58],[6,58],"#8E3BF5"],[[0,58],[56,58],[28,84],"#3A1C61"]].map(([p, q, r, c]) => [p, q, r, col(c)]);
+  const tri = (x, y, [p, q, r]) => { const d = (a, b, c) => (a[0] - c[0]) * (b[1] - c[1]) - (b[0] - c[0]) * (a[1] - c[1]); const s1 = d([x, y], p, q), s2 = d([x, y], q, r), s3 = d([x, y], r, p); return !((s1 < 0 || s2 < 0 || s3 < 0) && (s1 > 0 || s2 > 0 || s3 > 0)); };
+  function logo(cx, y0, lw, outline){
+    const lh = Math.round(lw * 84 / 56), lx = cx - Math.floor(lw / 2);
+    const hit = (i, j) => { const ux = (i + .5) / lw * 56, uy = (j + .5) / lh * 84; for (const L of LOGO) if (tri(ux, uy, L)) return L[3]; return 0; };
+    for (let j = -1; j <= lh; j++) for (let i = -1; i <= lw; i++) {
+      const c = hit(i, j);
+      if (c) put(lx + i, y0 + j, c);
+      else if (hit(i + 1, j) || hit(i - 1, j) || hit(i, j + 1) || hit(i, j - 1)) put(lx + i, y0 + j, outline);
+    }
+  }
+  function shadow(cx, cy, rw, rh){
+    for (let y = -rh; y <= rh; y++) for (let x = -rw; x <= rw; x++) if ((x * x) / (rw * rw) + (y * y) / (rh * rh) <= 1 && dith(x + cx, y + cy) < .75) put(cx + x, cy + y, C.shadow);
+  }
+  const stars = []; let seed = kind === "academia" ? 7 : 19;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 34; i++) stars.push([rnd(), rnd(), rnd() * 6.28]);
+
+  function backdrop(t, hz){
+    for (let y = 0; y < hz; y++) {
+      const fpos = y / hz * (C.sky.length - 1), i = Math.min(C.sky.length - 2, fpos | 0), fr = fpos - i;
+      for (let x = 0; x < W; x++) buf[y * W + x] = fr > dith(x, y) ? C.sky[i + 1] : C.sky[i];
+    }
+    stars.forEach(([sx, sy, ph]) => { const x = sx * W | 0, y = sy * hz * .75 | 0; if (Math.sin(t * 2.2 + ph) > -.35) put(x, y, ph > 3 ? C.star : C.star2); });
+    // sol retrô com faixas que descem
+    const cx = W / 2, cy = hz - 1, r = Math.round(U * .27);
+    for (let y = cy - r; y < hz; y++) for (let x = cx - r; x <= cx + r; x++) {
+      const dx = x - cx + .5, dy = y - cy + .5; if (dx * dx + dy * dy > r * r) continue;
+      const rel = (y - (cy - r * .45)); if (rel > 0 && ((y + (t * 5 | 0)) % 6) < 1 + rel / (r * .2)) continue;
+      const fpos = (y - (cy - r)) / r * (C.sun.length - 1), i = Math.min(C.sun.length - 2, Math.max(0, fpos | 0)), fr = fpos - i;
+      put(x, y, fr > dith(x, y) ? C.sun[i + 1] : C.sun[i]);
+    }
+    for (let y = hz; y < H; y++) for (let x = 0; x < W; x++) buf[y * W + x] = C.floor;
+    const N = 7;
+    for (let k = 0; k < N; k++) { const p = ((k + (t * .7) % 1) / N); const y = hz + Math.round(Math.pow(p, 2.1) * (H - hz)); for (let x = 0; x < W; x++) put(x, y, p < .35 ? C.gridFar : C.gridNear); }
+    for (let i = -9; i <= 9; i++) line(W / 2 + i * 4, hz, W / 2 + i * 26, H, Math.abs(i) > 5 ? C.gridFar : C.gridNear);
+    for (let x = 0; x < W; x++) put(x, hz, C.horizon);
+  }
+
+  const GOLD = ["#6e4a14","#a77a26","#d4a64a","#f3d88f","#fff6d6"].map(col);
+  const IRON = ["#141219","#27232f","#3b3646","#5e5870","#8d86a3"].map(col);
+  const RED = ["#5a0d18","#9b1428","#d7263d","#ff6d7f","#ffd1d8"].map(col);
+  const PINK = ["#a8406a","#f48fb1","#ffd1e6"].map(col);
+  const DARKC = ["#0e0d12","#1c1b21","#4a4858"].map(col);
+  const PURP = col("#8e3bf5"), PURPD = col("#3a1c61"), WHITE = col("#ffffff"), GLASS = col("#bfe3f5"), GLASS2 = col("#e9f7ff");
+
+  function academia(t, hz, fy){
+    const bob = Math.round(Math.sin(t * 2.4) * 1.5);
+    const PLATE = ["#24104a","#4b2390","#7a46d6","#a77cf0"].map(col);
+    const CHROME = ["#4a4658","#8f8aa0","#cfcbd8","#ffffff"].map(col);
+    const DIG = {"2":["XXX","..X","XXX","X..","XXX"], "0":["XXX","X.X","X.X","X.X","XXX"], "K":["X.X","XX.","X..","XX.","X.X"], "G":["XXX","X..","X.X","X.X","XXX"]};
+    const text = (str, x0, y0, c) => [...str].forEach((ch, n) => DIG[ch].forEach((row, j) => [...row].forEach((v, i) => { if (v === "X") put(x0 + n * 4 + i, y0 + j, c); })));
+
+    // anilha roxa em pé, à esquerda: aro, furo central e "20 KG"
+    const px = Math.round(W * .19), pr = Math.round(U * .155), py = fy - pr;
+    shadow(px, fy + 1, pr + 2, 2);
+    shape(px - pr, py - pr, px + pr, py + pr, (x, y) => { const dx = x - px + .5, dy = y - py + .5; return dx * dx + dy * dy <= pr * pr; }, (x, y) => {
+      const dx = x - px + .5, dy = y - py + .5, d = Math.sqrt(dx * dx + dy * dy);
+      let c;
+      if (d < 2.6) c = C.out;                                   // furo
+      else if (d < 5.2) c = dx + dy < 0 ? CHROME[3] : CHROME[1]; // miolo de metal
+      else if (d > pr - 2.6) c = dx + dy < 0 ? PLATE[3] : PLATE[1]; // aro
+      else if (Math.abs(d - pr * .62) < .7) c = PLATE[1];         // sulco
+      else c = dx + dy < -d * .6 ? PLATE[3] : PLATE[2];
+      put(x, y, c);
+    });
+    text("20", px - 3, py - Math.round(pr * .72), WHITE);
+    text("KG", px - 3, py + Math.round(pr * .38), WHITE);
+
+    // halter prateado, à direita: cabeças grandes e pegador
+    const dx0 = Math.round(W * .81), hh = Math.round(U * .105), hw = Math.round(U * .055), gap = Math.round(U * .06);
+    shadow(dx0, fy + 1, gap + hw * 2 + 2, 2);
+    const gy = fy - hh;
+    shape(dx0 - gap, gy - 1, dx0 + gap, gy + 1, (x, y) => x >= dx0 - gap && x <= dx0 + gap && y >= gy - 1 && y <= gy + 1, (x, y) => put(x, y, y === gy - 1 ? CHROME[3] : y === gy ? CHROME[2] : CHROME[1]));
+    [-1, 1].forEach(side => {
+      const x0 = side < 0 ? dx0 - gap - hw * 2 : dx0 + gap, x1 = x0 + hw * 2, y0 = fy - hh * 2, y1 = fy;
+      const inside = (x, y) => x >= x0 && x <= x1 && y >= y0 && y <= y1 && !((y - y0 < 2 || y1 - y < 2) && (x === x0 || x === x1));
+      shape(x0, y0, x1, y1, inside, (x, y) => {
+        const u = (x - x0) / (x1 - x0), v = (y - y0) / (y1 - y0);
+        put(x, y, v < .1 ? CHROME[3] : u < .25 ? CHROME[3] : u > .75 ? CHROME[0] : Math.abs(v - .5) < .06 ? CHROME[1] : CHROME[2]);
+      });
+    });
+
+    // kettlebell dourado no centro: alça grossa com furo, corpo redondo e base reta
+    const kx = Math.round(W / 2), kr = Math.round(U * .155), ky = fy - Math.round(kr * .82) + bob;
+    shadow(kx, fy + 1, kr + 3, 3 - (bob > 0 ? 1 : 0));
+    const hx = kx, hy = ky - Math.round(kr * .9), ri = kr * .38, ro = kr * .72;
+    shape(hx - ro, hy - ro, hx + ro, ky, (x, y) => { const ax = x - hx + .5, ay = y - hy + .5, d = Math.sqrt(ax * ax + ay * ay); return d >= ri && d <= ro && y <= ky - kr * .45; }, (x, y) => {
+      const ax = x - hx + .5, ay = y - hy + .5, u = (Math.sqrt(ax * ax + ay * ay) - ri) / (ro - ri);
+      put(x, y, u > .78 ? GOLD[1] : u < .2 ? GOLD[1] : (ax < 0 || ay < -ri) && u < .55 ? GOLD[3] : GOLD[2]);
+    });
+    const base = ky + Math.round(kr * .82);
+    shape(kx - kr, ky - kr, kx + kr, base, (x, y) => { const dx = x - kx + .5, dy = y - ky + .5; return dx * dx + dy * dy <= kr * kr && y <= base; }, (x, y) => {
+      if (y >= base - 1) return put(x, y, GOLD[0]);
+      const nx = (x - kx + .5) / kr, ny = (y - ky + .5) / kr, nz = Math.sqrt(Math.max(0, 1 - nx * nx - ny * ny));
+      const v = -.45 * nx - .6 * ny + .65 * nz + (dith(x, y) - .5) * .2;
+      put(x, y, v > .98 ? GOLD[4] : v > .72 ? GOLD[3] : v > .42 ? GOLD[2] : v > .14 ? GOLD[1] : GOLD[0]);
+    });
+    // logo da MAC3DOS gravada no corpo
+    const lw = Math.max(6, Math.round(kr * .46));
+    logo(kx, ky - Math.round(lw * 84 / 56 * .45), lw, GOLD[0]);
+    // brilhos
+    [[-1.3, -1.1, 0], [1.25, -.6, 2], [-.2, -1.85, 4]].forEach(([ox, oy, ph]) => {
+      if (Math.sin(t * 3 + ph) < .2) return;
+      const sx = kx + Math.round(ox * kr), sy = ky + Math.round(oy * kr);
+      put(sx, sy, WHITE); put(sx - 1, sy, GOLD[3]); put(sx + 1, sy, GOLD[3]); put(sx, sy - 1, GOLD[3]); put(sx, sy + 1, GOLD[3]);
+    });
+  }
+
+  function estetica(t, hz, fy){
+    const bob = Math.round(Math.sin(t * 2.4) * 1.5);
+    const ROSE = ["#7a1f4a","#c2457e","#f07cb0","#ffc2dc","#ffffff"].map(col);
+    const LIP = ["#4f0a16","#9b1428","#d7263d","#ff5d72","#ffc9d1"].map(col);
+
+    // batom, à esquerda: base dourada, anel escuro e bala vermelha cortada na diagonal
+    const lx0 = Math.round(W * .2), bw = Math.round(U * .05), bh = Math.round(U * .12), ringH = 2, bul = Math.round(U * .11);
+    shadow(lx0, fy + 1, bw + 4, 2);
+    box(lx0 - bw, fy - bh, lx0 + bw, fy, [GOLD[1], GOLD[2], GOLD[3]]);
+    box(lx0 - bw, fy - bh - ringH, lx0 + bw, fy - bh - 1, [DARKC[0], DARKC[1], DARKC[2]]);
+    const bx0 = lx0 - bw + 1, bx1 = lx0 + bw - 1, by1 = fy - bh - ringH - 1, slope = (bul * .45) / (bx1 - bx0);
+    shape(bx0, by1 - bul, bx1, by1, (x, y) => x >= bx0 && x <= bx1 && y <= by1 && y >= by1 - bul + (x - bx0) * slope, (x, y) => {
+      const u = (x - bx0) / (bx1 - bx0), top = by1 - bul + (x - bx0) * slope;
+      put(x, y, y - top < 1.2 ? LIP[3] : u < .3 ? LIP[3] : u > .75 ? LIP[1] : LIP[2]);
+    });
+
+    // esmalte, à direita: frasco rosa de vidro, rótulo branco e tampa preta alta
+    const ex = Math.round(W * .8), ew = Math.round(U * .075), eh = Math.round(U * .14), ch = Math.round(U * .13), cw = Math.max(3, Math.round(U * .035));
+    shadow(ex, fy + 1, ew + 3, 2);
+    shape(ex - ew, fy - eh, ex + ew, fy, (x, y) => x >= ex - ew && x <= ex + ew && y >= fy - eh && y <= fy && !((y === fy - eh || y === fy) && (x === ex - ew || x === ex + ew)), (x, y) => {
+      const u = (x - (ex - ew)) / (2 * ew);
+      put(x, y, u < .18 ? ROSE[3] : u > .8 ? ROSE[1] : ROSE[2]);
+    });
+    const elw = Math.max(4, Math.round(ew * .62));
+    logo(ex, fy - eh + Math.round((eh - elw * 84 / 56) / 2), elw, ROSE[0]);
+    put(ex - ew + 1, fy - eh + 2, WHITE); put(ex - ew + 1, fy - eh + 3, WHITE);
+    box(ex - cw + 1, fy - eh - 2, ex + cw - 1, fy - eh - 1, [col("#b8b2c4"), col("#e6e1ee"), WHITE]);
+    box(ex - cw, fy - eh - 2 - ch, ex + cw, fy - eh - 3, DARKC);
+
+    // boca no centro: arco do cupido marcado, lábio de baixo cheio e brilho de gloss
+    const cx = Math.round(W / 2), hw = Math.round(U * .25), hh = Math.round(U * .1), cy = fy - Math.round(hh * 1.7) + bob;
+    shadow(cx, fy + 1, hw - 2, 3);
+    const top = x => -hh + hh * .7 * Math.exp(-(x * x) / (hw * hw * .018));
+    const part = (x, y) => {
+      const ax = x - cx, ay = y - cy;
+      if (ay <= 0 && (ax * ax) / (hw * hw) + (ay * ay) / (hh * hh) <= 1 && ay >= top(ax)) return 1;
+      if (ay > 0 && (ax * ax) / (hw * hw * .86) + (ay * ay) / (hh * hh * 1.6) <= 1) return 2;
+      return 0;
+    };
+    shape(cx - hw, cy - hh, cx + hw, cy + Math.ceil(hh * 1.3), (x, y) => part(x, y) > 0, (x, y) => {
+      const ax = x - cx, ay = y - cy, p = part(x, y), edge = (ax * ax) / (hw * hw);
+      let c = LIP[2];
+      if (ay === 0 && Math.abs(ax) < hw * .92) c = LIP[0];
+      else if (ay === 1 && Math.abs(ax) < hw * .7) c = LIP[1];
+      else if (p === 1 && ay - top(ax) < 1.5 && Math.abs(ax) > 2 && Math.abs(ax) < hw * .7) c = LIP[3];
+      else if (p === 2 && Math.abs(ay - hh * .55) < 1.1 && ax > -hw * .4 && ax < -hw * .22) c = LIP[4];
+      else if (p === 2 && Math.abs(ay - hh * .55) < 1.1 && ax >= -hw * .22 && ax < hw * .12) c = LIP[3];
+      else if (edge > .66 || (p === 2 && ay > hh * 1.05)) c = LIP[1];
+      put(x, y, c);
+    });
+    // brilho piscando no gloss
+    if (Math.sin(t * 3) > .1) { const gx = cx - Math.round(hw * .3), gy = cy + Math.round(hh * .55); put(gx, gy - 2, WHITE); put(gx - 1, gy - 1, WHITE); put(gx + 1, gy - 1, WHITE); }
+
+    // corações subindo
+    const HEART = [".X.X.","XXXXX","XXXXX",".XXX.","..X.."];
+    [[.35, 0], [.65, 18], [.92, 33], [.07, 9]].forEach(([fx, ph], i) => {
+      const y0 = fy - 6 - ((t * 9 + ph) % (fy - 8)), x0 = Math.round(W * fx) + Math.round(Math.sin(t * 2 + i) * 2);
+      HEART.forEach((row, j) => [...row].forEach((ch, k) => { if (ch === "X") put(x0 + k, y0 + j, j === 1 && k === 1 ? WHITE : (i % 2 ? ROSE[2] : col("#ff6d9c"))); }));
+    });
+  }
+
+  let U = 110;
+  function draw(t){
+    size(); U = Math.min(H, Math.round(W * .8));
+    const sq = H > W * .9, hz = Math.round(H * (sq ? .47 : .56)), fy = hz + Math.round((H - hz) * (sq ? .24 : .36));
+    backdrop(t, hz);
+    (kind === "academia" ? academia : estetica)(t, hz, fy);
+    ctx.putImageData(img, 0, 0);
+  }
+
+  const still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let visible = true, last = 0;
+  if ("IntersectionObserver" in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(cv);
+  if (still) { draw(1.2); addEventListener("resize", () => draw(1.2)); return; }
+  (function loop(ms){
+    requestAnimationFrame(loop);
+    if (!visible || ms - last < 66) return; // ~15 quadros por segundo, ritmo de videogame antigo
+    last = ms; draw(ms / 1000);
+  })(0);
+}
+</script>
