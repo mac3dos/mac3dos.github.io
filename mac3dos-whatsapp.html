@@ -171,7 +171,7 @@ function pixelScene(cv, kind){
   const dith = (x, y) => BAYER[(y & 3) * 4 + (x & 3)];
   const C = {
     sky: ["#0d0818","#170d2b","#251448","#3a1c61"].map(col),
-    sun: ({academia:["#d6fff7","#7fe9dc","#35b6c9","#1f6f9e"], estetica:["#f3ecff","#cdb6ff","#9d7cf0","#5f45c4"], criadores:["#fff1d6","#ffc46b","#f2784b","#b23a6a"], celulares:["#eaffd6","#a8f07f","#4fc46b","#1f7a55"], inicio:["#fff6d6","#f3d88f","#e8c26a","#8e3bf5"], eventos:["#fff6d6","#ffd28a","#f2a65a","#b8562e"]}[kind]).map(col),
+    sun: ({academia:["#d6fff7","#7fe9dc","#35b6c9","#1f6f9e"], estetica:["#f3ecff","#cdb6ff","#9d7cf0","#5f45c4"], criadores:["#fff1d6","#ffc46b","#f2784b","#b23a6a"], celulares:["#eaffd6","#a8f07f","#4fc46b","#1f7a55"], inicio:["#fff6d6","#f3d88f","#e8c26a","#8e3bf5"], eventos:["#e6f0ff","#9fc3ff","#5f7fe0","#33288a"]}[kind]).map(col),
     floor: col("#110a1d"), gridFar: col("#3b1f70"), gridNear: col("#7a46d6"), horizon: col("#b88bff"),
     star: col("#ffffff"), star2: col("#b88bff"), shadow: col("#07040d"), out: col("#07040d")
   };

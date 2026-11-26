@@ -16,7 +16,7 @@ function montarCenas(dir){
   const troca = (de, para) => { if (!code.includes(de)) throw new Error('trecho não encontrado: ' + de.slice(0, 60)); code = code.replace(de, para); };
 
   troca('celulares:["#eaffd6","#a8f07f","#4fc46b","#1f7a55"]}[kind]',
-        'celulares:["#eaffd6","#a8f07f","#4fc46b","#1f7a55"], inicio:["#fff6d6","#f3d88f","#e8c26a","#8e3bf5"], eventos:["#fff6d6","#ffd28a","#f2a65a","#b8562e"]}[kind]');
+        'celulares:["#eaffd6","#a8f07f","#4fc46b","#1f7a55"], inicio:["#fff6d6","#f3d88f","#e8c26a","#8e3bf5"], eventos:["#e6f0ff","#9fc3ff","#5f7fe0","#33288a"]}[kind]');
   troca('celulares:43}[kind]', 'celulares:43, inicio:53, eventos:61}[kind]');
   const extra = fs.readFileSync(path.join(dir, 'ferramentas', 'cenas-extra.js'), 'utf8').replace(/\s+$/, '');
   troca('  let U = 110;', () => extra + '\n\n  let U = 110;');
