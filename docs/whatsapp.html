@@ -678,6 +678,7 @@ function trilha(cv, getAlvo, quem){
       {tag:'Mundo 2', name:'Estética e beleza', desc:'Salão, clínica, manicure, lash, sobrancelha', msg:'estética e beleza', scene:'estetica'},
       {tag:'Mundo 3', name:'Criador de conteúdo', desc:'Microfones, claquetes e acessórios para o seu set', msg:'criação de conteúdo', scene:'criadores'},
       {tag:'Mundo 4', name:'Celulares e tecnologia', desc:'Loja de celular, assistência técnica', msg:'celulares e tecnologia', scene:'celulares'},
+      {tag:'Evento', name:'Eventos e comemorações', desc:'Aniversário, casamento, festa, inauguração', frase:'Quero brindes 3D personalizados para um evento ou comemoração (aniversário, festa, inauguração)', scene:'inicio'},
       {tag:'Outro', name:'Outro segmento', desc:'Conta pra gente no WhatsApp', msg:'outro segmento', scene:'inicio'}
     ]},
     {id:'qtd', q:'Quantas unidades, mais ou menos?', press:'Pode ser um chute', opts:[
@@ -714,7 +715,7 @@ function trilha(cv, getAlvo, quem){
     faseTxt.textContent = atual < FASES.length ? 'Fase ' + (atual+1) + '/3' : 'Pronto';
     var k = atual > 0 && escolhas.negocio ? escolhas.negocio.scene : 'inicio';
     for(var i=0;i<cenas.length;i++) cenas[i].classList.toggle('off', cenas[i].dataset.scene !== k);
-    mundoTag.textContent = atual > 0 && escolhas.negocio ? (k === 'inicio' ? 'Seu mundo' : NOMES[k]) : 'Mundo ?';
+    mundoTag.textContent = atual > 0 && escolhas.negocio ? (k === 'inicio' ? (escolhas.negocio.tag === 'Evento' ? 'Evento' : 'Seu mundo') : NOMES[k]) : 'Mundo ?';
   }
 
   function render(){
@@ -746,7 +747,9 @@ function trilha(cv, getAlvo, quem){
 
   function final(){
     var n = escolhas.negocio, q = escolhas.qtd, p = escolhas.prazo;
-    var texto = 'Olá, MAC3DOS! Vim pelo Instagram. Meu negócio é de ' + n.msg + ', quero ' + q.msg + ' de brindes 3D com a minha logo, ' + p.msg + '.';
+    var texto = n.frase
+      ? 'Olá, MAC3DOS! Vim pelo Instagram. ' + n.frase + ', ' + q.msg + ', ' + p.msg + '.'
+      : 'Olá, MAC3DOS! Vim pelo Instagram. Meu negócio é de ' + n.msg + ', quero ' + q.msg + ' de brindes 3D com a minha logo, ' + p.msg + '.';
 
     var card = el('div','card');
     card.appendChild(el('span','selo','Pedido montado'));
