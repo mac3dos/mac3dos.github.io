@@ -10,7 +10,7 @@ const pages = [
   {src: 'mac3dos-criadores.html', dst: 'criadores.html', seg: 'Criadores de conteúdo', img: 'media/criadores/thumb.jpg', desc: 'Mini microfones, claquetes e acessórios impressos em 3D para criadores de conteúdo.'},
   {src: 'mac3dos-celulares.html', dst: 'celulares.html', seg: 'Celulares e tecnologia', img: 'media/celulares/thumb.jpg', desc: 'Brindes impressos em 3D para lojas de celular e assistências técnicas.'},
   {src: 'mac3dos-estetica-teste.html', dst: 'estetica-teste.html', seg: 'Estética e beleza', img: 'media/estetica/thumb.jpg', desc: 'Brindes úteis impressos em 3D para estética e beleza.'},
-  {src: 'mac3dos-whatsapp.html', dst: 'whatsapp.html', /* link da bio do Instagram; gerado por node ferramentas/criar-previa.js . */ img: 'media/hub/thumb.jpg', desc: 'Monte o seu orçamento de brindes 3D em 3 toques e fale com a MAC3DOS no WhatsApp.'},
+  {src: 'mac3dos-whatsapp.html', dst: 'whatsapp.html', /* link da bio do Instagram; gerado por node ferramentas/criar-previa.js . (imagem: node ferramentas/criar-imagem-og.js .) */ img: 'media/whatsapp/og.png', desc: 'Monte o seu orçamento de brindes 3D em 3 toques e fale com a MAC3DOS no WhatsApp.'},
   {src: 'mac3dos-estetica-teste.html',  dst: 'estetica.html', /* COM FILTRO POR ÁREA. Para voltar ao de antes: trocar por mac3dos-estetica.html e republicar o artifact a partir dele */ seg: 'Estética e beleza',  img: 'media/estetica/thumb.jpg', desc: 'Brindes úteis impressos em 3D para estética e beleza.'},
 ];
 // links do claude.ai viram links entre as páginas do site

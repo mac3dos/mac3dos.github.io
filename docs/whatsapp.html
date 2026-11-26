@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="MAC3DOS no WhatsApp">
 <meta property="og:description" content="Monte o seu orçamento de brindes 3D em 3 toques e fale com a MAC3DOS no WhatsApp.">
-<meta property="og:image" content="https://mac3dos.github.io/media/hub/thumb.jpg">
+<meta property="og:image" content="https://mac3dos.github.io/media/whatsapp/og.png">
 <meta property="og:url" content="https://mac3dos.github.io/whatsapp.html">
 <meta name="twitter:card" content="summary_large_image">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
@@ -97,7 +97,9 @@ h1 span{color:var(--purple-soft)}
 
 /* tela final */
 .card{background:linear-gradient(to bottom,rgba(58,28,97,.55),var(--surface));border:1px solid var(--purple-soft);border-radius:18px;padding:18px;display:grid;gap:14px;box-shadow:0 0 0 4px rgba(142,59,245,.22),0 30px 70px rgba(0,0,0,.55),0 0 70px rgba(142,59,245,.3)}
-.selo{justify-self:start;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:var(--on-gold);border-radius:4px;padding:3px 8px;font-weight:500}
+.selo{justify-self:center;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:var(--on-gold);border-radius:4px;padding:3px 8px;font-weight:500;animation:conquista .7s cubic-bezier(.2,1.6,.4,1) both, brilho 1.2s steps(2,start) .7s 3}
+@keyframes conquista{from{transform:scale(.3);opacity:.001}to{transform:none;opacity:1}}
+@keyframes brilho{50%{background:var(--fg)}}
 .resumo{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 .resumo li{display:flex;gap:10px;font-size:.95rem}
 .resumo li::before{content:"◆";color:var(--purple-soft);flex:none}
@@ -130,7 +132,7 @@ h1 span{color:var(--purple-soft)}
 
 .anim{animation:entra .28s ease both}
 @keyframes entra{from{opacity:.001;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.floor,.press::before,.anim{animation:none}.opt,.cta{transition:none}}
+@media (prefers-reduced-motion:reduce){.floor,.press::before,.anim,.selo{animation:none}.opt,.cta{transition:none}}
 </style>
 
 <div class="arena" aria-hidden="true"><div class="floor"></div><div class="scan"></div></div>
@@ -157,6 +159,7 @@ h1 span{color:var(--purple-soft)}
       <canvas data-scene="estetica" class="off" role="img" aria-label="Cena em pixel art: batom, boca e esmalte rosa"></canvas>
       <canvas data-scene="criadores" class="off" role="img" aria-label="Cena em pixel art: mini microfone, claquete e celular gravando"></canvas>
       <canvas data-scene="celulares" class="off" role="img" aria-label="Cena em pixel art: suporte de celular, chaveiro de iPhone e cabo"></canvas>
+      <canvas data-scene="eventos" class="off" role="img" aria-label="Cena em pixel art: bolo de dois andares com velas, balões e presente, com confete caindo"></canvas>
       <span class="tag" id="mundo-tag">Mundo ?</span>
       <span class="fase" id="fase-txt">Fase 1/3</span>
     </div>
@@ -182,7 +185,7 @@ function pixelScene(cv, kind){
   const dith = (x, y) => BAYER[(y & 3) * 4 + (x & 3)];
   const C = {
     sky: ["#0d0818","#170d2b","#251448","#3a1c61"].map(col),
-    sun: ({academia:["#d6fff7","#7fe9dc","#35b6c9","#1f6f9e"], estetica:["#f3ecff","#cdb6ff","#9d7cf0","#5f45c4"], criadores:["#fff1d6","#ffc46b","#f2784b","#b23a6a"], celulares:["#eaffd6","#a8f07f","#4fc46b","#1f7a55"], inicio:["#fff6d6","#f3d88f","#e8c26a","#8e3bf5"]}[kind]).map(col),
+    sun: ({academia:["#d6fff7","#7fe9dc","#35b6c9","#1f6f9e"], estetica:["#f3ecff","#cdb6ff","#9d7cf0","#5f45c4"], criadores:["#fff1d6","#ffc46b","#f2784b","#b23a6a"], celulares:["#eaffd6","#a8f07f","#4fc46b","#1f7a55"], inicio:["#fff6d6","#f3d88f","#e8c26a","#8e3bf5"], eventos:["#fff6d6","#ffd28a","#f2a65a","#b8562e"]}[kind]).map(col),
     floor: col("#110a1d"), gridFar: col("#3b1f70"), gridNear: col("#7a46d6"), horizon: col("#b88bff"),
     star: col("#ffffff"), star2: col("#b88bff"), shadow: col("#07040d"), out: col("#07040d")
   };
@@ -237,7 +240,7 @@ function pixelScene(cv, kind){
   function shadow(cx, cy, rw, rh){
     for (let y = -rh; y <= rh; y++) for (let x = -rw; x <= rw; x++) if ((x * x) / (rw * rw) + (y * y) / (rh * rh) <= 1 && dith(x + cx, y + cy) < .75) put(cx + x, cy + y, C.shadow);
   }
-  const stars = []; let seed = {academia:7, estetica:19, criadores:31, celulares:43, inicio:53}[kind];
+  const stars = []; let seed = {academia:7, estetica:19, criadores:31, celulares:43, inicio:53, eventos:61}[kind];
   const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
   for (let i = 0; i < 34; i++) stars.push([rnd(), rnd(), rnd() * 6.28]);
 
@@ -532,6 +535,9 @@ function pixelScene(cv, kind){
     });
   }
 
+  // ---- cenas extras do link da bio (coladas dentro de pixelScene por ferramentas/criar-previa.js) ----
+
+  // tela de entrada: logo da MAC3DOS flutuando entre blocos de "?"
   function inicio(t, hz, fy){
     const bob = Math.round(Math.sin(t * 2.4) * 2);
     const lw = Math.max(10, Math.round(U * .26)), lh = Math.round(lw * 84 / 56);
@@ -553,12 +559,69 @@ function pixelScene(cv, kind){
     });
   }
 
+  // eventos e comemorações: bolo de dois andares com velas, balões e presente, confete caindo
+  function eventos(t, hz, fy){
+    const bob = Math.round(Math.sin(t * 2.4) * 1.5);
+    const CREAM = ["#c9a86a","#f3e3c0","#fffaf0"].map(col);
+    const CAKE = [PINK[0], PINK[1], PINK[2]];
+    const BPURP = ["#2a1150","#5a24a8","#8e3bf5","#c9a6ff","#ffffff"].map(col);
+    const BROSE = ["#7a1f4a","#c2457e","#f07cb0","#ffc2dc","#ffffff"].map(col);
+    const STRING = col("#d6d5dc");
+
+    // balões, à esquerda, com fio até o chão
+    const bx = Math.round(W * .17), br = Math.round(U * .085);
+    [[bx + br + 1, fy - Math.round(U * .33) + Math.round(Math.sin(t * 2 + 1) * 1.5), BROSE], [bx, fy - Math.round(U * .42) + bob, BPURP]].forEach(([x, y, pal]) => {
+      for (let yy = y + br + 2; yy < fy; yy++) put(x + Math.round(Math.sin(yy * .5 + t * 3) * .8), yy, STRING);
+      ball(x, y, br, pal);
+      put(x, y + br + 1, pal[1]); put(x - 1, y + br + 1, pal[1]); put(x + 1, y + br + 1, pal[1]);
+    });
+    shadow(bx + 2, fy + 1, br + 2, 2);
+
+    // presente, à direita: caixa dourada com fita roxa e laço
+    const gx = Math.round(W * .82), gs = Math.round(U * .1), gh = Math.round(gs * 1.5), gTop = fy - gh;
+    shadow(gx, fy + 1, gs + 3, 2);
+    box(gx - gs, gTop, gx + gs, fy, [GOLD[1], GOLD[2], GOLD[3]]);
+    box(gx - gs - 1, gTop - 3, gx + gs + 1, gTop - 1, [GOLD[1], GOLD[3], GOLD[4]]);
+    for (let y = gTop - 3; y <= fy; y++) { put(gx, y, PURP); put(gx + 1, y, PURPD); }
+    for (let x = gx - gs - 1; x <= gx + gs + 1; x++) put(x, gTop - 2, x <= gx ? PURP : PURPD);
+    [[-3,-5],[-2,-5],[-4,-4],[-1,-4],[-3,-3],[-2,-3],[3,-5],[4,-5],[2,-4],[5,-4],[3,-3],[4,-3],[0,-4],[1,-4]].forEach(([dx, dy]) => put(gx + dx, gTop + dy, dx < 1 ? PURP : col("#c9a6ff")));
+
+    // bolo no centro: andar de baixo rosa com a logo, andar de cima de creme, cobertura escorrendo
+    const cx = Math.round(W / 2), bw = Math.round(U * .25), bh = Math.round(U * .17), tw = Math.round(bw * .64), th = Math.round(U * .13);
+    const yb = fy - bh, yt = yb - th;
+    shadow(cx, fy + 1, bw + 3, 3);
+    box(cx - bw, yb, cx + bw, fy, CAKE);
+    for (let x = cx - bw; x <= cx + bw; x++) { const n = (x * 7 + 3) % 5 < 2 ? 3 : 1; for (let k = 0; k < n; k++) put(x, yb + k, CREAM[k ? 1 : 2]); }
+    const lw = Math.max(4, Math.round(bh * .5));
+    logo(cx, yb + Math.round((bh - lw * 84 / 56) / 2) + 2, lw, PINK[0]);
+    box(cx - tw, yt, cx + tw, yb - 1, CREAM);
+    for (let x = cx - tw; x <= cx + tw; x++) { const n = (x * 5 + 1) % 4 < 2 ? 2 : 1; for (let k = 0; k < n; k++) put(x, yt + k, PINK[k ? 1 : 2]); }
+    // velas com chama piscando
+    [-1, 0, 1].forEach(k => {
+      const x = cx + k * Math.round(tw * .55);
+      for (let y = yt - 5; y < yt; y++) put(x, y, (y & 1) ? PURP : col("#c9a6ff"));
+      put(x - 1, yt - 5, C.out); put(x + 1, yt - 5, C.out);
+      const f = Math.sin(t * 9 + k * 2) > 0;
+      put(x, yt - 6, f ? GOLD[4] : GOLD[3]); put(x, yt - 7, f ? GOLD[3] : WHITE);
+      if (f) put(x, yt - 8, GOLD[2]);
+    });
+    // brilho no bolo
+    if (Math.sin(t * 3) > .3) { const sx = cx - bw + 2, sy = yb + Math.round(bh * .55); put(sx, sy, WHITE); put(sx, sy - 1, PINK[2]); put(sx, sy + 1, PINK[2]); }
+
+    // confete caindo
+    const CONF = [col("#e8c26a"), col("#f07cb0"), col("#b88bff"), col("#7fe9dc"), WHITE];
+    for (let i = 0; i < 22; i++) {
+      const x = (i * 37 + 5) % W + Math.round(Math.sin(t * 2 + i) * 2), y = Math.round((t * (8 + i % 4 * 2) + i * 13) % fy);
+      const c = CONF[i % CONF.length]; put(x, y, c); if (i % 3 === 0) put(x + 1, y, c);
+    }
+  }
+
   let U = 110;
   function draw(t){
     size(); U = Math.min(H, Math.round(W * .8));
     const sq = H > W * .9, hz = Math.round(H * (sq ? .47 : .56)), fy = hz + Math.round((H - hz) * (sq ? .24 : .36));
     backdrop(t, hz);
-    ({academia, estetica, criadores, celulares, inicio})[kind](t, hz, fy);
+    ({academia, estetica, criadores, celulares, inicio, eventos})[kind](t, hz, fy);
     ctx.putImageData(img, 0, 0);
   }
 
@@ -657,12 +720,19 @@ function trilha(cv, getAlvo, quem){
       }
     });
     // personagem
-    var bob = andando ? (Math.floor(t*10)%2) : Math.round(Math.sin(t*3)*.6);
+    var chegou = alvo >= 3 && !andando;
+    // chegou na bandeira: pula de alegria
+    var bob = andando ? (Math.floor(t*10)%2) : chegou ? Math.round(Math.abs(Math.sin(t*6))*4) : Math.round(Math.sin(t*3)*.6);
     var frame = andando && Math.floor(t*10)%2 ? HERO2 : HERO;
     ctx.fillStyle = 'rgba(7,4,13,.8)'; ctx.fillRect(cur-4, 45, 9, 1);
     sprite(frame, Math.round(cur) - (frame[0].length >> 1), 45 - frame.length - bob);
     // festa no fim
-    if(alvo >= 3 && !andando){ for(var f=0; f<6; f++){ var a = t*3 + f; px(NODES[3] + 8 + Math.cos(a)*10, 22 + Math.sin(a)*4, f%2 ? '#e8c26a' : '#b88bff'); } }
+    if(chegou){
+      for(var f=0; f<6; f++){ var a = t*3 + f; px(NODES[3] + 8 + Math.cos(a)*10, 22 + Math.sin(a)*4, f%2 ? '#e8c26a' : '#b88bff'); }
+      // confete caindo na trilha toda
+      var CONF = ['#e8c26a','#f07cb0','#b88bff','#7fe9dc','#ffffff'];
+      for(var c=0; c<18; c++){ var cx = (c*29 + 7) % W + Math.round(Math.sin(t*2 + c)*2), cy = 14 + ((t*(10 + c%3*4) + c*7) % 32); px(cx, cy, CONF[c % CONF.length]); if(c % 2) px(cx+1, cy, CONF[c % CONF.length]); }
+    }
   }
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches, last = 0;
   (function loop(ms){ requestAnimationFrame(loop); if(ms - last < 66) return; last = ms; if(still){ pos = NODES[Math.min(3,getAlvo())] - NODES[0]; } draw(ms); })(0);
@@ -678,7 +748,7 @@ function trilha(cv, getAlvo, quem){
       {tag:'Mundo 2', name:'Estética e beleza', desc:'Salão, clínica, manicure, lash, sobrancelha', msg:'estética e beleza', scene:'estetica'},
       {tag:'Mundo 3', name:'Criador de conteúdo', desc:'Microfones, claquetes e acessórios para o seu set', msg:'criação de conteúdo', scene:'criadores'},
       {tag:'Mundo 4', name:'Celulares e tecnologia', desc:'Loja de celular, assistência técnica', msg:'celulares e tecnologia', scene:'celulares'},
-      {tag:'Evento', name:'Eventos e comemorações', desc:'Aniversário, casamento, festa, inauguração', frase:'Quero brindes 3D personalizados para um evento ou comemoração (aniversário, festa, inauguração)', scene:'inicio'},
+      {tag:'Evento', name:'Eventos e comemorações', desc:'Aniversário, casamento, festa, inauguração', frase:'Quero brindes 3D personalizados para um evento ou comemoração (aniversário, festa, inauguração)', scene:'eventos'},
       {tag:'Outro', name:'Outro segmento', desc:'Conta pra gente no WhatsApp', msg:'outro segmento', scene:'inicio'}
     ]},
     {id:'qtd', q:'Quantas unidades, mais ou menos?', press:'Pode ser um chute', opts:[
@@ -707,7 +777,7 @@ function trilha(cv, getAlvo, quem){
   // cena do mundo + personagem na trilha
   var cenas = document.querySelectorAll('#cena canvas');
   var mundoTag = document.getElementById('mundo-tag');
-  var NOMES = {inicio:'Mundo ?', academia:'Mundo 1', estetica:'Mundo 2', criadores:'Mundo 3', celulares:'Mundo 4'};
+  var NOMES = {inicio:'Mundo ?', academia:'Mundo 1', estetica:'Mundo 2', criadores:'Mundo 3', celulares:'Mundo 4', eventos:'Evento'};
   requestAnimationFrame(function(){ for(var i=0;i<cenas.length;i++) pixelScene(cenas[i], cenas[i].dataset.scene); });
   trilha(document.getElementById('trilha'), function(){ return atual; }, 'gato');
 
@@ -715,7 +785,7 @@ function trilha(cv, getAlvo, quem){
     faseTxt.textContent = atual < FASES.length ? 'Fase ' + (atual+1) + '/3' : 'Pronto';
     var k = atual > 0 && escolhas.negocio ? escolhas.negocio.scene : 'inicio';
     for(var i=0;i<cenas.length;i++) cenas[i].classList.toggle('off', cenas[i].dataset.scene !== k);
-    mundoTag.textContent = atual > 0 && escolhas.negocio ? (k === 'inicio' ? (escolhas.negocio.tag === 'Evento' ? 'Evento' : 'Seu mundo') : NOMES[k]) : 'Mundo ?';
+    mundoTag.textContent = atual > 0 && escolhas.negocio ? (k === 'inicio' ? 'Seu mundo' : NOMES[k]) : 'Mundo ?';
   }
 
   function render(){
@@ -752,7 +822,7 @@ function trilha(cv, getAlvo, quem){
       : 'Olá, MAC3DOS! Vim pelo Instagram. Meu negócio é de ' + n.msg + ', quero ' + q.msg + ' de brindes 3D com a minha logo, ' + p.msg + '.';
 
     var card = el('div','card');
-    card.appendChild(el('span','selo','Pedido montado'));
+    card.appendChild(el('span','selo','◆ Orçamento desbloqueado ◆'));
     var ul = el('ul','resumo');
     [['Negócio', n.name], ['Quantidade', q.name], ['Prazo', p.name]].forEach(function(r){
       var li = el('li'); var s = el('span'); s.appendChild(el('b',null,r[0] + ': ')); s.appendChild(document.createTextNode(r[1])); li.appendChild(s); ul.appendChild(li);

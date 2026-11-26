@@ -83,12 +83,19 @@ function trilha(cv, getAlvo, quem){
       }
     });
     // personagem
-    var bob = andando ? (Math.floor(t*10)%2) : Math.round(Math.sin(t*3)*.6);
+    var chegou = alvo >= 3 && !andando;
+    // chegou na bandeira: pula de alegria
+    var bob = andando ? (Math.floor(t*10)%2) : chegou ? Math.round(Math.abs(Math.sin(t*6))*4) : Math.round(Math.sin(t*3)*.6);
     var frame = andando && Math.floor(t*10)%2 ? HERO2 : HERO;
     ctx.fillStyle = 'rgba(7,4,13,.8)'; ctx.fillRect(cur-4, 45, 9, 1);
     sprite(frame, Math.round(cur) - (frame[0].length >> 1), 45 - frame.length - bob);
     // festa no fim
-    if(alvo >= 3 && !andando){ for(var f=0; f<6; f++){ var a = t*3 + f; px(NODES[3] + 8 + Math.cos(a)*10, 22 + Math.sin(a)*4, f%2 ? '#e8c26a' : '#b88bff'); } }
+    if(chegou){
+      for(var f=0; f<6; f++){ var a = t*3 + f; px(NODES[3] + 8 + Math.cos(a)*10, 22 + Math.sin(a)*4, f%2 ? '#e8c26a' : '#b88bff'); }
+      // confete caindo na trilha toda
+      var CONF = ['#e8c26a','#f07cb0','#b88bff','#7fe9dc','#ffffff'];
+      for(var c=0; c<18; c++){ var cx = (c*29 + 7) % W + Math.round(Math.sin(t*2 + c)*2), cy = 14 + ((t*(10 + c%3*4) + c*7) % 32); px(cx, cy, CONF[c % CONF.length]); if(c % 2) px(cx+1, cy, CONF[c % CONF.length]); }
+    }
   }
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches, last = 0;
   (function loop(ms){ requestAnimationFrame(loop); if(ms - last < 66) return; last = ms; if(still){ pos = NODES[Math.min(3,getAlvo())] - NODES[0]; } draw(ms); })(0);
