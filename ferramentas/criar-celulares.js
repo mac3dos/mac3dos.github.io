@@ -2,7 +2,7 @@
 // As fotos e vídeos entram na seção "em-uso" quando chegarem (lista FOTOS abaixo).
 const fs = require('fs'), path = require('path');
 const dir = process.argv[2];
-const src = fs.readFileSync(path.join(dir, 'mac3dos-estetica.html'), 'utf8');
+const src = fs.readFileSync(path.join(dir, 'mac3dos-estetica.html'), 'utf8').replace(/<!-- visualizador:inicio -->[\s\S]*?<!-- visualizador:fim -->/, ''); // o visualizador entra depois, no gerar-site
 const sec = id => { const a = src.indexOf(`  <section id="${id}"`), b = src.indexOf('  </section>', a) + '  </section>'.length; if (a < 0) throw new Error(id); return src.slice(a, b); };
 const rep = (s, pairs) => pairs.reduce((acc, [a, b]) => { if (!acc.includes(a)) throw new Error('não achei: ' + a.slice(0, 60)); return acc.split(a).join(b); }, s);
 

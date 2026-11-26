@@ -1,7 +1,7 @@
 // Monta mac3dos-criadores.html a partir do catálogo de estética (mesmo visual), com conteúdo novo.
 const fs = require('fs'), path = require('path');
 const dir = process.argv[2];
-const src = fs.readFileSync(path.join(dir, 'mac3dos-estetica.html'), 'utf8');
+const src = fs.readFileSync(path.join(dir, 'mac3dos-estetica.html'), 'utf8').replace(/<!-- visualizador:inicio -->[\s\S]*?<!-- visualizador:fim -->/, ''); // o visualizador entra depois, no gerar-site
 const iMain = src.indexOf('<main id="inicio">');
 const iFoot = src.indexOf('<footer>');
 const iThree = src.indexOf('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>');

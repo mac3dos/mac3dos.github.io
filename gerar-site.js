@@ -6,10 +6,10 @@ const site = (process.argv[2] || '').replace(/\/$/, '');
 
 const pages = [
   {src: 'mac3dos-inicio.html',    dst: 'index.html',     img: 'media/hub/thumb.jpg', desc: 'Escolha o seu segmento e veja os brindes 3D da MAC3DOS.'},
-  {src: 'mac3dos-academias.html', dst: 'esportes.html',  img: 'media/foto-09.jpg',   desc: 'Brindes úteis impressos em 3D para academias, estúdios, personal trainers e eventos esportivos.'},
-  {src: 'mac3dos-criadores.html', dst: 'criadores.html', img: 'media/criadores/thumb.jpg', desc: 'Mini microfones, claquetes e acessórios impressos em 3D para criadores de conteúdo.'},
-  {src: 'mac3dos-celulares.html', dst: 'celulares.html', img: 'media/celulares/thumb.jpg', desc: 'Brindes impressos em 3D para lojas de celular e assistências técnicas.'},
-  {src: 'mac3dos-estetica.html',  dst: 'estetica.html',  img: 'media/estetica/thumb.jpg', desc: 'Brindes úteis impressos em 3D para estética e beleza.'},
+  {src: 'mac3dos-academias.html', dst: 'esportes.html', seg: 'Esportes e bem-estar',  img: 'media/foto-09.jpg',   desc: 'Brindes úteis impressos em 3D para academias, estúdios, personal trainers e eventos esportivos.'},
+  {src: 'mac3dos-criadores.html', dst: 'criadores.html', seg: 'Criadores de conteúdo', img: 'media/criadores/thumb.jpg', desc: 'Mini microfones, claquetes e acessórios impressos em 3D para criadores de conteúdo.'},
+  {src: 'mac3dos-celulares.html', dst: 'celulares.html', seg: 'Celulares e tecnologia', img: 'media/celulares/thumb.jpg', desc: 'Brindes impressos em 3D para lojas de celular e assistências técnicas.'},
+  {src: 'mac3dos-estetica.html',  dst: 'estetica.html', seg: 'Estética e beleza',  img: 'media/estetica/thumb.jpg', desc: 'Brindes úteis impressos em 3D para estética e beleza.'},
 ];
 // links do claude.ai viram links entre as páginas do site
 const links = {
@@ -19,6 +19,10 @@ const links = {
   'https://claude.ai/artifact/K4pNWJgUQqCDG8v5TY74Cr': 'criadores.html',
   'https://claude.ai/artifact/KrLbxkW37PHYMK9gMNyS8Z': 'celulares.html',
 };
+
+// fotos e vídeos clicáveis com botão de WhatsApp em todos os catálogos (também vale para os artifacts, que usam estes mesmos arquivos)
+const {injetar} = require('./ferramentas/visualizador.js');
+for (const p of pages) if (p.seg) injetar(path.join(root, p.src), p.dst, p.seg);
 
 fs.rmSync(out, {recursive: true, force: true});
 fs.mkdirSync(out, {recursive: true});
