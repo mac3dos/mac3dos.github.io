@@ -564,6 +564,19 @@ html.rv-on .rv:not(.in){opacity:0;transform:translateY(28px) scale(.98)}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 .printer svg.piece{position:absolute;inset:0;width:100%;height:100%}
+
+/* subcategorias (teste) */
+.sub{position:sticky;top:64px;z-index:15;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 0}
+.sub .wrap{display:grid;gap:8px}
+.sub-q{margin:0;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-soft)}
+.sub-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+.sub-chips::-webkit-scrollbar{display:none}
+.sub-chips button{flex:none;font:inherit;font-size:.88rem;font-weight:600;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.sub-chips button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.sub-ideia{margin:14px auto 0;font-size:.95rem;color:var(--muted);max-width:62ch;text-align:center;border:1px dashed rgba(184,139,255,.4);border-radius:12px;padding:12px 16px;background:rgba(21,19,27,.6)}
+.sub-ideia b{color:var(--fg)}
+.sub-off{display:none!important}
+@media (max-width:600px){.sub{top:56px;padding:10px 0}.sub-chips button{font-size:.82rem;padding:7px 12px}}
 </style>
 
 <header class="top">
@@ -605,12 +618,22 @@ html.rv-on .rv:not(.in){opacity:0;transform:translateY(28px) scale(.98)}
     </div>
   </section>
 
+
+  <!-- subcategorias:inicio -->
+  <nav class="sub" id="sub" aria-label="Escolha a sua área">
+    <div class="wrap">
+      <p class="sub-q">Qual é a sua área?</p>
+      <div class="sub-chips" role="group"><button type="button" data-c="todos" aria-pressed="true">Todos</button><button type="button" data-c="nail" aria-pressed="false">Nail designer</button><button type="button" data-c="lash" aria-pressed="false">Lash e brow designer</button><button type="button" data-c="harm" aria-pressed="false">Harmonização facial</button><button type="button" data-c="dent" aria-pressed="false">Dentista</button><button type="button" data-c="salao" aria-pressed="false">Salão de beleza</button><button type="button" data-c="make" aria-pressed="false">Maquiadora</button></div>
+    </div>
+  </nav>
+  <!-- subcategorias:fim -->
   <section id="em-uso" class="band">
     <div class="wrap">
       <div class="sec-head showcase-head">
         <p class="eyebrow">Na bolsa da cliente</p>
         <h2>Quem usa lembra.</h2>
         <p class="lead">Um brinde que a cliente usa de verdade, todos os dias. Ela lembra do seu espaço sempre que usa e, por onde passa, faz propaganda da sua marca para amigas, colegas e família.</p>
+        <p class="sub-ideia" id="subIdeia" hidden></p>
       </div>
       <div class="showcase">
         <figure class="show">
@@ -1137,7 +1160,7 @@ const PRODUCTS = [
 ];
 
 // Fotos agrupadas por produto: cada grupo ocupa um espaço e troca de foto sozinho.
-const GALLERY = [
+const GALLERY = window.GALLERY = [
   {name:"Chaveiro de boca", photos:[
     {src:"media/estetica/foto-03.jpg", alt:"Bandeja com chaveiros de boca vermelhos"},
     {src:"media/estetica/foto-09.jpg", alt:"Bandeja com chaveiros de boca rosa"},
@@ -1475,6 +1498,34 @@ choosePiece("bc");
   // reforço: se o observador não disparar, carrega pelo scroll
   const near = () => vids.forEach(v => { if (v.getAttribute("src")) return; const r = v.getBoundingClientRect(); if (r.width && r.top < innerHeight + 400 && r.bottom > -400) load(v); });
   addEventListener("scroll", near, {passive:true}); addEventListener("resize", near); setTimeout(near, 300);
+})();
+</script>
+
+<script>
+// ---------- subcategorias (teste): filtra as peças pela área da profissional ----------
+(function(){
+  const CATS = [{"id":"todos","label":"Todos"},{"id":"nail","label":"Nail designer","h1":"Sua cliente sai do seu estúdio de unhas com a sua marca.","quem":"nail designer","ideia":"Chaveiro de esmalte, chaveiro com a logo do seu estúdio e certificado para as alunas do seu curso. Sob medida: chaveiro de lixa ou de alicate."},{"id":"lash","label":"Lash e brow designer","h1":"Sua cliente sai do seu estúdio de cílios com a sua marca.","quem":"lash e brow designer","ideia":"Chaveiro de cílios, porta-rímel e certificado para as alunas. Sob medida: porta-escovinha de cílios e chaveiro de pinça."},{"id":"harm","label":"Harmonização facial","h1":"Sua paciente sai da sua clínica com a sua marca.","quem":"harmonização facial","ideia":"Chaveiro de boca, porta-protetor labial, potinho para amostras de creme e porta-bijus de boca. Sob medida: chaveiro de seringa ou de frasco."},{"id":"dent","label":"Dentista","h1":"Seu paciente sai do consultório com a sua marca.","quem":"dentista","ideia":"Chaveiro de boca e chaveiros com a logo do consultório. Sob medida: chaveiro de dente, porta fio dental e porta-escova com o nome da clínica."},{"id":"salao","label":"Salão de beleza","h1":"Sua cliente sai do seu salão com a sua marca.","quem":"salão de beleza","ideia":"Pente com a logo, potinho de creme, porta-bijus e placas para a recepção. Sob medida: chaveiro de secador ou de tesoura."},{"id":"make","label":"Maquiadora","h1":"Sua cliente sai da maquiagem com a sua marca.","quem":"maquiadora","ideia":"Chaveiro de batom, porta-rímel, porta-protetor labial e limpador de pincéis. Sob medida: chaveiro de pincel ou de paleta."}], TAGS = {"estetica/video-07":["lash","make"],"estetica/video-02":["make","harm"],"estetica/video-09":["harm","salao"],"estetica/video-12":["harm","make","dent"],"estetica/video-19":["make"],"estetica/video-05":["make","harm"],"estetica/video-06":["*"],"estetica/video-17":["lash"],"estetica/video-13":["*"],"estetica/video-14":["*"],"estetica/video-15":["*"],"estetica/video-20":["harm","salao"],"estetica/video-04":["*"],"estetica/video-03":["*"],"estetica/video-18":["*"],"estetica/video-23":["*"],"estetica/video-24":["salao"],"estetica/video-26":["nail"],"estetica/video-10":["*"],"estetica/video-16":["make"],"estetica/video-21":["nail","lash","salao"],"estetica/video-22":["*"],"estetica/video-25":["*"],"Chaveiro de boca":["harm","make","dent"],"Chaveiro de esmalte":["nail"],"Porta-bijus com nome":["*"],"Porta-batom":["make"],"Porta-creme":["harm","salao"],"Borboleta":["*"],"Espelhinho e porta-rímel":["make","lash"],"Tags com logo":["*"],"Kit beleza":["*"],"certificados":["nail","lash"]};
+  const bar = document.getElementById("sub"); if (!bar) return;
+  const h1 = document.querySelector(".hero h1"), h1Orig = h1 ? h1.innerHTML : "";
+  const wa = document.querySelector("#contato .btn-primary"), waOrig = wa ? wa.href : "";
+  const keyOf = el => { const v = el.querySelector("video"), im = el.querySelector("img"); const raw = v ? (v.dataset.src || v.getAttribute("src") || "") : im ? im.getAttribute("src") || "" : ""; const m = raw.match(/media\/(.+)\.[a-z0-9]+$/i); return m ? m[1] : ""; };
+  const fits = (tags, c) => c === "todos" || !tags || tags.includes("*") || tags.includes(c);
+  function apply(c){
+    const cat = CATS.find(x => x.id === c) || CATS[0];
+    bar.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.c === c));
+    const on = bar.querySelector('[data-c="' + c + '"]'), row = bar.querySelector(".sub-chips"); if (on && row) row.scrollTo({left: on.offsetLeft - row.clientWidth / 2 + on.offsetWidth / 2, behavior: "smooth"});
+    document.querySelectorAll("#em-uso .show, #espaco .show").forEach(f => f.classList.toggle("sub-off", !fits(TAGS[keyOf(f)], c)));
+    if (window.GALLERY) document.querySelectorAll("#gallery .slot").forEach(sl => { const g = GALLERY[+sl.dataset.i]; sl.classList.toggle("sub-off", !fits(g && TAGS[g.name], c)); });
+    const cert = document.getElementById("certificados"); if (cert) cert.classList.toggle("sub-off", !fits(TAGS.certificados, c));
+    ["espaco"].forEach(id => { const sec = document.getElementById(id); if (sec) sec.classList.toggle("sub-off", !sec.querySelector(".show:not(.sub-off)")); });
+    const ideia = document.getElementById("subIdeia");
+    if (cat.ideia) { ideia.hidden = false; ideia.innerHTML = "<b>Para " + cat.quem + ":</b> " + cat.ideia; } else ideia.hidden = true;
+    if (h1) h1.innerHTML = cat.h1 ? cat.h1 + " <em>E leva para todo lugar.</em>" : h1Orig;
+    if (wa) wa.href = cat.quem ? "https://wa.me/5521985101880?text=" + encodeURIComponent("Olá, MAC3DOS! Vi o catálogo de estética e beleza. Sou " + cat.quem + " e quero conversar sobre brindes.") : waOrig;
+    try { history.replaceState(null, "", c === "todos" ? location.pathname : "#area=" + c); } catch(_) {}
+  }
+  bar.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; apply(b.dataset.c); const em = document.getElementById("em-uso"); if (em && em.getBoundingClientRect().top < 0) em.scrollIntoView({behavior:"smooth"}); });
+  const m = /#area=(\w+)/.exec(location.hash); apply(m ? m[1] : "todos");
 })();
 </script>
 <!-- visualizador:inicio -->

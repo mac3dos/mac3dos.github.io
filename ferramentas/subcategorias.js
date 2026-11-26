@@ -87,7 +87,7 @@ const JS = `
 </script>`;
 
 const r = (a, b) => { if (!s.includes(a)) throw new Error('não achei: ' + a.slice(0, 60)); s = s.replace(a, b); };
-r('<title>MAC3DOS para Estética e Beleza</title>', '<title>MAC3DOS Estética e beleza (teste)</title>');
+r('<title>MAC3DOS para Estética e Beleza</title>', '<title>MAC3DOS para Estética e Beleza</title>');
 r('</style>', CSS + '</style>');
 r('  <section id="em-uso" class="band">', BLOCO + '  <section id="em-uso" class="band">');
 { const k = s.indexOf('<section id="em-uso"'), lead = s.indexOf('</p>', s.indexOf('<p class="lead">', k)) + 4; s = s.slice(0, lead) + '\n        <p class="sub-ideia" id="subIdeia" hidden></p>' + s.slice(lead); }
