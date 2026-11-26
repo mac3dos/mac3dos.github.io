@@ -192,7 +192,7 @@ h1 span{color:var(--purple-soft)}
 
     <a class="world" href="celulares.html" data-i="3">
       <div class="shot">
-        <canvas class="pix" data-scene="celulares" role="img" aria-label="Cena em pixel art: fone de ouvido, chaveiro de iPhone roxo com a logo e cabo de carregador com protetor colorido"></canvas>
+        <canvas class="pix" data-scene="celulares" role="img" aria-label="Cena em pixel art: suporte de celular com a tela acesa, chaveiro de iPhone roxo com a logo e cabo de carregador com protetor colorido"></canvas>
         <span class="tag">Mundo 4</span><span class="cursor">Selecionado</span>
         <h2 class="name">Celulares e tecnologia</h2>
       </div>
@@ -531,30 +531,29 @@ function pixelScene(cv, kind){
     const CAN = ["#7a1020","#c2182e","#ef3b4f","#ff8a96"].map(col);
     const CAB = [col("#a9a4b8"), col("#e6e1ee"), WHITE];
 
-    // fone de ouvido, à esquerda: arco branco e conchas com almofada roxa, notas musicais subindo
-    const fx = Math.round(W * .19), fr = Math.round(U * .12), fcy = fy - Math.round(U * .2);
-    const cupW = Math.max(4, Math.round(U * .07)), cupH = Math.round(U * .12);
-    shadow(fx, fy + 1, fr + 4, 2);
-    // arco
-    shape(fx - fr - 1, fcy - fr - 1, fx + fr + 1, fcy, (x, y) => { const d = Math.hypot(x - fx + .5, y - fcy + .5); return y <= fcy && d <= fr + .5 && d >= fr - 2.2; }, (x, y) => {
-      const d = Math.hypot(x - fx + .5, y - fcy + .5); put(x, y, d > fr - .6 ? CAB[0] : d > fr - 1.4 ? CAB[2] : CAB[1]);
+    // suporte de celular, à esquerda: base e haste roxas segurando um celular com a tela acesa
+    const sx = Math.round(W * .19), spw = Math.max(5, Math.round(U * .07)), sph = Math.round(U * .25);
+    const sy1 = fy - 5, sy0 = sy1 - sph, sx0 = sx - spw, sx1 = sx + spw;
+    shadow(sx + 4, fy + 1, spw + 9, 2);
+    // haste de trás, aparecendo do lado direito
+    for (let i = 0; i <= 4; i++) line(sx1 + 9 + i, fy - 2, sx1 - 2 + i, sy0 + Math.round(sph * .25), i === 0 ? PH[3] : i === 4 ? PH[0] : PH[2]);
+    // celular
+    shape(sx0, sy0, sx1, sy1, (x, y) => x >= sx0 && x <= sx1 && y >= sy0 && y <= sy1 && !((y === sy0 || y === sy1) && (x === sx0 || x === sx1)), (x, y) => {
+      const scr = x > sx0 && x < sx1 && y > sy0 + 1 && y < sy1 - 1;
+      if (!scr) return put(x, y, x === sx0 ? DARKC[2] : DARKC[0]);
+      const v = (y - sy0) / sph;
+      put(x, y, v + dith(x, y) * .25 < .45 ? col("#1f7a55") : v < .8 ? col("#4fc46b") : col("#a8f07f"));
     });
-    // conchas
-    [-1, 1].forEach(sd => {
-      const cx0 = sd < 0 ? fx - fr - cupW + 1 : fx + fr - 1, cx1 = cx0 + cupW, cy0 = fcy - 1, cy1 = cy0 + cupH;
-      shape(cx0, cy0, cx1, cy1, (x, y) => x >= cx0 && x <= cx1 && y >= cy0 && y <= cy1 && !((y === cy0 || y === cy1) && (x === cx0 || x === cx1)), (x, y) => {
-        const inner = sd < 0 ? x >= cx1 - 1 : x <= cx0 + 1;
-        const u = (x - cx0) / Math.max(1, cupW);
-        put(x, y, inner ? PH[2] : u < .3 ? CAB[2] : u > .7 ? CAB[0] : CAB[1]);
-      });
-      put(sd < 0 ? cx0 + 1 : cx1 - 1, cy0 + 2, WHITE);
-    });
-    // notas musicais
-    const NOTE = [".XX",".X.",".X.","XX.","XX."];
-    [[-.4, 0], [.5, .5]].forEach(([ox, ph]) => {
-      const k = (t * .5 + ph) % 1, yy = fcy - fr - 4 - Math.round(k * U * .14), xx = fx + Math.round(ox * fr) + Math.round(Math.sin(t * 3 + ph * 6));
-      if (k < .85) NOTE.forEach((row, j) => [...row].forEach((ch, i) => { if (ch === "X") put(xx + i, yy + j, ph ? col("#a8f07f") : PH[3]); }));
-    });
+    put(sx, sy0 + 1, DARKC[1]);
+    // rostinho numa chamada de vídeo
+    const fcx = sx, fcy2 = sy0 + Math.round(sph * .42);
+    [[0, -2], [-1, -1], [0, -1], [1, -1], [-1, 0], [0, 0], [1, 0]].forEach(([dx, dy]) => put(fcx + dx, fcy2 + dy, WHITE));
+    for (let x = fcx - 2; x <= fcx + 2; x++) { put(x, fcy2 + 2, WHITE); put(x, fcy2 + 3, WHITE); }
+    if (Math.sin(t * 4) > -.2) { put(sx0 + 2, sy0 + 3, RED[2]); }
+    // base e aba da frente
+    box(sx0 - 4, fy - 3, sx1 + 12, fy, [PH[3], PH[2], PH[0]]);
+    box(sx0 - 3, sy1 - 3, sx1 + 3, fy - 4, [PH[3], PH[2], PH[0]]);
+    const lw3 = Math.max(4, Math.round(spw * .6));
 
     // cabo de carregador em pé, à direita: ponta de metal, conector, protetor colorido com espiral
     const cx2 = Math.round(W * .81), cw = Math.max(2, Math.round(U * .028)), ph2 = Math.round(U * .07), sh = Math.round(U * .1);
