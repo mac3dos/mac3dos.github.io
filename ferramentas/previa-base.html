@@ -1,0 +1,197 @@
+<title>Prévia das ilustrações do link da bio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Oxanium:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Três celulares lado a lado, cada um com um jeito de pôr a ilustração de jogo no link da bio. Sempre escuro (MAC3DOS Mundos). */
+:root{
+  --bg:#0B0A0E; --surface:#15131B; --line:#2A2635;
+  --fg:#F2F0F7; --muted:#A49FB2;
+  --purple:#8E3BF5; --purple-soft:#B88BFF; --purple-deep:#3A1C61;
+  --gold:#E8C26A; --on-gold:#120B1F;
+  --f-title:"Oxanium","Rajdhani",system-ui,sans-serif;
+  --f-display:"Rajdhani","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5;overflow-x:hidden}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px;display:grid;gap:28px}
+.cab{display:grid;gap:8px;text-align:center;justify-items:center}
+.cab .eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-soft);margin:0}
+.cab h1{font-family:var(--f-title);font-weight:800;font-size:clamp(1.7rem,4.6vw,2.6rem);line-height:1.05;margin:0;text-wrap:balance}
+.cab p{margin:0;color:var(--muted);max-width:56ch}
+
+.trio{display:grid;grid-template-columns:repeat(2,minmax(0,400px));justify-content:center;gap:32px;align-items:start}
+@media (max-width:860px){.trio{grid-template-columns:minmax(0,400px)}}
+.tela{display:grid}
+.fone .tela ~ .fases{display:none}
+.tela .cena{border-radius:14px 14px 0 0}
+.tela .trilha{border-radius:0 0 14px 14px;border-top:0}
+.opcao{display:grid;gap:12px;min-width:0}
+.rot{display:grid;gap:2px}
+.rot b{font-family:var(--f-title);font-weight:800;font-size:1.1rem;text-transform:uppercase;letter-spacing:.02em}
+.rot span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-soft)}
+.rot p{margin:4px 0 0;font-size:.9rem;color:var(--muted)}
+
+/* o "celular" */
+.fone{position:relative;border:2px solid var(--line);border-radius:30px;background:var(--bg);overflow:hidden;padding:14px 14px 20px;display:grid;gap:16px;isolation:isolate}
+.fone::before{content:"";position:absolute;left:50%;top:-30%;width:160%;height:60%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(142,59,245,.30),rgba(142,59,245,0) 70%);z-index:-1}
+.fone .scan{position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.025) 0 1px,transparent 1px 3px);pointer-events:none;z-index:2}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:8px}
+.brand svg{width:16px;height:24px}
+.wordmark{font-family:var(--f-display);font-weight:500;font-size:1.05rem;letter-spacing:.14em}
+.wordmark b{font-weight:700;color:#fff;border-bottom:2px solid var(--purple)}
+.hud{font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hud b{color:var(--purple-soft);font-weight:500}
+.titulo{font-family:var(--f-title);font-weight:800;font-size:1.65rem;line-height:1.04;margin:0;text-align:center;text-wrap:balance}
+.titulo span{color:var(--purple-soft)}
+
+.cena{position:relative;aspect-ratio:16/7;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;max-width:100%}
+.cena canvas{position:absolute;inset:0 0 auto 0;width:100%;height:130%;display:block;image-rendering:pixelated;image-rendering:crisp-edges;transition:opacity .35s}
+.cena canvas.off{opacity:0}
+.cena .tag{position:absolute;top:8px;left:8px;z-index:1;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;background:rgba(11,10,14,.82);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:3px 6px}
+.trilha{position:relative;aspect-ratio:160/34;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#000;max-width:100%}
+.trilha canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+
+.fases{display:flex;gap:5px;align-items:center;justify-content:center;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.fases i{display:block;width:26px;height:5px;border-radius:2px;background:var(--line)}
+.fases i.on{background:var(--purple-soft)} .fases i.ok{background:var(--purple)}
+.fases span{margin-left:6px}
+
+.stage{display:grid;gap:10px}
+.q{font-family:var(--f-title);font-weight:700;font-size:1.1rem;line-height:1.2;margin:0;text-align:center;text-wrap:balance}
+.opts{display:grid;gap:8px;list-style:none;margin:0;padding:0}
+.opt{width:100%;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;background:linear-gradient(to bottom,rgba(58,28,97,.45),var(--surface));color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;transition:transform .15s,border-color .15s}
+.opt:hover,.opt:focus-visible{border-color:var(--purple-soft);transform:translateY(-2px)}
+.opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.opt .tag{flex:none;font-family:var(--f-mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-soft);border:1px solid var(--line);border-radius:4px;padding:2px 5px;min-width:54px;text-align:center}
+.opt .mini{flex:none;width:54px;height:54px;border-radius:8px;overflow:hidden;border:1px solid var(--line);position:relative;background:#000}
+.opt .mini canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;image-rendering:crisp-edges}
+.opt .txt{display:grid;gap:1px;min-width:0}
+.opt .name{font-family:var(--f-title);font-weight:800;font-size:.88rem;letter-spacing:.02em;text-transform:uppercase}
+.opt .desc{font-size:.78rem;color:var(--muted);line-height:1.3}
+.opt .go{margin-left:auto;flex:none;font-family:var(--f-mono);color:var(--purple-soft)}
+.back{justify-self:center;background:none;border:0;color:var(--muted);font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;padding:6px}
+.back:hover,.back:focus-visible{color:var(--fg)}
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;background:var(--purple);color:var(--fg);font-family:var(--f-title);font-weight:700;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;border-radius:12px;padding:14px 16px;box-shadow:0 10px 30px rgba(142,59,245,.45)}
+.selo{justify-self:center;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;background:var(--gold);color:var(--on-gold);border-radius:4px;padding:3px 8px}
+.nota{margin:0;text-align:center;font-size:.8rem;color:var(--muted)}
+.anim{animation:entra .28s ease both}
+@keyframes entra{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.anim{animation:none}.opt,.cena canvas{transition:none}}
+.rodape{margin:0;text-align:center;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+</style>
+
+<main class="wrap">
+  <header class="cab">
+    <p class="eyebrow">Prévia · link da bio</p>
+    <h1>Quem anda na <span style="color:var(--purple-soft)">trilha</span>?</h1>
+    <p>Os dois celulares são a página com a cena do mundo e a trilha. Só muda o personagem. Toque nas opções para ver ele andar. É só uma prévia: os botões de WhatsApp aqui não abrem nada.</p>
+  </header>
+
+  <section class="trio">
+    <article class="opcao">
+      <div class="rot"><span>Versão A</span><b>Bonequinho</b><p>O personagem que está na página hoje.</p></div>
+      <div class="fone" id="f1"></div>
+    </article>
+    <article class="opcao">
+      <div class="rot"><span>Versão B</span><b>Gatinho da logo</b><p>Orelhas em triângulo roxo, cabeça prateada e corpo roxo, nas cores dos três triângulos da marca.</p></div>
+      <div class="fone" id="f2"></div>
+    </article>
+  </section>
+
+  <p class="rodape">Brindes úteis. Marcas inesquecíveis.</p>
+</main>
+
+<script>
+/*PIXEL*/
+/*TRILHA*/
+
+(function(){
+  var LOGO_SVG = '<svg viewBox="0 0 56 84" aria-hidden="true"><polygon points="0,2 27,31 0,58" fill="#D6D5DC"/><polygon points="56,0 56,58 6,58" fill="#8E3BF5"/><polygon points="0,58 56,58 28,84" fill="#3A1C61"/></svg>';
+  var FASES = [
+    {id:'negocio', q:'Qual é o seu negócio?', opts:[
+      {tag:'Mundo 1', name:'Esportes e bem-estar', desc:'Academia, estúdio, personal', scene:'academia'},
+      {tag:'Mundo 2', name:'Estética e beleza', desc:'Salão, clínica, manicure, lash', scene:'estetica'},
+      {tag:'Mundo 3', name:'Criador de conteúdo', desc:'Microfones e claquetes', scene:'criadores'},
+      {tag:'Mundo 4', name:'Celulares e tecnologia', desc:'Loja de celular, assistência', scene:'celulares'},
+      {tag:'Outro', name:'Outro segmento', desc:'Conta pra gente no WhatsApp', scene:'inicio'}
+    ]},
+    {id:'qtd', q:'Quantas unidades, mais ou menos?', opts:[
+      {tag:'Fase 2', name:'Até 30', desc:'Para testar'},
+      {tag:'Fase 2', name:'30 a 100', desc:'Para os clientes do mês'},
+      {tag:'Fase 2', name:'Mais de 100', desc:'Evento ou campanha'},
+      {tag:'Fase 2', name:'Ainda não sei', desc:'Quero ajuda para decidir'}
+    ]},
+    {id:'prazo', q:'Para quando você precisa?', opts:[
+      {tag:'Fase 3', name:'Urgente', desc:'Nas próximas 2 semanas'},
+      {tag:'Fase 3', name:'Este mês', desc:'Dá tempo de caprichar'},
+      {tag:'Fase 3', name:'Sem pressa', desc:'Estou pesquisando'}
+    ]}
+  ];
+  function el(tag, cls, txt){ var e = document.createElement(tag); if(cls) e.className = cls; if(txt != null) e.textContent = txt; return e; }
+
+  function quiz(root, v){
+    root.innerHTML = '<div class="scan"></div><header class="top"><span class="brand">' + LOGO_SVG + '<span class="wordmark">MAC<b>3D</b>OS</span></span><span class="hud"><b>P1</b> · sua marca</span></header><h2 class="titulo">Monte o seu <span>orçamento</span> em 3 toques</h2>';
+    if(v.topo) root.appendChild(v.topo);
+    var fases = el('div','fases'); fases.innerHTML = '<i></i><i></i><i></i><span>Fase 1/3</span>'; root.appendChild(fases);
+    var stage = el('section','stage'); root.appendChild(stage);
+    var atual = 0, escolhas = {};
+    function render(){
+      var is = fases.querySelectorAll('i');
+      for(var i=0;i<is.length;i++) is[i].className = i < atual ? 'ok' : (i === atual ? 'on' : '');
+      fases.querySelector('span').textContent = atual < 3 ? 'Fase ' + (atual+1) + '/3' : 'Pronto';
+      if(v.passo) v.passo(atual, escolhas);
+      stage.innerHTML = ''; stage.classList.remove('anim'); void stage.offsetWidth; stage.classList.add('anim');
+      if(atual >= 3){
+        stage.appendChild(el('span','selo','Orçamento montado'));
+        var a = el('a','cta','Falar no WhatsApp'); a.href = '#'; a.addEventListener('click', function(e){ e.preventDefault(); });
+        stage.appendChild(a);
+        stage.appendChild(el('p','nota','Na página de verdade, este botão abre o WhatsApp.'));
+      } else {
+        var f = FASES[atual];
+        stage.appendChild(el('h3','q',f.q));
+        var ul = el('ul','opts');
+        f.opts.forEach(function(o, i){
+          var li = el('li'), b = el('button','opt'); b.type = 'button'; b.id = root.id + '-' + f.id + '-' + i;
+          if(v.mini && atual === 0){ var m = el('span','mini'); var c = el('canvas'); c.setAttribute('aria-hidden','true'); m.appendChild(c); b.appendChild(m); requestAnimationFrame(function(){ pixelScene(c, o.scene); }); }
+          else b.appendChild(el('span','tag',o.tag));
+          var t = el('span','txt'); t.appendChild(el('span','name',o.name)); t.appendChild(el('span','desc',o.desc)); b.appendChild(t);
+          b.appendChild(el('span','go','▶'));
+          b.addEventListener('click', function(){ escolhas[f.id] = o; atual++; render(); });
+          li.appendChild(b); ul.appendChild(li);
+        });
+        stage.appendChild(ul);
+      }
+      if(atual > 0){ var bk = el('button','back', atual >= 3 ? '◀ Refazer' : '◀ Voltar'); bk.type = 'button'; bk.addEventListener('click', function(){ if(atual >= 3){ atual = 0; escolhas = {}; } else atual--; render(); }); stage.appendChild(bk); }
+    }
+    render();
+  }
+
+  // cena do mundo em cima + trilha com o personagem embaixo (a mistura das opções 1 e 3)
+  function tela(id, quem){
+    var wrap = el('div','tela'), cena = el('div','cena'), cvs = {}, tag = el('span','tag','Mundo ?');
+    ['inicio','academia','estetica','criadores','celulares'].forEach(function(k){ var c = el('canvas'); c.setAttribute('role','img'); c.setAttribute('aria-label','Cena em pixel art'); if(k !== 'inicio') c.className = 'off'; cena.appendChild(c); cvs[k] = c; });
+    cena.appendChild(tag);
+    var box = el('div','trilha'), tc = el('canvas'); tc.setAttribute('role','img'); tc.setAttribute('aria-label', quem === 'gato' ? 'Gatinho em pixel art andando até a bandeira do WhatsApp' : 'Bonequinho em pixel art andando até a bandeira do WhatsApp'); box.appendChild(tc);
+    wrap.appendChild(cena); wrap.appendChild(box);
+    var NOMES = {inicio:'Mundo ?', academia:'Mundo 1', estetica:'Mundo 2', criadores:'Mundo 3', celulares:'Mundo 4'};
+    var alvo = 0;
+    quiz(document.getElementById(id), {topo: wrap, passo: function(a, e){
+      alvo = a;
+      var k = a > 0 && e.negocio ? e.negocio.scene : 'inicio';
+      for(var n in cvs) cvs[n].classList.toggle('off', n !== k);
+      tag.textContent = e.negocio && a > 0 ? (k === 'inicio' ? 'Seu mundo' : NOMES[k]) : 'Mundo ?';
+    }});
+    requestAnimationFrame(function(){ for(var n in cvs) pixelScene(cvs[n], n); });
+    trilha(tc, function(){ return alvo; }, quem);
+  }
+  tela('f1', 'boneco');
+  tela('f2', 'gato');
+
+})();
+</script>
