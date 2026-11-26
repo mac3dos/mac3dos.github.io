@@ -179,7 +179,7 @@ h1 span{color:var(--purple-soft)}
 
     <a class="world" href="https://claude.ai/artifact/KrLbxkW37PHYMK9gMNyS8Z" target="_blank" rel="noopener" data-i="3">
       <div class="shot">
-        <canvas class="pix" data-scene="celulares" role="img" aria-label="Cena em pixel art: chaveiro de iPhone roxo com a logo, lata de refrigerante abrindo e cabo de carregador com protetor colorido"></canvas>
+        <canvas class="pix" data-scene="celulares" role="img" aria-label="Cena em pixel art: fone de ouvido, chaveiro de iPhone roxo com a logo e cabo de carregador com protetor colorido"></canvas>
         <span class="tag">Mundo 4</span><span class="cursor">Selecionado</span>
         <h2 class="name">Celulares e tecnologia</h2>
       </div>
@@ -518,21 +518,29 @@ function pixelScene(cv, kind){
     const CAN = ["#7a1020","#c2182e","#ef3b4f","#ff8a96"].map(col);
     const CAB = [col("#a9a4b8"), col("#e6e1ee"), WHITE];
 
-    // lata de refrigerante, à esquerda, com a tampinha aberta e bolhas subindo
-    const lx = Math.round(W * .19), lw = Math.round(U * .075), lh = Math.round(U * .22);
-    const l0 = lx - lw, l1 = lx + lw, ly0 = fy - lh;
-    shadow(lx, fy + 1, lw + 3, 2);
-    shape(l0, ly0, l1, fy, (x, y) => x >= l0 && x <= l1 && y >= ly0 && y <= fy && !((y === ly0 || y === fy) && (x === l0 || x === l1)), (x, y) => {
-      const u = (x - l0) / (l1 - l0), v = (y - ly0) / lh;
-      let c = u < .22 ? CAN[3] : u > .78 ? CAN[0] : CAN[2];
-      if (v < .1 || v > .93) c = u < .3 ? SILV[2] : u > .75 ? SILV[0] : SILV[1];
-      else if (Math.abs(v - .52 - Math.sin(u * 6) * .06) < .05) c = WHITE;
-      put(x, y, c);
+    // fone de ouvido, à esquerda: arco branco e conchas com almofada roxa, notas musicais subindo
+    const fx = Math.round(W * .19), fr = Math.round(U * .12), fcy = fy - Math.round(U * .2);
+    const cupW = Math.max(4, Math.round(U * .07)), cupH = Math.round(U * .12);
+    shadow(fx, fy + 1, fr + 4, 2);
+    // arco
+    shape(fx - fr - 1, fcy - fr - 1, fx + fr + 1, fcy, (x, y) => { const d = Math.hypot(x - fx + .5, y - fcy + .5); return y <= fcy && d <= fr + .5 && d >= fr - 2.2; }, (x, y) => {
+      const d = Math.hypot(x - fx + .5, y - fcy + .5); put(x, y, d > fr - .6 ? CAB[0] : d > fr - 1.4 ? CAB[2] : CAB[1]);
     });
-    put(lx + 1, ly0 - 1, SILV[2]); put(lx + 2, ly0 - 1, SILV[1]); put(lx + 2, ly0 - 2, SILV[1]);
-    [[0, 0], [3, .4], [-2, .7]].forEach(([dx, ph]) => {
-      const k = ((t * .9 + ph) % 1), y = ly0 - 3 - Math.round(k * U * .16), x = lx + dx + Math.round(Math.sin(t * 4 + ph * 9));
-      if (k < .9) { put(x, y, WHITE); if (k < .5) put(x + 1, y, CAB[1]); }
+    // conchas
+    [-1, 1].forEach(sd => {
+      const cx0 = sd < 0 ? fx - fr - cupW + 1 : fx + fr - 1, cx1 = cx0 + cupW, cy0 = fcy - 1, cy1 = cy0 + cupH;
+      shape(cx0, cy0, cx1, cy1, (x, y) => x >= cx0 && x <= cx1 && y >= cy0 && y <= cy1 && !((y === cy0 || y === cy1) && (x === cx0 || x === cx1)), (x, y) => {
+        const inner = sd < 0 ? x >= cx1 - 1 : x <= cx0 + 1;
+        const u = (x - cx0) / Math.max(1, cupW);
+        put(x, y, inner ? PH[2] : u < .3 ? CAB[2] : u > .7 ? CAB[0] : CAB[1]);
+      });
+      put(sd < 0 ? cx0 + 1 : cx1 - 1, cy0 + 2, WHITE);
+    });
+    // notas musicais
+    const NOTE = [".XX",".X.",".X.","XX.","XX."];
+    [[-.4, 0], [.5, .5]].forEach(([ox, ph]) => {
+      const k = (t * .5 + ph) % 1, yy = fcy - fr - 4 - Math.round(k * U * .14), xx = fx + Math.round(ox * fr) + Math.round(Math.sin(t * 3 + ph * 6));
+      if (k < .85) NOTE.forEach((row, j) => [...row].forEach((ch, i) => { if (ch === "X") put(xx + i, yy + j, ph ? col("#a8f07f") : PH[3]); }));
     });
 
     // cabo de carregador em pé, à direita: ponta de metal, conector, protetor colorido com espiral
