@@ -1,0 +1,1643 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Brindes úteis impressos em 3D para estética e beleza.">
+<title>MAC3DOS Estética e beleza (teste)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&family=Oxanium:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MAC3DOS Estética e beleza (teste)">
+<meta property="og:description" content="Brindes úteis impressos em 3D para estética e beleza.">
+<meta property="og:image" content="https://mac3dos.github.io/media/estetica/thumb.jpg">
+<meta property="og:url" content="https://mac3dos.github.io/estetica-teste.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+/* Layout: página escura da marca, como a mesa de uma impressora 3D: faixas de conteúdo sobre linhas de camada, catálogo com fotos reais, galeria de trabalhos e um kit que vira proposta. */
+:root{
+  --bg:#0B0A0E;
+  --surface:#15131B;
+  --surface-2:#1D1A25;
+  --line:#2B2735;
+  --fg:#F3F1F7;
+  --muted:#A39DB0;
+  --purple:#8E3BF5;
+  --purple-soft:#B88BFF;
+  --purple-deep:#3A1C61;
+  --gray:#D6D5DC;
+  --f-title:"Oxanium","Rajdhani",system-ui,sans-serif;
+  --f-display:"Rajdhani","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05}
+h1,h2{font-family:var(--f-title)}
+h2{font-size:clamp(2.1rem,5vw,3.5rem);font-weight:700;letter-spacing:-.015em;line-height:1.04;background:linear-gradient(180deg,#FFFFFF 30%,#CDB4FF 110%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.06em}
+.sec-head{gap:18px}
+.sec-head .eyebrow{font-size:.82rem}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-soft)}
+.lead{color:var(--muted);max-width:62ch;font-size:1.05rem}
+section{padding-block:clamp(56px,9vw,96px)}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.sec-head{display:grid;gap:14px;margin-bottom:36px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--purple-soft);outline-offset:3px}
+img,video{display:block;max-width:100%}
+
+/* topo */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
+.brand svg{width:22px;height:auto}
+.wordmark{font-family:var(--f-display);font-weight:300;font-size:1.45rem;letter-spacing:.14em}
+.wordmark b{font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.seg{font-family:var(--f-mono);font-size:.75rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.seg span{color:var(--fg)}
+.seg a{color:var(--purple-soft);text-decoration:none;text-transform:none}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 5px,rgba(142,59,245,.07) 5px 6px);mask-image:linear-gradient(100deg,transparent 30%,#000 75%);-webkit-mask-image:linear-gradient(100deg,transparent 30%,#000 75%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.15fr .95fr;gap:40px;align-items:center;padding-block:clamp(40px,7vw,88px)}
+.hero h1{font-size:clamp(2.3rem,5.6vw,4.3rem);font-weight:700;letter-spacing:-.015em;line-height:1.04}
+.hero h1 em{font-style:normal;color:var(--purple-soft)}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:4px;padding:13px 20px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:background .15s,border-color .15s}
+.btn-primary{background:var(--purple);color:#fff}
+.btn-primary:hover{background:#7a2ce0}
+.btn-ghost{border-color:var(--line);color:var(--fg);background:transparent}
+.btn-ghost:hover{border-color:var(--purple-soft)}
+.taglines{display:flex;flex-wrap:wrap;gap:8px 18px;font-family:var(--f-mono);font-size:.78rem;color:var(--muted)}
+.taglines span::before{content:"▸ ";color:var(--purple)}
+/* impressora: a peça da logo é "impressa" camada por camada, de baixo para cima */
+.printer{position:relative;justify-self:center;width:100%;max-width:480px;aspect-ratio:1;-webkit-mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 72%);mask-image:radial-gradient(circle at 50% 50%,#000 58%,transparent 72%);animation:float 7s ease-in-out infinite}
+.printer img{position:absolute;inset:0;width:100%;height:100%}
+.printer .piece{clip-path:inset(39% 37.7% 34.4% 40.8%);animation:build 6s infinite}
+.printer .layer{position:absolute;left:40.8%;width:21.5%;top:39%;height:2px;background:linear-gradient(90deg,transparent,#E9DBFF 15%,#fff 50%,#E9DBFF 85%,transparent);box-shadow:0 0 10px 2px rgba(184,139,255,.9),0 0 26px 6px rgba(142,59,245,.6);opacity:0;animation:layer 6s infinite}
+.printer .layer::after{content:"";position:absolute;top:-3px;left:0;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 12px 4px #B88BFF;animation:extrude .3s ease-in-out infinite alternate}
+.printer .glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(142,59,245,.35),transparent 45%);mix-blend-mode:screen;animation:glow 6s infinite}
+@keyframes build{
+  0%,6%{clip-path:inset(65.6% 37.7% 34.4% 40.8%);opacity:1;animation-timing-function:steps(28,end)}
+  62%{clip-path:inset(39% 37.7% 34.4% 40.8%);opacity:1}
+  90%{clip-path:inset(39% 37.7% 34.4% 40.8%);opacity:1}
+  97%,100%{clip-path:inset(39% 37.7% 34.4% 40.8%);opacity:0}
+}
+@keyframes layer{
+  0%,5%{top:65.6%;opacity:0;animation-timing-function:steps(28,end)}
+  6%{top:65.6%;opacity:1;animation-timing-function:steps(28,end)}
+  62%{top:39%;opacity:1}
+  68%,100%{top:39%;opacity:0}
+}
+@keyframes extrude{from{left:0}to{left:calc(100% - 8px)}}
+@keyframes glow{0%,55%{opacity:.25}64%{opacity:1}80%,100%{opacity:.25}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* problema */
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.contrast > div{background:var(--surface);padding:28px;display:grid;gap:14px;align-content:start;min-width:0}
+.contrast h3{font-size:1.5rem;font-weight:700}
+.contrast ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;color:var(--muted)}
+.contrast li{display:flex;gap:10px}
+.contrast .no li::before{content:"×";color:#6f6878;font-weight:600}
+.contrast .yes{background:linear-gradient(160deg,var(--purple-deep),var(--surface) 70%)}
+.contrast .yes li{color:var(--fg)}
+.contrast .yes li::before{content:"✓";color:var(--purple-soft);font-weight:600}
+
+/* catálogo */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:8px 14px;font-size:.9rem;color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:600}
+.chip:hover{border-color:var(--purple-soft)}
+.strategy{border-left:2px solid var(--purple);padding:4px 0 4px 16px;color:var(--fg);max-width:70ch;margin-bottom:30px;min-height:3.2em}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:6px;display:grid;grid-template-rows:auto 1fr;overflow:hidden;transition:border-color .15s}
+.card:hover{border-color:#463e57}
+.card-art{position:relative;aspect-ratio:4/3;background:radial-gradient(circle at 50% 60%,var(--surface-2),var(--bg) 80%);display:grid;place-items:center;border-bottom:1px solid var(--line);overflow:hidden}
+.card-art img,.card-art video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card-art.ill::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(255,255,255,.025) 3px 4px);pointer-events:none}
+.card-art.ill svg{width:38%;height:auto}
+.badges{position:absolute;top:10px;left:10px;display:flex;gap:6px;z-index:1}
+.badge{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;padding:4px 8px;border-radius:3px;text-transform:uppercase}
+.badge-real{background:rgba(11,10,14,.85);color:var(--fg);border:1px solid rgba(255,255,255,.18)}
+.badge-idea{background:var(--surface-2);color:var(--purple-soft);border:1px dashed var(--purple)}
+.badge-nfc{background:var(--purple);color:#fff}
+.card-body{padding:18px 18px 20px;display:grid;gap:10px;grid-template-rows:auto auto 1fr auto;min-width:0}
+.card h3{font-size:1.35rem;font-weight:700}
+.card p{color:var(--muted);font-size:.94rem}
+.spec{font-family:var(--f-mono);font-size:.72rem;color:#8a839a;letter-spacing:.02em}
+.add{justify-self:start;margin-top:4px;border:1px solid var(--line);background:transparent;border-radius:4px;padding:8px 12px;font-size:.88rem;font-weight:500}
+.add:hover{border-color:var(--purple-soft)}
+.add[aria-pressed="true"]{background:var(--purple-deep);border-color:var(--purple);color:#fff}
+
+/* galeria */
+/* ideias de uso */
+.uses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.use{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:22px;display:grid;gap:10px;align-content:start;min-width:0}
+.use-tag{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--purple-soft)}
+.use h3{font-size:1.35rem;font-weight:700}
+.use p{color:var(--muted);font-size:.94rem}
+@media (max-width:900px){.uses{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.uses{grid-template-columns:1fr}}
+
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.gallery .slot{position:relative;display:block;width:100%;aspect-ratio:4/5;padding:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--surface)}
+.gallery .slot video,.gallery .slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease,transform .6s ease}
+.gallery .slot video.on,.gallery .slot img.on{opacity:1}
+.gallery .slot:hover img.on{transform:scale(1.03)}
+.gallery .dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:5px;z-index:1}
+.gallery .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);box-shadow:0 0 4px rgba(0,0,0,.5);transition:background .3s,width .3s}
+.gallery .dots i.on{background:#fff;width:16px;border-radius:3px}
+@media (max-width:600px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(5,4,8,.92);display:grid;place-items:center;padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lightbox img{max-height:86vh;max-width:min(100%,1000px);width:auto;border-radius:6px}
+.lightbox .close{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:8px 14px}
+
+/* coleção */
+.collect{display:grid;grid-template-columns:minmax(0,720px);gap:48px;align-items:center}
+.collect-photo{border-radius:6px;overflow:hidden;border:1px solid var(--line)}
+.collect-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 75%}
+.journey{display:grid;gap:18px;position:relative;margin-top:28px}
+.journey::before{content:"";position:absolute;top:10px;bottom:10px;left:25px;width:2px;background:linear-gradient(var(--line),var(--purple),var(--purple-soft))}
+.step{display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:center;position:relative}
+.dot{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:2px solid var(--purple);font-family:var(--f-display);font-weight:700;font-size:1.05rem;grid-row:span 2}
+.step:first-child .dot{border-color:var(--line)}
+.step:last-child .dot{background:var(--purple);border-color:var(--purple-soft);color:#fff}
+.step strong{font-family:var(--f-display);font-size:1.15rem;line-height:1.1}
+.step span{color:var(--muted);font-size:.9rem}
+.note{margin-top:24px;color:var(--muted);font-size:.92rem;max-width:62ch}
+
+/* NFC */
+.nfc{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.nfc-copy{display:grid;gap:18px;min-width:0}
+.nfc-list{margin:0;padding:0;list-style:none;display:grid;gap:12px}
+.nfc-list li{display:grid;grid-template-columns:7.5em 1fr;gap:12px;align-items:baseline}
+.nfc-list b{font-family:var(--f-mono);font-size:.75rem;color:var(--purple-soft);font-weight:500}
+.demo{position:relative;height:340px;display:grid;place-items:center;background:var(--bg);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tag{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);width:120px;height:80px;border-radius:10px;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center}
+.tag svg{width:30px}
+.phone{position:absolute;top:24px;left:50%;width:120px;height:200px;margin-left:-60px;border-radius:18px;background:#000;border:3px solid #3a3545;transition:transform .7s cubic-bezier(.3,.7,.3,1);display:grid;place-items:center;overflow:hidden}
+.screen{width:100%;height:100%;display:grid;place-items:center;align-content:center;gap:8px;padding:10px;text-align:center;opacity:0;transition:opacity .3s .5s;background:linear-gradient(170deg,var(--purple-deep),#000)}
+.screen .av{width:38px;height:38px;border-radius:50%;background:var(--purple);display:grid;place-items:center;font-weight:700;font-size:.8rem}
+.screen small{font-family:var(--f-mono);font-size:.62rem;color:var(--gray)}
+.screen .follow{font-size:.66rem;background:#fff;color:#000;border-radius:4px;padding:3px 8px;font-weight:600}
+.demo.on .phone{transform:translateY(62px)}
+.demo.on .screen{opacity:1}
+.waves{position:absolute;bottom:105px;left:50%;transform:translateX(-50%);width:70px;height:70px;border-radius:50%;border:2px solid var(--purple-soft);opacity:0}
+.demo.on .waves{animation:wave 1.2s .6s ease-out 2}
+@keyframes wave{from{opacity:.9;transform:translateX(-50%) scale(.4)}to{opacity:0;transform:translateX(-50%) scale(1.8)}}
+.demo-btn{position:absolute;right:14px;top:14px;border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:7px 12px;font-size:.82rem}
+
+/* processo */
+.proc-wrap{display:grid;grid-template-columns:minmax(0,860px);gap:48px;align-items:start}
+.process{display:grid;gap:0;counter-reset:p}
+.proc{border-top:1px solid var(--line);padding-block:16px;display:grid;grid-template-columns:3em 10em 1fr;gap:12px;align-items:baseline;min-width:0}
+.proc:last-child{border-bottom:1px solid var(--line)}
+.proc::before{counter-increment:p;content:"0" counter(p);font-family:var(--f-mono);font-size:.75rem;color:var(--purple-soft)}
+.proc strong{font-family:var(--f-display);font-size:1.25rem}
+.proc span{color:var(--muted);font-size:.92rem}
+.proc-video{position:relative}
+.proc-video video{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+.proc-video figcaption{margin-top:10px;font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+
+/* vídeo final */
+/* vídeos em estilo vitrine: grandes, limpos, com bastante respiro */
+#em-uso{position:relative;overflow:hidden}
+#em-uso::before{content:"";position:absolute;left:50%;top:-20%;width:90%;height:70%;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(142,59,245,.16),transparent 65%);pointer-events:none}
+#em-uso .wrap{position:relative}
+.showcase-head{justify-items:center;text-align:center;margin-inline:auto;margin-bottom:52px}
+.showcase-head .lead{margin-inline:auto}
+.showcase{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,2.4vw,24px);max-width:720px;margin-inline:auto}
+.show{margin:0;min-width:0;display:grid;gap:18px}
+.show-media{border-radius:16px;overflow:hidden;background:var(--bg);border:1px solid rgba(255,255,255,.07);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 30px 70px rgba(0,0,0,.5);transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.show-media video{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.show:hover .show-media{transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 40px 80px rgba(0,0,0,.55),0 0 60px rgba(142,59,245,.18)}
+.show:hover video{transform:scale(1.03)}
+.show figcaption{display:grid;gap:4px;justify-items:center;text-align:center}
+.show figcaption span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-soft)}
+.show figcaption strong{font-family:var(--f-display);font-weight:600;font-size:1.3rem;line-height:1.15}
+.show-media img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.dates{display:grid;grid-template-columns:300px minmax(0,1fr);gap:56px;align-items:center}
+.dates-list{justify-content:flex-start}
+@media (max-width:760px){.dates{grid-template-columns:1fr;gap:28px}.dates-media{max-width:280px;margin-inline:auto}}
+.awards{grid-template-columns:repeat(4,minmax(0,1fr));max-width:980px}
+.occasions{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.occasions li{font-size:.82rem;color:var(--fg);border:1px solid var(--line);background:var(--bg);border-radius:999px;padding:6px 12px}
+@media (max-width:760px){.awards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){
+  .showcase{gap:10px}
+  .show{gap:10px}
+  .show-media{border-radius:10px}
+  .show figcaption span{font-size:.56rem;letter-spacing:.1em}
+  .show figcaption strong{font-size:.9rem}
+}
+
+/* proposta */
+.proposal{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.form{display:grid;gap:16px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:24px;min-width:0}
+.form label{display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+.form input,.form select{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:11px 12px;width:100%}
+.form input:focus,.form select:focus{border-color:var(--purple-soft);outline:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.kit-list{display:flex;flex-wrap:wrap;gap:6px;min-height:34px}
+.kit-opt{font-size:.82rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--muted)}
+.kit-opt:hover{border-color:var(--purple-soft)}
+.kit-opt[aria-pressed="true"]{background:var(--purple-deep);border-color:var(--purple);color:#fff}
+.kit-opt[aria-pressed="true"]::before{content:"✓ "}
+.msg{white-space:pre-wrap;font-family:var(--f-mono);font-size:.82rem;line-height:1.6;background:var(--bg);border:1px dashed var(--line);border-radius:4px;padding:16px;color:var(--gray);user-select:all;max-height:300px;overflow:auto}
+.msg-box{display:grid;gap:14px;min-width:0}
+.copied{font-size:.85rem;color:var(--purple-soft);min-height:1.3em}
+
+/* barra do kit */
+.kitbar{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,0);z-index:30;display:flex;align-items:center;gap:14px;background:var(--fg);color:var(--bg);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:0 12px 40px rgba(0,0,0,.5);font-weight:600;font-size:.9rem;transition:transform .25s,opacity .25s;max-width:calc(100% - 32px)}
+.kitbar[data-empty="true"]{opacity:0;transform:translate(-50%,120%);pointer-events:none}
+.kitbar a{background:var(--purple);color:#fff;text-decoration:none;border-radius:999px;padding:9px 16px;white-space:nowrap}
+
+footer{border-top:1px solid var(--line);padding-block:36px 90px;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer a{color:var(--purple-soft);font-family:var(--f-mono);text-decoration:none}
+
+@media (max-width:900px){
+  .hero .wrap,.nfc,.proposal,.collect,.proc-wrap{grid-template-columns:1fr}
+  .printer{max-width:340px;order:-1;margin-top:-14%;margin-bottom:-6%}
+  .hero .wrap{padding-top:8px;gap:12px}
+  .hero-copy{position:relative;z-index:1}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .proc-video{max-width:300px}
+}
+@media (max-width:600px){
+  .grid,.contrast,.row2{grid-template-columns:1fr}
+  .seg{display:none}
+  .proc{grid-template-columns:3em 1fr}
+  .proc span{grid-column:2}
+}
+/* kettlebell 3D personalizável */
+.lab{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.lab-stage{position:relative;aspect-ratio:1;width:100%;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:radial-gradient(circle at 50% 42%,rgba(142,59,245,.30),transparent 58%),radial-gradient(ellipse 60% 12% at 50% 84%,rgba(0,0,0,.55),transparent 70%),linear-gradient(180deg,var(--surface-2),var(--bg))}
+.lab-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:pan-y}
+.lab-stage canvas:active{cursor:grabbing}
+.lab-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lab-hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);pointer-events:none;white-space:nowrap}
+.lab-panel{display:grid;gap:24px;min-width:0}
+.field{display:grid;gap:10px}
+.field > span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.swatches{display:flex;flex-wrap:wrap;gap:10px}
+.seg-ctl{display:inline-flex;justify-self:start;padding:4px;gap:4px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.seg-ctl button{border:0;background:transparent;color:var(--muted);font-weight:600;font-size:.92rem;padding:9px 20px;border-radius:999px;transition:background .2s,color .2s}
+.seg-ctl button[aria-pressed="true"]{background:var(--purple);color:#fff}
+.sw{width:34px;height:34px;border-radius:50%;padding:0;border:2px solid rgba(255,255,255,.18);background:var(--c);transition:transform .15s}
+.sw:hover{transform:scale(1.1)}
+.sw[aria-pressed="true"]{outline:2px solid var(--purple-soft);outline-offset:3px}
+.field input{font:inherit;font-weight:600;letter-spacing:.04em;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 14px;width:100%;max-width:340px;text-transform:uppercase}
+.field input:focus{outline:none;border-color:var(--purple-soft)}
+@media (max-width:900px){.lab{grid-template-columns:1fr;gap:28px}.lab-stage{max-width:460px;margin-inline:auto}}
+
+/* NFC: passos e demonstração com destinos */
+.nf{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.nf-copy{display:grid;gap:28px;min-width:0}
+.nf-steps{list-style:none;margin:0;padding:0;display:grid;gap:4px;counter-reset:nf}
+.nf-steps li{display:grid;grid-template-columns:48px 1fr;column-gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.nf-steps li:last-child{border-bottom:1px solid var(--line)}
+.nf-ico{grid-row:span 2;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--purple-deep);border:1px solid rgba(184,139,255,.35)}
+.nf-ico svg{width:24px;height:24px;fill:none;stroke:#E9DBFF;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.nf-steps strong{font-family:var(--f-title);font-size:1.15rem;line-height:1.2}
+.nf-steps li > span:last-child{color:var(--muted);font-size:.92rem}
+.nf-note{font-family:var(--f-mono);font-size:.78rem;letter-spacing:.04em;color:var(--purple-soft)}
+.nf-demo{display:grid;gap:16px;justify-items:center;min-width:0}
+.nf-dests{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+.nf-dests button{border:0;background:transparent;color:var(--muted);font-weight:600;font-size:.88rem;padding:8px 16px;border-radius:999px;transition:background .2s,color .2s}
+.nf-dests button[aria-pressed="true"]{background:var(--purple);color:#fff}
+.nf-stage{position:relative;width:100%;max-width:420px;height:510px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:radial-gradient(circle at 50% 82%,rgba(142,59,245,.28),transparent 55%),linear-gradient(180deg,var(--surface-2),var(--bg))}
+.nf-phone{position:absolute;left:50%;top:22px;width:178px;height:330px;margin-left:-89px;border-radius:30px;background:#050407;border:4px solid #2e2a38;box-shadow:0 30px 60px rgba(0,0,0,.55);overflow:hidden;transition:transform .8s cubic-bezier(.3,.7,.25,1);z-index:2}
+.nf-notch{position:absolute;top:7px;left:50%;width:56px;height:14px;margin-left:-28px;border-radius:10px;background:#000;z-index:3}
+.nf-lock{position:absolute;inset:0;display:grid;align-content:center;justify-items:center;gap:6px;background:linear-gradient(170deg,#241640,#07060a);transition:opacity .35s}
+.nf-time{font-family:var(--f-title);font-size:2.1rem;font-weight:600;color:#fff}
+.nf-hint{font-size:.66rem;color:#bdb5cc;letter-spacing:.04em}
+.nf-scr{position:absolute;inset:0;padding:30px 12px 12px;background:#0d0b12;color:#fff;font-size:.68rem;display:grid;align-content:start;gap:9px;opacity:0;transform:translateY(12px);transition:opacity .35s,transform .45s}
+.nf-stage.on .nf-lock{opacity:0;transition-delay:.55s}
+.nf-stage.on .nf-scr.cur{opacity:1;transform:none;transition-delay:.7s}
+.nf-stage.on .nf-phone{transform:translateY(34px)}
+.ig-top{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:center}
+.ig-av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:700;background:var(--purple);box-shadow:0 0 0 2px #0d0b12,0 0 0 4px #ff7a1a}
+.ig-stats{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;row-gap:1px}
+.ig-stats b{font-size:.74rem}.ig-stats i{font-style:normal;font-size:.52rem;color:#a39db0}
+.ig-name{font-weight:700}
+.ig-btn{background:#1e7be0;border-radius:6px;text-align:center;padding:6px;font-weight:700}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.ig-grid i{aspect-ratio:1;background:linear-gradient(135deg,#3a1c61,#8e3bf5)}
+.ig-grid i:nth-child(2n){background:linear-gradient(135deg,#1c1b21,#4b4458)}
+.wa-top{display:flex;align-items:center;gap:8px;font-weight:700;padding-bottom:8px;border-bottom:1px solid #2a2433}
+.wa-av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#05210f;font-size:.58rem;font-weight:800}
+.wa-body{min-height:178px;display:grid;align-content:end;justify-items:end}
+.wa-msg{max-width:84%;background:#1f5c3a;border-radius:10px 10px 2px 10px;padding:8px 10px;line-height:1.35}
+.wa-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#1d1a24;border-radius:999px;padding:6px 6px 6px 12px;color:#8f879d}
+.wa-bar b{width:24px;height:24px;border-radius:50%;background:#25d366}
+.gg-title{font-weight:700;font-size:.82rem}
+.gg-sub{color:#a39db0}
+.gg-stars{display:flex;gap:4px}
+.gg-stars i{width:22px;height:22px;background:#3a3445;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.nf-stage.on .nf-scr.cur .gg-stars i{background:#f5c518;transition:background .2s}
+.nf-stage.on .nf-scr.cur .gg-stars i:nth-child(1){transition-delay:1s}.nf-stage.on .nf-scr.cur .gg-stars i:nth-child(2){transition-delay:1.15s}.nf-stage.on .nf-scr.cur .gg-stars i:nth-child(3){transition-delay:1.3s}.nf-stage.on .nf-scr.cur .gg-stars i:nth-child(4){transition-delay:1.45s}.nf-stage.on .nf-scr.cur .gg-stars i:nth-child(5){transition-delay:1.6s}
+.gg-box{border:1px solid #3a3445;border-radius:8px;padding:9px;color:#d6d5dc;min-height:58px}
+.gg-btn,.ln-btn{background:#1e7be0;border-radius:999px;text-align:center;padding:7px;font-weight:700}
+.ln-title{font-weight:700;font-size:.82rem;margin-bottom:2px}
+.ln-row{display:flex;gap:10px;padding:8px 10px;border-radius:8px;background:#1a1722}
+.ln-row b{color:var(--purple-soft);font-family:var(--f-mono);font-weight:500}
+.nf-tag{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:grid;justify-items:center;gap:4px;z-index:1}
+.nf-tag svg{width:92px;height:auto;filter:drop-shadow(0 12px 22px rgba(142,59,245,.45))}
+.nf-tag span{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.nf-waves{position:absolute;left:50%;bottom:62px;width:0;height:0;z-index:1}
+.nf-waves i{position:absolute;left:-40px;top:-40px;width:80px;height:80px;border-radius:50%;border:2px solid var(--purple-soft);opacity:0}
+.nf-stage.on .nf-waves i{animation:nfwave 1.4s ease-out .45s 2}
+.nf-stage.on .nf-waves i:nth-child(2){animation-delay:.65s}.nf-stage.on .nf-waves i:nth-child(3){animation-delay:.85s}
+@keyframes nfwave{from{opacity:.9;transform:scale(.3)}to{opacity:0;transform:scale(2.2)}}
+.nf-go{border:1px solid var(--purple);background:var(--purple-deep);color:#fff;font-weight:600;border-radius:999px;padding:11px 22px}
+.nf-go:hover{background:var(--purple)}
+@media (max-width:900px){.nf{grid-template-columns:1fr;gap:36px}}
+@media (max-width:420px){.nf-stage{height:490px}.nf-dests button{padding:7px 12px;font-size:.82rem}}
+
+/* como trabalhamos: passo a passo interativo */
+.pp{display:grid;gap:28px}
+.pp-steps{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.pp-line{position:absolute;left:10%;right:10%;top:23px;height:2px;background:var(--line);z-index:0}
+.pp-line i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--purple-soft));box-shadow:0 0 12px rgba(142,59,245,.6);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.pp-step{position:relative;z-index:1;display:grid;justify-items:center;gap:10px;background:none;border:0;padding:0;color:var(--muted);text-align:center}
+.pp-step b{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-weight:500;font-size:.85rem;background:var(--bg);border:2px solid var(--line);transition:all .35s}
+.pp-step strong{font-family:var(--f-title);font-size:1rem;font-weight:600;transition:color .3s}
+.pp-step.done b{border-color:var(--purple);color:var(--purple-soft)}
+.pp-step[aria-selected="true"] b{background:var(--purple);border-color:var(--purple-soft);color:#fff;box-shadow:0 0 0 6px rgba(142,59,245,.18),0 0 24px rgba(142,59,245,.5)}
+.pp-step[aria-selected="true"] strong{color:var(--fg)}
+.pp-step:hover b{border-color:var(--purple-soft)}
+.pp-panel{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:28px;border-radius:20px;border:1px solid rgba(255,255,255,.07);background:linear-gradient(160deg,var(--surface-2),var(--bg))}
+.pp-visual{position:relative;aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:var(--bg);border:1px solid var(--line)}
+.pp-v{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transform:scale(.97);transition:opacity .5s,transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.pp-v.on{opacity:1;transform:none;pointer-events:auto}
+.pp-v > img,.pp-v > video{width:100%;height:100%;object-fit:cover}
+.pv-chat{width:min(88%,340px);display:grid;gap:8px;font-size:.86rem;line-height:1.35}
+.pv-chat p{margin:0;max-width:82%;padding:9px 12px;border-radius:12px}
+.pv-in{justify-self:start;background:#1d1a24;border-bottom-left-radius:3px}
+.pv-out{justify-self:end;background:#1f5c3a;border-bottom-right-radius:3px}
+.pv-img{display:grid;gap:6px}
+.pv-img img{width:100%;max-height:120px;object-fit:cover;border-radius:8px}
+.pp-v.on .pv-chat p{animation:pvpop .45s both}
+.pp-v.on .pv-chat p:nth-child(2){animation-delay:.35s}.pp-v.on .pv-chat p:nth-child(3){animation-delay:.7s}.pp-v.on .pv-chat p:nth-child(4){animation-delay:1.05s}
+@keyframes pvpop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pv-wire{width:min(70%,260px);height:auto}
+.pp-v.on .pv-wire{animation:pvspin 9s linear infinite}
+@keyframes pvspin{0%{transform:rotateY(0)}100%{transform:rotateY(360deg)}}
+.pp-text{display:grid;gap:12px;align-content:center;min-width:0}
+.pp-num{font-family:var(--f-mono);font-weight:500;font-size:.8rem;letter-spacing:.14em;color:var(--purple-soft)}
+.pp-text h3{font-family:var(--f-title);font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700}
+.pp-text p{color:var(--muted);font-size:1.05rem;max-width:42ch}
+.pp-nav{display:flex;gap:10px;margin-top:8px}
+.pp-nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--bg);font-size:1.1rem;transition:border-color .2s,background .2s}
+.pp-nav button:hover{border-color:var(--purple-soft);background:var(--purple-deep)}
+@media (max-width:760px){
+  .pp-panel{grid-template-columns:1fr;gap:22px;padding:18px}
+  .pp-step strong{font-size:.72rem}
+  .pp-step b{width:40px;height:40px;font-size:.75rem}
+  .pp-line{top:19px}
+}
+
+
+/* animações das etapas */
+.pv-prev svg{display:block;width:100%;height:auto;border-radius:8px}
+.pv-print,.pv-ship{width:min(86%,380px);display:grid;gap:10px;justify-items:center}
+.pv-print svg,.pv-ship svg{width:100%;height:auto;overflow:visible}
+.pv-head{transform:translateX(120px)}
+.pp-v.on .pv-head{animation:pvhead 1.1s ease-in-out infinite alternate}
+@keyframes pvhead{from{transform:translateX(96px)}to{transform:translateX(144px)}}
+.pp-v.on .pv-hot{animation:pvhot .5s ease-in-out infinite alternate}
+@keyframes pvhot{to{opacity:.25}}
+.pv-cliprect{transform-box:fill-box;transform-origin:50% 100%}
+.pp-v.on .pv-cliprect{animation:pvbuild 4s linear both}
+@keyframes pvbuild{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.pp-v.on .pv-headY{animation:pvrise 4s linear both}
+@keyframes pvrise{from{transform:translateY(80px)}to{transform:translateY(18px)}}
+.pv-bar{width:72%;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.pv-bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--purple),var(--purple-soft));transform-origin:left}
+.pp-v.on .pv-bar i{animation:pvprog 4s cubic-bezier(.4,0,.2,1) both}
+@keyframes pvprog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.pv-pct{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.pv-item{opacity:0}
+.pp-v.on .pv-item{animation:pvdrop .7s cubic-bezier(.3,1.4,.5,1) both}
+.pp-v.on .pv-i1{animation-delay:.2s}.pp-v.on .pv-i2{animation-delay:.5s}.pp-v.on .pv-i3{animation-delay:.8s}
+@keyframes pvdrop{0%{opacity:0;transform:translateY(-50px)}60%{opacity:1}100%{opacity:1;transform:translateY(36px)}}
+.pv-flap{transform-box:fill-box}
+.pv-fl{transform-origin:left bottom;transform:rotate(-130deg)}
+.pv-fr{transform-origin:right bottom;transform:rotate(130deg)}
+.pp-v.on .pv-fl{animation:pvflapl .6s 1.6s ease-in-out both}
+.pp-v.on .pv-fr{animation:pvflapr .6s 1.8s ease-in-out both}
+@keyframes pvflapl{from{transform:rotate(-130deg)}to{transform:rotate(0)}}
+@keyframes pvflapr{from{transform:rotate(130deg)}to{transform:rotate(0)}}
+.pv-ok{font-weight:600;font-size:.86rem;color:#fff;background:#1f7a4a;border-radius:999px;padding:7px 14px;opacity:0}
+.pv-ok::before{content:"✓ "}
+.pp-v.on .pv-ok{animation:pvpop .45s 2.5s both}
+
+
+/* revisão geral */
+.dates-in{margin-top:56px;padding-top:48px;border-top:1px solid var(--line)}
+.dates-title{font-family:var(--f-title);font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:700;line-height:1.08}
+.collect{grid-template-columns:minmax(0,1fr) minmax(0,.9fr)!important}
+.shelf{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-items:end;padding:36px 20px 28px;border-radius:20px;border:1px solid rgba(255,255,255,.07);background:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(142,59,245,.28),transparent 70%),linear-gradient(180deg,var(--surface-2),var(--bg))}
+.shelf::after{content:"";position:absolute;left:20px;right:20px;bottom:64px;height:2px;background:linear-gradient(90deg,transparent,var(--purple-soft),transparent);opacity:.5}
+.piece{margin:0;display:grid;justify-items:center;gap:14px;min-width:0}
+.piece svg{width:100%;max-width:130px;height:auto;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5));animation:float 5s ease-in-out infinite}
+.piece:nth-child(2) svg{animation-delay:-1.6s}.piece:nth-child(3) svg{animation-delay:-3.2s}
+.piece figcaption{display:grid;justify-items:center;gap:2px;font-family:var(--f-title);font-weight:600;font-size:1rem;text-align:center}
+.piece figcaption b{font-family:var(--f-mono);font-weight:500;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--purple-soft)}
+.gallery .slot-note{position:absolute;top:10px;left:10px;z-index:1;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(11,10,14,.82);border:1px solid rgba(255,255,255,.18);color:var(--fg);border-radius:4px;padding:4px 8px}
+.cta{display:grid;justify-items:center;text-align:center;gap:18px;max-width:760px;margin-inline:auto}
+.cta .lead{margin-inline:auto}
+.cta-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:6px}
+.cta-contact{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+#contato{position:relative;overflow:hidden}
+#contato::before{content:"";position:absolute;left:50%;top:0;width:90%;height:100%;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 0%,rgba(142,59,245,.25),transparent 65%);pointer-events:none}
+#contato .wrap{position:relative}
+@media (max-width:900px){.collect{grid-template-columns:1fr!important}}
+
+.dates-in{grid-template-columns:minmax(0,520px) minmax(0,1fr)!important}
+.dates-vids{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.dates-in .dates-media{max-width:none;margin:0}
+@media (max-width:760px){.dates-in{grid-template-columns:1fr!important}}
+
+/* galeria: o lote em foto horizontal ocupa dois espaços, fechando 3 linhas de 3 */
+.gallery .slot:first-child{grid-column:span 2;aspect-ratio:auto;min-height:100%}
+/* nova fonte de receita */
+.rec{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.rec-media{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:stretch}
+.rec-ph{margin:0;position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.07);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.rec-ph img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover}
+.rec-ph figcaption{position:absolute;left:10px;top:10px;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(11,10,14,.82);border:1px solid rgba(255,255,255,.18);border-radius:4px;padding:4px 8px}
+.rec-copy{display:grid;gap:24px;min-width:0}
+.rec-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rec-list li{display:flex;gap:10px;color:var(--fg)}
+.rec-list li::before{content:"✓";color:var(--purple-soft);font-weight:700}
+.calc{display:grid;gap:16px;padding:22px;border-radius:16px;border:1px solid rgba(184,139,255,.25);background:linear-gradient(160deg,var(--purple-deep),var(--surface) 75%)}
+.calc-title{font-family:var(--f-title);font-weight:700;font-size:1.25rem}
+.calc-in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.calc-in label{display:grid;gap:6px;font-size:.78rem;color:var(--muted)}
+.calc-in input{font:inherit;font-weight:600;font-size:1.05rem;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;width:100%}
+.calc-in input:focus{outline:none;border-color:var(--purple-soft)}
+.calc-out{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.calc-out div{display:grid;gap:2px;padding:12px 14px;border-radius:10px;background:rgba(11,10,14,.55)}
+.calc-out span{font-size:.78rem;color:var(--muted)}
+.calc-out b{font-family:var(--f-title);font-size:1.7rem;font-variant-numeric:tabular-nums;color:#fff}
+.calc-out div:last-child b{color:var(--purple-soft)}
+.calc-note{font-size:.76rem;color:var(--muted)}
+@media (max-width:900px){.rec{grid-template-columns:1fr;gap:32px}}
+@media (max-width:520px){.calc-in{grid-template-columns:1fr}.calc-out b{font-size:1.4rem}}
+
+
+/* ajustes de celular */
+@media (max-width:600px){
+  .gallery .slot:first-child{aspect-ratio:4/3;min-height:0}
+  .show figcaption span,.hud-tag{font-size:.7rem;letter-spacing:.08em}
+  .show figcaption strong{font-size:.95rem}
+  .piece figcaption b{font-size:.72rem}
+  .shelf::after{display:none}
+}
+@media (max-width:900px){
+  .lab{align-items:start}
+  .lab-stage{position:sticky;top:calc(env(safe-area-inset-top,0px) + 62px);z-index:5;width:min(64vw,270px);max-width:270px;margin-inline:auto;box-shadow:0 18px 40px rgba(0,0,0,.6)}
+  .lab-hint{font-size:.6rem;bottom:8px}
+}
+
+
+/* página de estética: galeria 4 x 2 e um vídeo só nas datas */
+.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}
+.gallery .slot:first-child{grid-column:auto;aspect-ratio:4/5;min-height:0}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dates-in .dates-vids{grid-template-columns:1fr;max-width:300px}
+.dates-in{grid-template-columns:minmax(0,300px) minmax(0,1fr)!important}
+@media (max-width:760px){.dates-in{grid-template-columns:1fr!important}.dates-in .dates-vids{margin-inline:auto}}
+
+
+/* certificados de curso */
+.certs{grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px}
+
+
+/* vídeos de estética, galeria com 9 espaços e prova do NFC */
+.nf-proof{display:flex;gap:16px;align-items:center;margin:4px 0 0;padding:12px;border:1px solid var(--line);border-radius:14px;background:rgba(11,10,14,.55)}
+.nf-proof video{flex:none;width:110px;aspect-ratio:4/5;object-fit:cover;border-radius:10px;display:block}
+.nf-proof figcaption{display:grid;gap:4px;font-size:.9rem;color:var(--muted)}
+.nf-proof b{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--purple-soft)}
+
+/* último vídeo sozinho fica centralizado */
+#em-uso .show:last-child:nth-child(3n+1){grid-column:2}
+
+
+/* para o seu espaço: última fileira centralizada */
+#espaco .showcase{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+#espaco .show{width:calc((100% - 40px) / 3)}
+@media (max-width:600px){#espaco .showcase{gap:10px}#espaco .show{width:calc((100% - 20px) / 3)}}
+
+
+/* galeria com 9 espaços */
+.gallery{grid-template-columns:repeat(3,minmax(0,1fr));max-width:860px;margin-inline:auto}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}}
+
+
+/* volta para a tela de escolha de segmento */
+.seg .hub{color:var(--purple-soft);text-transform:uppercase;border:1px solid rgba(184,139,255,.35);border-radius:999px;padding:4px 10px}
+.seg .hub:hover,.seg .hub:focus-visible{background:var(--purple-soft);color:#120b1f;outline:none}
+.seg .sx span{color:var(--fg)}
+@media (max-width:600px){.seg{display:block}.seg .sx{display:none}}
+
+/* entrada suave ao rolar: aparece subindo levemente */
+.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+html.rv-on .rv:not(.in){opacity:0;transform:translateY(28px) scale(.98)}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+.printer svg.piece{position:absolute;inset:0;width:100%;height:100%}
+
+/* subcategorias (teste) */
+.sub{position:sticky;top:64px;z-index:15;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:12px 0}
+.sub .wrap{display:grid;gap:8px}
+.sub-q{margin:0;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-soft)}
+.sub-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+.sub-chips::-webkit-scrollbar{display:none}
+.sub-chips button{flex:none;font:inherit;font-size:.88rem;font-weight:600;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap}
+.sub-chips button[aria-pressed="true"]{background:var(--purple);border-color:var(--purple);color:#fff}
+.sub-ideia{margin:14px auto 0;font-size:.95rem;color:var(--muted);max-width:62ch;text-align:center;border:1px dashed rgba(184,139,255,.4);border-radius:12px;padding:12px 16px;background:rgba(21,19,27,.6)}
+.sub-ideia b{color:var(--fg)}
+.sub-off{display:none!important}
+@media (max-width:600px){.sub{top:56px;padding:10px 0}.sub-chips button{font-size:.82rem;padding:7px 12px}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="MAC3DOS">
+      <svg viewBox="0 0 56 84" aria-hidden="true"><polygon points="0,2 27,31 0,58" fill="#D6D5DC"/><polygon points="56,0 56,58 6,58" fill="#8E3BF5"/><polygon points="0,58 56,58 28,84" fill="#3A1C61"/></svg>
+      <span class="wordmark">MAC<b>3D</b>OS</span>
+    </a>
+    <div class="seg"><a class="hub" href="index.html">◂ Catálogos</a><span class="sx"> · <span>Estética e beleza</span> · <a href="https://www.instagram.com/mac3dos/" target="_blank" rel="noopener">@mac3dos</a></span></div>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Brindes impressos em 3D para estética e beleza</p>
+        <h1>Sua cliente sai do seu espaço de beleza com a sua marca. <em>E leva para todo lugar.</em></h1>
+        <p class="lead">Chaveiros de boca, esmalte e borboleta, porta-batom e porta-creme que abrem, espelhinhos com a sua logo. Brindes úteis que vão direto para a bolsa da cliente.</p>
+        <div class="taglines"><span>Quem usa lembra</span><span>Brindes úteis. Marcas inesquecíveis.</span></div>
+      </div>
+      <div class="printer" role="img" aria-label="Impressora 3D MAC3DOS imprimindo um chaveiro de boca">
+        <img src="media/impressora-vazia.jpg" alt="">
+        <svg class="piece" viewBox="0 0 900 900" aria-hidden="true"><defs>
+<linearGradient id="pzL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8FB2"/><stop offset=".45" stop-color="#E4405F"/><stop offset="1" stop-color="#7a1030"/></linearGradient>
+<linearGradient id="pzL2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8243E"/><stop offset=".5" stop-color="#E4405F"/><stop offset="1" stop-color="#6a0d28"/></linearGradient>
+<linearGradient id="pzG" x1="0" x2="1"><stop offset="0" stop-color="#fff2c9"/><stop offset=".5" stop-color="#d4a64a"/><stop offset="1" stop-color="#7a5418"/></linearGradient>
+</defs>
+<ellipse cx="463" cy="590" rx="88" ry="7" fill="#000" opacity=".5"/>
+<path d="M373 530C385 507 410 480 435 482C450 483 458 494 463 496C468 494 476 483 491 482C516 480 541 507 553 530C530 534 495 532 463 536C431 532 396 534 373 530Z" fill="url(#pzL)" stroke="#B88BFF" stroke-opacity=".5" stroke-width="2"/>
+<path d="M373 530C396 534 431 532 463 536C495 532 530 534 553 530C540 562 505 586 463 586C421 586 386 562 373 530Z" fill="url(#pzL2)" stroke="#B88BFF" stroke-opacity=".35" stroke-width="2"/>
+<path d="M378 531C400 535 432 533 463 537C494 533 526 535 548 531" fill="none" stroke="#4a0816" stroke-width="4" stroke-linecap="round"/>
+<path d="M405 497C418 488 430 487 441 492" fill="none" stroke="#FFD1DC" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="438" cy="560" rx="22" ry="7" fill="#fff" opacity=".35"/>
+<circle cx="544" cy="492" r="8" fill="none" stroke="url(#pzG)" stroke-width="4"/><circle cx="549.0" cy="478" r="3.2" fill="url(#pzG)"/><circle cx="551.3" cy="470" r="3.2" fill="url(#pzG)"/><circle cx="552.7" cy="462" r="3.2" fill="url(#pzG)"/><circle cx="552.9" cy="454" r="3.2" fill="url(#pzG)"/><circle cx="551.7" cy="446" r="3.2" fill="url(#pzG)"/><circle cx="549.6" cy="438" r="3.2" fill="url(#pzG)"/></svg>
+        <div class="glow"></div>
+        <div class="layer"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- subcategorias:inicio -->
+  <nav class="sub" id="sub" aria-label="Escolha a sua área">
+    <div class="wrap">
+      <p class="sub-q">Qual é a sua área?</p>
+      <div class="sub-chips" role="group"><button type="button" data-c="todos" aria-pressed="true">Todos</button><button type="button" data-c="nail" aria-pressed="false">Nail designer</button><button type="button" data-c="lash" aria-pressed="false">Lash e brow designer</button><button type="button" data-c="harm" aria-pressed="false">Harmonização facial</button><button type="button" data-c="dent" aria-pressed="false">Dentista</button><button type="button" data-c="salao" aria-pressed="false">Salão de beleza</button><button type="button" data-c="make" aria-pressed="false">Maquiadora</button></div>
+    </div>
+  </nav>
+  <!-- subcategorias:fim -->
+  <section id="em-uso" class="band">
+    <div class="wrap">
+      <div class="sec-head showcase-head">
+        <p class="eyebrow">Na bolsa da cliente</p>
+        <h2>Quem usa lembra.</h2>
+        <p class="lead">Um brinde que a cliente usa de verdade, todos os dias. Ela lembra do seu espaço sempre que usa e, por onde passa, faz propaganda da sua marca para amigas, colegas e família.</p>
+        <p class="sub-ideia" id="subIdeia" hidden></p>
+      </div>
+      <div class="showcase">
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-07.mp4" poster="media/estetica/video-07.jpg" autoplay muted loop playsinline aria-label="Porta-rímel lilás com textura e chaveiro de borboleta"></video></div>
+          <figcaption><span>Chaveiro</span><strong>Porta-rímel com borboleta</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-02.mp4" poster="media/estetica/video-02.jpg" autoplay muted loop playsinline aria-label="Porta-protetor labial pink sobre base personalizada"></video></div>
+          <figcaption><span>Com expositor</span><strong>Porta-protetor labial pink</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-09.mp4" poster="media/estetica/video-09.jpg" autoplay muted loop playsinline aria-label="Potinho de creme pink com letra na tampa recebendo creme"></video></div>
+          <figcaption><span>Para amostras</span><strong>Potinho de creme pink</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-12.mp4" poster="media/estetica/video-12.jpg" autoplay muted loop playsinline aria-label="Chaveiro vermelho em forma de boca abrindo uma lata"></video></div>
+          <figcaption><span>Abridor de lata</span><strong>Chaveiro de boca</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-19.mp4" poster="media/estetica/video-19.jpg" autoplay muted loop playsinline aria-label="Chaveiro em forma de batom que abre lata"></video></div>
+          <figcaption><span>Abridor de lata</span><strong>Chaveiro batom</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-05.mp4" poster="media/estetica/video-05.jpg" autoplay muted loop playsinline aria-label="Porta-protetor labial lilás com textura de corações"></video></div>
+          <figcaption><span>Textura de corações</span><strong>Porta-protetor lilás</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-06.mp4" poster="media/estetica/video-06.jpg" autoplay muted loop playsinline aria-label="Lote de chaveiros perolados com textura de corações"></video></div>
+          <figcaption><span>Acabamento perolado</span><strong>Chaveiros de corações</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-17.mp4" poster="media/estetica/video-17.jpg" autoplay muted loop playsinline aria-label="Chaveiros de coração com cílios que abrem lata"></video></div>
+          <figcaption><span>Para lash designer</span><strong>Chaveiro de cílios</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-13.mp4" poster="media/estetica/video-13.jpg" autoplay muted loop playsinline aria-label="Chaveiro verde em forma de coração com logo que abre e vira suporte de celular"></video></div>
+          <figcaption><span>Vira suporte de celular</span><strong>Chaveiro porta-celular</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-14.mp4" poster="media/estetica/video-14.jpg" autoplay muted loop playsinline aria-label="Chaveiro dourado em forma de diamante preso na bolsa, que abre e guarda pequenos itens"></video></div>
+          <figcaption><span>Abre e guarda</span><strong>Chaveiro diamante</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-15.mp4" poster="media/estetica/video-15.jpg" autoplay muted loop playsinline aria-label="Caixinhas rosa com logo em relevo que abrem para guardar joias"></video></div>
+          <figcaption><span>Mini porta-joias</span><strong>Caixinha com logo</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-20.mp4" poster="media/estetica/video-20.jpg" autoplay muted loop playsinline aria-label="Porta-bijus rosa em forma de boca que abre e guarda um anel"></video></div>
+          <figcaption><span>Abre e guarda</span><strong>Porta-bijus de boca</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-04.mp4" poster="media/estetica/video-04.jpg" autoplay muted loop playsinline aria-label="Porta-bijus branco em forma de nuvem com logo dourado"></video></div>
+          <figcaption><span>Com a sua logo</span><strong>Porta-bijus com logo</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-03.mp4" poster="media/estetica/video-03.jpg" autoplay muted loop playsinline aria-label="Porta-bijus rosa com relevo, guardando anéis"></video></div>
+          <figcaption><span>Para anéis e brincos</span><strong>Porta-bijus</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-18.mp4" poster="media/estetica/video-18.jpg" autoplay muted loop playsinline aria-label="Chaveiro de coração rosa com logo abrindo uma lata"></video></div>
+          <figcaption><span>Abridor de lata</span><strong>Coração com logo</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-23.mp4" poster="media/estetica/video-23.jpg" autoplay muted loop playsinline aria-label="Chaveiro azul em forma de diamante que abre e guarda pequenos itens"></video></div>
+          <figcaption><span>Abre e guarda</span><strong>Diamante azul</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-24.mp4" poster="media/estetica/video-24.jpg" autoplay muted loop playsinline aria-label="Lote de pentes verdes com logo saindo da impressora 3D"></video></div>
+          <figcaption><span>Direto da impressora</span><strong>Pente com logo</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-26.mp4" poster="media/estetica/video-26.jpg" autoplay muted loop playsinline aria-label="Chaveiro redondo com logo de nail designer abrindo uma lata"></video></div>
+          <figcaption><span>Para nail designer</span><strong>Chaveiro com logo</strong></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="comparacao">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Por que brinde útil</p>
+        <h2>Um brinde útil vale mais que mil panfletos.</h2>
+      </div>
+      <div class="contrast">
+        <div class="no">
+          <h3>O brinde comum</h3>
+          <ul>
+            <li>Panfleto e cartão de visita que vão para a gaveta</li>
+            <li>Brinde genérico, que ninguém associa à sua marca</li>
+            <li>Ninguém usa, ninguém comenta</li>
+            <li>A marca some em uma semana</li>
+          </ul>
+        </div>
+        <div class="yes">
+          <h3>O brinde MAC3DOS</h3>
+          <ul>
+            <li>É item de desejo: a cliente quer ter, mostra para as amigas e pede o próximo</li>
+            <li>Feitas nas cores e com o nome do seu salão ou clínica</li>
+            <li>Têm função: guardam creme, batom e bijus, seguram as chaves</li>
+            <li>Podem ter NFC: um toque e o celular abre a sua agenda ou o seu Instagram</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trabalhos" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Diversas opções</p>
+        <h2>Produzimos na cor da sua marca</h2>
+        <p class="lead">Cada lote é modelado com a logo do cliente e impresso nas cores da marca. Toque numa foto para ampliar.</p>
+      </div>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <section id="espaco">
+    <div class="wrap">
+      <div class="sec-head showcase-head">
+        <p class="eyebrow">Para o seu espaço</p>
+        <h2>A sua marca também na sala de atendimento</h2>
+        <p class="lead">Peças para clínicas, consultórios e salões. Deixam o ambiente organizado, com a cara da sua marca, e aparecem nas fotos que as clientes postam. O porta-bijus também ganha uma versão maior para a bancada do consultório.</p>
+      </div>
+      <div class="showcase">
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-10.mp4" poster="media/estetica/video-10.jpg" autoplay muted loop playsinline aria-label="Gancho de parede dourado em forma de boca para pendurar bolsas e casacos"></video></div>
+          <figcaption><span>Na parede</span><strong>Porta-bolsas de boca</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-16.mp4" poster="media/estetica/video-16.jpg" autoplay muted loop playsinline aria-label="Limpador de pincéis vermelho em forma de coração sendo usado com sabonete"></video></div>
+          <figcaption><span>Para a bancada</span><strong>Limpador de pincéis</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-21.mp4" poster="media/estetica/video-21.jpg" autoplay muted loop playsinline aria-label="Display rosa de manicure com botões de WhatsApp, Instagram e pagamento que abre o Instagram ao encostar o celular"></video></div>
+          <figcaption><span>Com NFC</span><strong>Display de balcão</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-22.mp4" poster="media/estetica/video-22.jpg" autoplay muted loop playsinline aria-label="Display lilás com botões de redes sociais abrindo o perfil no celular"></video></div>
+          <figcaption><span>Encostou, abriu</span><strong>Display NFC lilás</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/estetica/video-25.mp4" poster="media/estetica/video-25.jpg" autoplay muted loop playsinline aria-label="Placas de recepção com QR codes de Wi-Fi, WhatsApp e Pix nas cores da marca"></video></div>
+          <figcaption><span>QR code e Wi-Fi</span><strong>Placa de recepção</strong></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="experimente" class="band">
+    <div class="wrap lab">
+      <div class="lab-stage" id="stage">
+        <canvas id="kb3d" aria-label="Brinde em 3D personalizável. Arraste para girar."></canvas>
+        <img id="kbFallback" src="media/estetica/foto-03.jpg" alt="Chaveiros de boca personalizados com a sua marca" hidden>
+        <span class="lab-hint" id="kbHint">Arraste para girar</span>
+      </div>
+      <div class="lab-panel">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Experimente</p>
+          <h2>Veja o brinde com a cara da sua marca</h2>
+          <p class="lead">Escolha a peça, as cores e escreva o nome da sua marca. O brinde muda na hora, do jeito que sairia da nossa impressora.</p>
+        </div>
+        <div class="field"><span>Peça</span><div class="seg-ctl" id="kbPiece" role="group" aria-label="Peça"><button type="button" data-p="bc" aria-pressed="true">Chaveiro de boca</button><button type="button" data-p="kb" aria-pressed="false">Esmalte</button></div></div>
+        <div class="field"><span id="lblMain">Cor da boca</span><div class="swatches" id="swMain" role="group" aria-label="Cor principal"></div></div>
+        <div class="field" id="fieldBase"><span id="lblBase">Cor da base</span><div class="swatches" id="swBase" role="group" aria-label="Cor da base"></div></div>
+        <label class="field" for="kbName"><span>Nome da sua marca</span><input id="kbName" maxlength="14" value="SUA MARCA" autocomplete="off"></label>
+        <p class="spec">Simulação ilustrativa. A peça real é modelada com a sua logo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="ideias">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Como o seu espaço pode usar</p>
+        <h2>Um brinde para cada momento da cliente</h2>
+      </div>
+      <div class="uses">
+        <article class="use"><span class="use-tag">Primeira visita</span><h3>Boas-vindas com a sua marca</h3><p>Entregue um chaveiro no primeiro atendimento. A cliente sai do atendimento já levando a sua marca.</p></article>
+        <article class="use"><span class="use-tag">Fidelidade</span><h3>Cartão fidelidade que vira brinde</h3><p>No 10º atendimento, a cliente ganha um brinde exclusivo. É um motivo a mais para voltar.</p></article>
+        <article class="use"><span class="use-tag">Aniversário</span><h3>Presente com o nome da cliente</h3><p>Um porta-creme ou espelhinho personalizado no mês do aniversário. Um gesto pequeno que ela não esquece.</p></article>
+        <article class="use"><span class="use-tag">Indicação</span><h3>Indique uma amiga</h3><p>Quem indica ganha um brinde. A amiga chega pelo boca a boca e já conhece a sua marca.</p></article>
+      </div>
+      <div class="dates dates-in">
+        <div class="dates-vids">
+        <figure class="show dates-media">
+        <div class="show-media"><video preload="none" data-src="media/video-8.mp4" poster="media/video-8.jpg" autoplay muted loop playsinline aria-label="Roleta de prêmios personalizada girando, com fatias de desconto, massagem e brindes"></video></div>
+        <figcaption><span>Ação promocional</span><strong>Roleta de prêmios</strong></figcaption>
+      </figure>
+        </div>
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow">Datas comemorativas e ações promocionais</p>
+        <h3 class="dates-title">Um brinde para cada data do ano</h3>
+        <p class="lead">Criamos peças temáticas com a identidade da sua marca. Cada data vira um motivo para presentear a cliente e ser lembrado por ela.</p>
+        <p class="lead">Roletas de prêmios para Black Friday, aniversário do espaço ou semana da cliente: ela gira, ganha um desconto ou um mimo e comenta com todo mundo.</p>
+        <ul class="occasions dates-list" aria-label="Datas">
+          <li>Dia da Mulher</li><li>Dia das Mães</li><li>Dia dos Namorados</li><li>Black Friday</li><li>Natal</li><li>Aniversário do espaço</li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section id="colecao" class="band">
+    <div class="wrap collect">
+      <div>
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Cartão fidelidade</p>
+          <h2>Uma coleção que faz a cliente voltar</h2>
+          <p class="lead">Uma peça nova a cada etapa do cartão fidelidade. A cliente quer completar a coleção e volta para o próximo atendimento.</p>
+        </div>
+        <div class="journey">
+          <div class="step"><div class="dot">1º</div><strong>Primeira visita</strong><span>Chaveiro de boca</span></div>
+          <div class="step"><div class="dot">5</div><strong>5º atendimento</strong><span>Chaveiro de esmalte</span></div>
+          <div class="step"><div class="dot">10</div><strong>10º atendimento</strong><span>Porta-creme com o nome dela</span></div>
+          <div class="step"><div class="dot">15</div><strong>15º atendimento</strong><span>Kit especial com espelhinho</span></div>
+        </div>
+        <p class="note">As etapas são uma sugestão. Ajustamos a coleção ao cartão fidelidade que você já usa.</p>
+      </div>
+      <div class="shelf" aria-label="Coleção: chaveiro de boca, esmalte e porta-creme">
+        <figure class="piece">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="30" r="6" fill="none" stroke="#D4A64A" stroke-width="2.4"/><path d="M16 66C30 44 48 48 60 56 72 48 90 44 104 66 88 88 72 94 60 94 48 94 32 88 16 66Z" fill="#E4567B"/><path d="M20 66C40 64 50 70 60 68 70 70 80 64 100 66" fill="none" stroke="#9E2449" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="44" cy="58" rx="10" ry="4" fill="#fff" opacity=".25"/></svg>
+          <figcaption><b>1ª visita</b>Chaveiro de boca</figcaption>
+        </figure>
+        <figure class="piece">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="10" r="6" fill="none" stroke="#D4A64A" stroke-width="2.4"/><rect x="49" y="16" width="22" height="34" rx="4" fill="#EDEBF0"/><rect x="45" y="48" width="30" height="8" rx="2" fill="#CFC8DA"/><rect x="28" y="54" width="64" height="56" rx="14" fill="#F48FB1"/><rect x="36" y="62" width="10" height="38" rx="5" fill="#fff" opacity=".3"/></svg>
+          <figcaption><b>5º atendimento</b>Esmalte</figcaption>
+        </figure>
+        <figure class="piece">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><rect x="22" y="62" width="76" height="32" rx="6" fill="#EDEBF0"/><rect x="20" y="44" width="80" height="22" rx="6" fill="#B9A3E8"/><ellipse cx="60" cy="44" rx="40" ry="10" fill="#CDB8F5"/><path d="M48 44c4-5 20-5 24 0" fill="none" stroke="#3A1C61" stroke-width="2.4"/><circle cx="106" cy="56" r="6" fill="none" stroke="#D4A64A" stroke-width="2.4"/></svg>
+          <figcaption><b>10º atendimento</b>Porta-creme</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="certificados">
+    <div class="wrap">
+      <div class="sec-head showcase-head">
+        <p class="eyebrow">Certificados de curso</p>
+        <h2>Um certificado que ninguém guarda na gaveta</h2>
+        <p class="lead">Para quem dá cursos e workshops: a aluna recebe uma placa 3D com o nome dela e a sua marca. Ela expõe na bancada, posta nas redes e divulga o seu curso para outras profissionais.</p>
+        <ul class="occasions" aria-label="Ocasiões">
+          <li>Cursos de nail design</li><li>Workshops e masterclass</li><li>Formação de lash e sobrancelha</li><li>Mentorias</li><li>Turmas VIP</li>
+        </ul>
+      </div>
+      <div class="showcase certs">
+        <figure class="show">
+          <div class="show-media"><img src="media/estetica/foto-13.jpg" alt="Placa de certificado de curso em tom nude com detalhes dourados, nome da aluna e unha decorada em vermelho" loading="lazy"></div>
+          <figcaption><span>Curso de unhas</span><strong>Certificado com nome da aluna</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><img src="media/estetica/foto-14.jpg" alt="Placa preta com brilho e logo dourado da profissional, nome da aluna na base e unha decorada" loading="lazy"></div>
+          <figcaption><span>Sua marca</span><strong>Placa com o seu logo</strong></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="nfc" class="band">
+    <div class="wrap nf">
+      <div class="nf-copy">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Brindes com NFC</p>
+          <h2>Um toque e a cliente agenda o próximo horário</h2>
+          <p class="lead">Colocamos um chip NFC dentro da peça: no chaveiro, no porta-creme ou numa placa de balcão. A cliente aproxima o celular e a página que você escolheu abre na hora.</p>
+        </div>
+        <ol class="nf-steps">
+          <li><span class="nf-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg></span><strong>Aproxima o celular</strong><span>do brinde, sem abrir nenhum app</span></li>
+          <li><span class="nf-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 9a9 9 0 0 1 14 0M8 12a5 5 0 0 1 8 0"/><circle cx="12" cy="16" r="1.4"/></svg></span><strong>O link abre sozinho</strong><span>agenda, WhatsApp, Instagram ou Google</span></li>
+          <li><span class="nf-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><strong>A cliente agenda, segue ou avalia</strong><span>e a sua marca ganha alcance</span></li>
+        </ol>
+        <p class="nf-note">Funciona em iPhone e Android, sem baixar nenhum app.</p>
+        <figure class="nf-proof">
+          <video preload="none" data-src="media/estetica/video-11.mp4" poster="media/estetica/video-11.jpg" autoplay muted loop playsinline aria-label="Chaveiro com NFC encostado no celular abrindo o perfil do Instagram da cliente"></video>
+          <figcaption><b>Entregue para cliente</b>Chaveiros com NFC: um toque no celular e o Instagram da clínica abre na hora.</figcaption>
+        </figure>
+      </div>
+      <div class="nf-demo">
+        <div class="nf-dests" id="nfDests" role="group" aria-label="Para onde o brinde leva">
+          <button type="button" data-d="ig" aria-pressed="true">Instagram</button>
+          <button type="button" data-d="wa" aria-pressed="false">WhatsApp</button>
+          <button type="button" data-d="gg" aria-pressed="false">Google</button>
+          <button type="button" data-d="ln" aria-pressed="false">Agenda</button>
+        </div>
+        <div class="nf-stage" id="nfStage">
+          <div class="nf-phone">
+            <div class="nf-notch"></div>
+            <div class="nf-lock"><span class="nf-time">9:41</span><span class="nf-hint">Aproxime do brinde</span></div>
+            <div class="nf-scr" data-s="ig">
+              <div class="ig-top"><div class="ig-av">SS</div><div class="ig-stats"><b>248</b><b>3,1 mil</b><b>180</b><i>posts</i><i>seguidores</i><i>seguindo</i></div></div>
+              <div class="ig-name">@seuespaco</div>
+              <div class="ig-btn">Seguir</div>
+              <div class="ig-grid"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="nf-scr" data-s="wa">
+              <div class="wa-top"><span class="wa-av">SS</span>Seu Espaço</div>
+              <div class="wa-body"><div class="wa-msg">Oi! Quero agendar manicure para sábado.</div></div>
+              <div class="wa-bar"><span>Mensagem</span><b></b></div>
+            </div>
+            <div class="nf-scr" data-s="gg">
+              <div class="gg-title">Seu Espaço</div>
+              <div class="gg-sub">Avalie sua experiência</div>
+              <div class="gg-stars"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="gg-box">Atendimento impecável, amei!</div>
+              <div class="gg-btn">Publicar</div>
+            </div>
+            <div class="nf-scr" data-s="ln">
+              <div class="ln-title">Agende seu horário</div>
+              <div class="ln-row"><b>09:00</b>Manicure</div>
+              <div class="ln-row"><b>10:30</b>Escova</div>
+              <div class="ln-row"><b>14:00</b>Design de sobrancelha</div>
+              <div class="ln-row"><b>16:00</b>Limpeza de pele</div>
+              <div class="ln-btn">Confirmar horário</div>
+            </div>
+          </div>
+          <div class="nf-waves"><i></i><i></i><i></i></div>
+          <div class="nf-tag" aria-hidden="true">
+            <svg viewBox="0 0 100 110"><circle cx="50" cy="8" r="6" fill="none" stroke="#D4A64A" stroke-width="2.4"/><rect x="40" y="14" width="20" height="30" rx="4" fill="#EDEBF0"/><rect x="36" y="42" width="28" height="7" rx="2" fill="#CFC8DA"/><rect x="20" y="47" width="60" height="56" rx="14" fill="#F48FB1"/><path d="M42.5 68a10.5 10.5 0 0 1 15 0M45.6 72.4a5.5 5.5 0 0 1 8.8 0" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="50" cy="77" r="2" fill="#fff"/></svg>
+            <span>chip NFC</span>
+          </div>
+        </div>
+        <button type="button" class="nf-go" id="nfGo">Aproximar o celular</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="receita">
+    <div class="wrap rec">
+      <div class="rec-media">
+        <figure class="rec-ph"><img src="media/estetica/foto-11.jpg" alt="Expositor de balcão com chaveiros de porta-batom personalizados" loading="lazy"></figure>
+        <figure class="rec-ph"><img src="media/estetica/foto-04.jpg" alt="Lote de porta-batons pretos e brancos com chaveiro" loading="lazy"></figure>
+      </div>
+      <div class="rec-copy">
+        <div class="sec-head" style="margin-bottom:0">
+          <p class="eyebrow">Nova fonte de receita</p>
+          <h2>Aumente o faturamento do seu espaço</h2>
+          <p class="lead">Com um expositor no balcão, os brindes também viram produto. A cliente compra por impulso enquanto espera, leva a sua marca e o seu espaço ganha uma receita a mais todo mês.</p>
+        </div>
+        <ul class="rec-list">
+          <li>Expositor nas cores da sua marca, pronto para o balcão</li>
+          <li>Chaveiros de boca, esmalte e borboleta, porta-batom e porta-creme</li>
+          <li>Você escolhe os modelos e as quantidades de cada um</li>
+        </ul>
+        <div class="calc" id="calc">
+          <p class="calc-title">Simule o seu ganho</p>
+          <div class="calc-in">
+            <label for="cQtd">Vendas por mês<input id="cQtd" type="number" min="0" step="1" value="60" inputmode="numeric"></label>
+            <label for="cPreco">Preço de venda (R$)<input id="cPreco" type="number" min="0" step="1" value="25" inputmode="decimal"></label>
+            <label for="cCusto">Custo por peça (R$)<input id="cCusto" type="number" min="0" step="1" value="10" inputmode="decimal"></label>
+          </div>
+          <div class="calc-out">
+            <div><span>Lucro por mês</span><b id="cMes">R$ 900</b></div>
+            <div><span>Lucro em 12 meses</span><b id="cAno">R$ 10.800</b></div>
+          </div>
+          <p class="calc-note">Valores de exemplo. O custo real depende do modelo e da quantidade do pedido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="processo" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Como trabalhamos</p>
+        <h2>Da ideia ao brinde na mão da cliente</h2>
+      </div>
+      <div class="pp" id="pp">
+        <div class="pp-steps" role="tablist" aria-label="Etapas">
+          <div class="pp-line"><i id="ppFill"></i></div>
+          <button type="button" role="tab" class="pp-step" data-i="0" aria-selected="true"><b>01</b><strong>Conversa</strong></button>
+          <button type="button" role="tab" class="pp-step" data-i="1" aria-selected="false"><b>02</b><strong>Modelagem 3D</strong></button>
+          <button type="button" role="tab" class="pp-step" data-i="2" aria-selected="false"><b>03</b><strong>Aprovação</strong></button>
+          <button type="button" role="tab" class="pp-step" data-i="3" aria-selected="false"><b>04</b><strong>Produção</strong></button>
+          <button type="button" role="tab" class="pp-step" data-i="4" aria-selected="false"><b>05</b><strong>Entrega</strong></button>
+        </div>
+        <div class="pp-panel" role="tabpanel" aria-live="polite">
+          <div class="pp-visual">
+            <div class="pp-v on" data-v="0">
+              <div class="pv-chat">
+                <p class="pv-in">Oi! Quero um brinde para as clientes no Dia da Mulher.</p>
+                <p class="pv-out">Perfeito! Quantas clientes e quais as cores da marca?</p>
+                <p class="pv-in">Umas 150. Rosa e dourado.</p>
+                <p class="pv-out">Já tenho uma ideia: porta-creme com a sua logo.</p>
+              </div>
+            </div>
+            <div class="pp-v" data-v="1">
+              <svg class="pv-wire" viewBox="0 0 200 200" aria-hidden="true">
+                <g fill="none" stroke="#B88BFF" stroke-width="1.1">
+                  
+                  <circle cx="100" cy="118" r="56"/>
+                  <ellipse cx="100" cy="118" rx="56" ry="18"/><ellipse cx="100" cy="118" rx="56" ry="38" opacity=".6"/>
+                  <ellipse cx="100" cy="118" rx="18" ry="56"/><ellipse cx="100" cy="118" rx="38" ry="56" opacity=".6"/>
+                  <path d="M44 118h112M100 62v112" opacity=".5"/>
+                </g>
+                <g fill="#B88BFF"><circle cx="44" cy="118" r="2.4"/><circle cx="156" cy="118" r="2.4"/><circle cx="100" cy="62" r="2.4"/><circle cx="100" cy="174" r="2.4"/><circle cx="66" cy="74" r="2.4"/><circle cx="134" cy="74" r="2.4"/></g>
+                <text x="100" y="196" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#A39DB0">modelo_porta_creme.stl</text>
+              </svg>
+            </div>
+            <div class="pp-v" data-v="2">
+              <div class="pv-chat">
+                <p class="pv-out pv-img"><span class="pv-prev" aria-hidden="true"><svg viewBox="0 0 160 110"><rect width="160" height="110" fill="#f7eef3"/><rect x="42" y="58" width="76" height="30" rx="6" fill="#EDEBF0" stroke="#d9d2e2"/><rect x="40" y="40" width="80" height="22" rx="6" fill="#F48FB1"/><ellipse cx="80" cy="40" rx="40" ry="10" fill="#F7A8C4"/><text x="80" y="43" text-anchor="middle" font-family="Oxanium, sans-serif" font-weight="700" font-size="8" fill="#7a1f45">SUA MARCA</text></svg></span>Segue a prévia da peça com a sua logo.</p>
+                <p class="pv-in">Ficou incrível! Aprovado.</p>
+              </div>
+            </div>
+            <div class="pp-v" data-v="3">
+              <div class="pv-print" aria-label="Animação da impressora 3D imprimindo um chaveiro de esmalte">
+                <svg viewBox="0 0 240 180" aria-hidden="true">
+                  <rect x="20" y="14" width="200" height="152" rx="10" fill="#15131B" stroke="#2B2735"/>
+                  <rect x="34" y="34" width="172" height="5" rx="2" fill="#2B2735"/>
+                  <defs><clipPath id="pvClip"><rect class="pv-cliprect" x="80" y="66" width="80" height="74"/></clipPath></defs>
+                  <g class="pv-headY"><g class="pv-head"><rect x="-12" y="28" width="24" height="18" rx="3" fill="#3A1C61" stroke="#B88BFF"/><path d="M-3 46h6l-3 6z" fill="#B88BFF"/><circle cx="0" cy="55" r="2.2" fill="#E9DBFF" class="pv-hot"/></g></g>
+                  <rect x="54" y="140" width="132" height="6" rx="2" fill="#3A3445"/>
+                  <g class="pv-obj" clip-path="url(#pvClip)">
+                    <rect x="98" y="104" width="44" height="34" rx="9" fill="#F48FB1"/>
+                    <rect x="111" y="97" width="18" height="8" rx="2" fill="#3A1C61"/>
+                    <rect x="113" y="72" width="14" height="26" rx="3" fill="#3A1C61"/>
+                  </g>
+                  <g stroke="#ffffff" stroke-opacity=".07"><path d="M90 136h60"/><path d="M90 131h60"/><path d="M90 126h60"/><path d="M90 121h60"/><path d="M90 116h60"/><path d="M90 111h60"/><path d="M90 106h60"/><path d="M90 101h60"/><path d="M90 96h60"/><path d="M90 91h60"/><path d="M90 86h60"/><path d="M90 81h60"/><path d="M90 76h60"/><path d="M90 71h60"/></g>
+                </svg>
+                <div class="pv-bar"><i></i></div>
+                <span class="pv-pct">Imprimindo o lote</span>
+              </div>
+            </div>
+            <div class="pp-v" data-v="4">
+              <div class="pv-ship" aria-label="Animação dos brindes sendo embalados">
+                <svg viewBox="0 0 240 180" aria-hidden="true">
+                  <g class="pv-item pv-i1"><path d="M84 70c6-8 12-7 12-4 0-3 6-4 12 4-6 7-18 7-24 0z" fill="#E4567B"/></g>
+                  <g class="pv-item pv-i2"><rect x="128" y="56" width="8" height="10" rx="2" fill="#1C1B21"/><rect x="124" y="65" width="16" height="14" rx="4" fill="#F48FB1"/></g>
+                  <g class="pv-item pv-i3"><rect x="104" y="60" width="20" height="9" rx="3" fill="#EDEBF0"/><rect x="103" y="55" width="22" height="7" rx="3" fill="#B9A3E8"/></g>
+                  <rect x="70" y="92" width="100" height="62" rx="4" fill="#C9A27A"/>
+                  <rect x="70" y="92" width="100" height="10" fill="#B48C64"/>
+                  <rect x="112" y="92" width="16" height="62" fill="#E2C49F" opacity=".7"/>
+                  <g class="pv-flap pv-fl"><rect x="70" y="80" width="50" height="12" rx="2" fill="#B48C64"/></g>
+                  <g class="pv-flap pv-fr"><rect x="120" y="80" width="50" height="12" rx="2" fill="#B48C64"/></g>
+                  <g transform="translate(112.5 106) scale(.27)"><polygon points="0,2 27,31 0,58" fill="#D6D5DC"/><polygon points="56,0 56,58 6,58" fill="#8E3BF5"/><polygon points="0,58 56,58 28,84" fill="#3A1C61"/></g>
+                  <text x="120" y="142" text-anchor="middle" font-family="Oxanium, sans-serif" font-weight="700" font-size="9" fill="#5c4027">MAC3DOS</text>
+                </svg>
+                <span class="pv-ok">Pronto para a recepção</span>
+              </div>
+            </div>
+          </div>
+          <div class="pp-text">
+            <b class="pp-num" id="ppNum">01 / 05</b>
+            <h3 id="ppTitle">Conversa</h3>
+            <p id="ppDesc">Entendemos o público, os serviços e as ações do seu espaço para sugerir o brinde certo.</p>
+            <div class="pp-nav">
+              <button type="button" id="ppPrev" aria-label="Etapa anterior">←</button>
+              <button type="button" id="ppNext" aria-label="Próxima etapa">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <div class="wrap cta">
+      <p class="eyebrow">Vamos conversar</p>
+      <h2>Vamos criar o brinde do seu espaço?</h2>
+      <p class="lead">Conte o que você imagina e a gente transforma em um brinde que suas clientes vão querer usar.</p>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href="https://wa.me/5521985101880?text=Ol%C3%A1%2C%20MAC3DOS!%20Vi%20o%20cat%C3%A1logo%20de%20est%C3%A9tica%20e%20beleza%20e%20quero%20conversar." target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/mac3dos/" target="_blank" rel="noopener">Ver o Instagram</a>
+      </div>
+      <p class="cta-contact">WhatsApp (21) 98510-1880 · @mac3dos</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wordmark" style="font-size:1.1rem">MAC<b>3D</b>OS</span>
+    <span>Estúdio de impressão 3D · Transformamos ideias em brindes.</span>
+    <span style="display:flex;gap:18px;flex-wrap:wrap"><a href="https://wa.me/5521985101880" target="_blank" rel="noopener">WhatsApp (21) 98510-1880</a><a href="https://www.instagram.com/mac3dos/" target="_blank" rel="noopener">@mac3dos</a></span>
+  </div>
+</footer>
+
+
+<div class="lightbox" id="lightbox" hidden>
+  <button class="close" type="button" id="lbClose">Fechar</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const MOMENTS = [
+  {id:"todos", label:"Todos", text:"Peças que já produzimos e ideias sob medida, todas pensadas para a rotina de quem treina. Filtre pelo momento em que o brinde vai ser entregue."},
+  {id:"matricula", label:"Na matrícula", text:"O primeiro dia define a relação. Um brinde útil na matrícula faz o aluno sair da academia já carregando a sua marca."},
+  {id:"planos", label:"Planos longos", text:"Use o brinde como bônus do plano semestral ou anual. É um argumento concreto na hora de fechar a venda."},
+  {id:"desafios", label:"Desafios e ações", text:"Desafios de frequência, aulões e datas especiais ganham força quando existe um prêmio que o aluno quer exibir."},
+  {id:"colecao", label:"Colecionáveis", text:"Peças em série que o aluno conquista por frequência. Cada nova cor é um motivo para voltar amanhã."},
+  {id:"recepcao", label:"Venda na recepção", text:"Além de presentear, a academia pode vender os chaveiros num expositor no balcão. O brinde vira produto e gera receita."},
+  {id:"indicacao", label:"Indique um amigo", text:"O aluno entrega o brinde ao amigo, que aproxima o celular e cai direto no seu WhatsApp para marcar a aula experimental."},
+  {id:"nfc", label:"Com NFC", text:"Peças com chip NFC: um toque do celular abre o Instagram, o WhatsApp ou a avaliação no Google da academia."}
+];
+
+const ICONS = {
+  key:`<svg viewBox="0 0 100 100"><rect x="18" y="30" width="64" height="44" rx="10" fill="#8E3BF5"/><rect x="18" y="30" width="64" height="10" rx="5" fill="#B88BFF" opacity=".5"/><circle cx="50" cy="22" r="9" fill="none" stroke="#D6D5DC" stroke-width="4"/><path d="M40 52a14 14 0 0 1 20 0M44 58a7 7 0 0 1 12 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+  funnel:`<svg viewBox="0 0 100 100"><path d="M18 22h64l-20 34v18H38V56z" fill="#8E3BF5"/><path d="M50 22v34" stroke="#3A1C61" stroke-width="4"/><path d="M38 74h24v12H38z" fill="#D6D5DC"/><ellipse cx="50" cy="22" rx="32" ry="6" fill="#B88BFF"/></svg>`,
+  medal:`<svg viewBox="0 0 100 100"><path d="M34 8h12l8 30H42zM54 8h12L58 38H46z" fill="#3A1C61"/><circle cx="50" cy="62" r="28" fill="#8E3BF5"/><circle cx="50" cy="62" r="20" fill="none" stroke="#B88BFF" stroke-width="3"/><text x="50" y="70" text-anchor="middle" font-family="Rajdhani,sans-serif" font-weight="700" font-size="22" fill="#fff">100</text></svg>`,
+  trophy:`<svg viewBox="0 0 100 100"><path d="M30 14h40v22a20 20 0 0 1-40 0z" fill="#8E3BF5"/><path d="M30 20H18c0 14 6 20 14 20M70 20h12c0 14-6 20-14 20" fill="none" stroke="#B88BFF" stroke-width="4"/><rect x="45" y="56" width="10" height="14" fill="#D6D5DC"/><rect x="30" y="70" width="40" height="14" rx="2" fill="#3A1C61"/><rect x="34" y="74" width="32" height="6" rx="1" fill="#B88BFF" opacity=".5"/></svg>`,
+  plate:`<svg viewBox="0 0 100 100"><path d="M20 78l10-56h40l10 56z" fill="#15131B" stroke="#8E3BF5" stroke-width="3"/><path d="M38 46a16 16 0 0 1 24 0M43 53a8 8 0 0 1 14 0" stroke="#B88BFF" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="50" cy="60" r="3" fill="#B88BFF"/><text x="50" y="36" text-anchor="middle" font-family="Rajdhani,sans-serif" font-weight="700" font-size="9" fill="#D6D5DC" letter-spacing="1">SIGA A GENTE</text></svg>`,
+  card:`<svg viewBox="0 0 100 100"><rect x="14" y="26" width="72" height="48" rx="6" fill="#D6D5DC"/><rect x="14" y="26" width="72" height="14" rx="6" fill="#8E3BF5"/><path d="M58 58a10 10 0 0 1 16 0M62 63a5 5 0 0 1 8 0" stroke="#3A1C61" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="22" y="50" width="26" height="5" rx="2" fill="#3A1C61"/><rect x="22" y="60" width="18" height="5" rx="2" fill="#3A1C61" opacity=".5"/></svg>`
+};
+
+const PRODUCTS = [
+  {id:"kettlebell-capsulas", name:"Mini kettlebell porta-cápsulas", img:"media/foto-05.jpg", pos:"center 60%", alt:"Mini kettlebells rosa e lilás abertos, guardando cápsulas e anéis", tags:["matricula","planos","colecao"], desc:"Chaveiro que abre com rosca e guarda cápsulas de suplemento, anéis ou pequenos objetos. A marca vai junto na mochila.", spec:"Abre com rosca · logo em relevo ou colorida"},
+  {id:"kettlebell-cores", name:"Kettlebell colecionável por cores", img:"media/foto-07.jpg", pos:"center 62%", alt:"Mão segurando três mini kettlebells, preto, laranja e cinza", tags:["colecao","desafios"], desc:"A mesma peça em cores diferentes para cada fase do aluno. Quem tem o preto quer chegar no laranja.", spec:"Uma cor por marco · lotes grandes"},
+  {id:"coqueteleira", name:"Mini coqueteleira chaveiro", img:"media/coqueteleira.jpg", alt:"Mini coqueteleiras chaveiro em preto e amarelo e em lilás e branco", tags:["matricula","planos","colecao"], desc:"Réplica da coqueteleira com tampa colorida e o nome da academia na lateral. Combina com quem toma suplemento.", spec:"Tampa e copo em cores diferentes"},
+  {id:"halter", name:"Mini halter chaveiro", img:"media/halter.jpg", alt:"Mini halteres sextavados lilás e pretos com logo nas faces", tags:["matricula","colecao"], desc:"Halter sextavado com a logo nas faces. Pode ser feito em várias cores para montar uma coleção.", spec:"Logo colorida nas duas faces"},
+  {id:"anilha", name:"Anilha chaveiro embalada", img:"media/foto-11.jpg", pos:"center 55%", alt:"Anilha chaveiro preta com logo, embalada em cartela individual", tags:["matricula","planos","recepcao"], desc:"Anilha com logo e carga, entregue em cartela individual. Pronta para distribuir num evento ou vender no balcão.", spec:"Cartela e saquinho individual"},
+  {id:"tampa-lata", name:"Tampa de lata anilha", video:"media/video-3.mp4", poster:"media/video-3.jpg", alt:"Tampa em forma de anilha sendo encaixada numa lata de energético", tags:["desafios","planos","indicacao"], desc:"Encaixa na lata de energético ou refrigerante, protege de poeira e insetos e guarda o gás. Útil no treino e em casa.", spec:"Encaixe em lata padrão · nome personalizado"},
+  {id:"pilates", name:"Miniatura de aparelho de pilates", img:"media/foto-01.jpg", alt:"Lote de chaveiros em miniatura de um ladder barrel de pilates", tags:["matricula","colecao"], desc:"Chaveiro do ladder barrel para studios de pilates. Fazemos miniaturas de outros aparelhos sob encomenda.", spec:"Para studios de pilates e funcional"},
+  {id:"expositor", name:"Expositor de balcão", img:"media/foto-04.jpg", pos:"center 35%", alt:"Expositor com chaveiros de coqueteleira, halter, kettlebell e anilha", tags:["recepcao"], desc:"Display com os chaveiros da academia. Fica na recepção e transforma o brinde em produto à venda.", spec:"Nas cores da academia · vários modelos juntos"},
+  {id:"kit-marca", name:"Kit completo na cor da marca", img:"media/foto-02.jpg", pos:"center 70%", alt:"Kettlebells, coqueteleiras e halteres lilás com a marca da cliente", tags:["planos","colecao","desafios"], desc:"Kettlebell, coqueteleira e halter no mesmo tom. Um presente para planos anuais, aniversário ou data especial.", spec:"Combina 3 peças da linha"},
+  {id:"nfc-peca", name:"Chip NFC em qualquer peça", icon:"key", nfc:true, idea:true, tags:["nfc","indicacao","matricula"], desc:"O chip vai dentro do kettlebell, da anilha ou da coqueteleira. Um toque e o celular abre o Instagram da academia.", spec:"Chip NTAG215 · link pode ser trocado"},
+  {id:"placa-nfc", name:"Placa NFC de balcão", icon:"plate", nfc:true, idea:true, tags:["nfc","recepcao"], desc:"Fica na recepção. O aluno aproxima o celular para seguir a academia ou deixar uma avaliação no Google.", spec:"Chip NTAG215 · tamanho de balcão"},
+  {id:"cartao-indicacao", name:"Cartão NFC Indique um amigo", icon:"card", nfc:true, idea:true, tags:["indicacao","nfc"], desc:"O aluno entrega ao amigo. Um toque abre seu WhatsApp para agendar a aula experimental.", spec:"Tamanho de cartão · chip NTAG215"},
+  {id:"medalhas", name:"Medalhas de frequência", icon:"medal", idea:true, tags:["colecao","desafios"], desc:"Série de 30, 100 e 365 treinos em bronze, prata e ouro. O aluno exibe e quer a próxima.", spec:"Fita personalizada"},
+  {id:"trofeus", name:"Troféus de desafio", icon:"trophy", idea:true, tags:["desafios"], desc:"Para o vencedor do desafio de verão, do ranking de check-ins ou do aulão especial.", spec:"Nome do aluno gravado"},
+  {id:"funil", name:"Funil dosador de suplemento", icon:"funnel", idea:true, tags:["matricula","planos"], desc:"Duas doses de pó prontas para virar na garrafa, sem sujar a bolsa.", spec:"2 compartimentos · encaixe de garrafa"}
+];
+
+// Fotos agrupadas por produto: cada grupo ocupa um espaço e troca de foto sozinho.
+const GALLERY = window.GALLERY = [
+  {name:"Chaveiro de boca", photos:[
+    {src:"media/estetica/foto-03.jpg", alt:"Bandeja com chaveiros de boca vermelhos"},
+    {src:"media/estetica/foto-09.jpg", alt:"Bandeja com chaveiros de boca rosa"},
+    {src:"media/estetica/foto-06.jpg", alt:"Bandeja com chaveiros de boca brancos"}
+  ]},
+  {name:"Chaveiro de esmalte", photos:[
+    {src:"media/estetica/foto-08.jpg", alt:"Chaveiros de esmalte rosa com a logo da marca"},
+    {src:"media/estetica/foto-05.jpg", alt:"Chaveiros de esmalte rosa ao lado de uma lata de refrigerante"}
+  ]},
+  {name:"Porta-bijus com nome", photos:[{src:"media/estetica/foto-15.jpg", alt:"Porta-bijus em forma de nuvem em seis cores, cada um com o nome de uma marca"}]},
+  {name:"Porta-batom", photos:[{src:"media/estetica/foto-04.jpg", alt:"Lote de porta-batons pretos e brancos com chaveiro"}]},
+  {name:"Porta-creme", photos:[{src:"media/estetica/foto-07.jpg", alt:"Porta-cremes rosa com a logo gravada na tampa"}]},
+  {name:"Borboleta", photos:[{src:"media/estetica/foto-02.jpg", alt:"Chaveiros de borboleta rosa na mesa da impressora"}]},
+  {name:"Espelhinho e porta-rímel", photos:[{src:"media/estetica/foto-10.jpg", alt:"Espelhinhos de mão e porta-rímel personalizados"}]},
+  {name:"Tags com logo", photos:[{src:"media/estetica/foto-12.jpg", alt:"Tags brancas com a logo da marca num pote de vidro"}]},
+  {name:"Kit beleza", photos:[{src:"media/estetica/foto-01.jpg", alt:"Cesta com porta-batom, borboleta e caixinhas personalizadas"}]}
+];
+
+const $ = id => document.getElementById(id);
+
+function renderGallery(){
+  $("gallery").innerHTML = GALLERY.map((g,i) => `
+    <button type="button" class="slot" data-i="${i}" aria-label="Ampliar: ${g.name}">
+      ${g.photos.map((p,j) => p.video ? `<video src="${p.video}" poster="${p.poster}" autoplay muted loop playsinline aria-label="${p.alt}" class="${j===0?'on':''}"></video>` : `<img src="${p.src}" alt="${p.alt}" loading="lazy" class="${j===0?'on':''}">`).join("")}
+      ${g.photos.some(p => p.note) ? `<span class="slot-note" hidden></span>` : ""}
+      ${g.photos.length>1 ? `<span class="dots">${g.photos.map((_,j)=>`<i class="${j===0?'on':''}"></i>`).join("")}</span>` : ""}
+    </button>`).join("");
+}
+const slotIndex = GALLERY.map(() => 0);
+function advance(i){
+  const slot = $("gallery").querySelectorAll(".slot")[i]; if(!slot) return;
+  const imgs = slot.querySelectorAll("img,video"), dots = slot.querySelectorAll(".dots i");
+  if (imgs.length < 2) return;
+  imgs[slotIndex[i]].classList.remove("on"); dots[slotIndex[i]].classList.remove("on");
+  slotIndex[i] = (slotIndex[i] + 1) % imgs.length;
+  imgs[slotIndex[i]].classList.add("on"); dots[slotIndex[i]].classList.add("on");
+  const note = slot.querySelector(".slot-note"); if (note) { const n = GALLERY[i].photos[slotIndex[i]].note; note.hidden = !n; note.textContent = n || ""; }
+}
+function startRotation(){
+  GALLERY.forEach((g,i) => { if (g.photos.length > 1) { const loop = () => { const p = g.photos[slotIndex[i]]; setTimeout(() => { advance(i); loop(); }, p.video ? 8000 : 3200); }; setTimeout(loop, i * 900); } });
+}
+
+$("gallery").addEventListener("click", e => {
+  const b = e.target.closest("[data-i]"); if(!b) return;
+  const i = +b.dataset.i, p = GALLERY[i].photos[slotIndex[i]];
+  if (p.video) return;
+  $("lbImg").src = p.src; $("lbImg").alt = p.alt;
+  $("lightbox").hidden = false; $("lbClose").focus();
+});
+function closeLb(){ $("lightbox").hidden = true; }
+$("lbClose").addEventListener("click", closeLb);
+$("lightbox").addEventListener("click", e => { if(e.target.id==="lightbox") closeLb(); });
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeLb(); });
+
+// ---------- NFC: escolhe o destino e aproxima o celular ----------
+(function(){
+  const stage = $("nfStage"), go = $("nfGo"), dests = $("nfDests");
+  if (!stage) return;
+  const order = ["ig","wa","gg","ln"];
+  let cur = "ig", auto = true, timer = null;
+  function show(d){
+    cur = d;
+    dests.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.d === d));
+    stage.querySelectorAll(".nf-scr").forEach(s => s.classList.toggle("cur", s.dataset.s === d));
+  }
+  function tap(){
+    stage.classList.remove("on"); void stage.offsetWidth; stage.classList.add("on");
+    go.textContent = "Aproximar de novo";
+  }
+  function cycle(){
+    if (!auto) return;
+    tap();
+    timer = setTimeout(() => { stage.classList.remove("on"); timer = setTimeout(() => { show(order[(order.indexOf(cur) + 1) % order.length]); cycle(); }, 900); }, 3600);
+  }
+  function stopAuto(){ auto = false; clearTimeout(timer); }
+  dests.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; stopAuto(); show(b.dataset.d); tap(); });
+  go.addEventListener("click", () => { stopAuto(); tap(); });
+  show("ig");
+  if ("IntersectionObserver" in window) {
+    let started = false;
+    new IntersectionObserver(es => { if (es[0].isIntersecting && !started) { started = true; setTimeout(cycle, 600); } }, {threshold:.35}).observe(stage);
+  } else cycle();
+})();
+
+// Vídeos tocam sozinhos, sem som e em loop. Se o navegador segurar o autoplay, tenta de novo quando aparecem na tela e no primeiro toque.
+function playAll(){ document.querySelectorAll("video").forEach(v => { if (v.closest(".pp-v:not(.on)") || !v.getAttribute("src")) return; v.muted = true; v.loop = true; v.playsInline = true; if (v.paused) v.play().catch(() => {}); }); }
+playAll();
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting && e.target.paused && e.target.getAttribute("src") && !e.target.closest(".pp-v:not(.on)")) { e.target.muted = true; e.target.play().catch(() => {}); } }), {threshold:.2});
+  document.querySelectorAll("video").forEach(v => io.observe(v));
+}
+["pointerdown","touchstart","scroll","keydown"].forEach(ev => addEventListener(ev, playAll, {once:true, passive:true}));
+document.addEventListener("visibilitychange", () => { if (!document.hidden) playAll(); });
+
+renderGallery(); startRotation();
+
+// ---------- Kettlebell 3D ----------
+const KB_COLORS = [
+  ["Rosa","#F48FB1"],["Rosa chiclete","#E4567B"],["Nude","#E8C4B0"],["Lilás","#B9A3E8"],["Roxo","#8E3BF5"],["Vermelho","#D7263D"],
+  ["Branco","#EDEBF0"],["Preto","#1C1B21"],["Dourado","#D4A64A"],["Verde água","#7FD1C3"],["Azul","#1E7BE0"]
+];
+const kb = {main:"#D7263D", base:"#F48FB1", name:"SUA MARCA", piece:"bc"};
+let kbUpdate = () => {}, kbSetPiece = () => {};
+function choosePiece(p){
+  kb.piece = p;
+  document.querySelectorAll("#kbPiece button").forEach(b => b.setAttribute("aria-pressed", b.dataset.p === p));
+  $("lblMain").textContent = p === "kb" ? "Cor do esmalte" : "Cor da boca";
+  $("lblBase").textContent = "Cor da tampa";
+  $("fieldBase").hidden = p !== "kb";
+  $("kbHint").textContent = p === "kb" ? "Arraste para girar" : "Arraste para ver o nome atrás";
+  kbSetPiece(p);
+}
+function renderSwatches(id, key){
+  $(id).innerHTML = KB_COLORS.map(([n,c]) => `<button type="button" class="sw" style="--c:${c}" data-c="${c}" aria-label="${n}" title="${n}" aria-pressed="${kb[key]===c}"></button>`).join("");
+  $(id).onclick = e => { const b = e.target.closest(".sw"); if(!b) return; kb[key] = b.dataset.c; renderSwatches(id, key); kbUpdate(); };
+}
+function kbFallback(){ $("kb3d").hidden = true; $("kbHint").hidden = true; $("kbFallback").hidden = false; }
+let rx = .5;
+function initKB(){
+  renderSwatches("swMain","main"); renderSwatches("swBase","base");
+  $("kbPiece").addEventListener("click", e => { const b = e.target.closest("button"); if (b) choosePiece(b.dataset.p); });
+  $("kbName").addEventListener("input", e => { kb.name = e.target.value.toUpperCase(); kbUpdate(); });
+  if (!window.THREE) return kbFallback();
+  const canvas = $("kb3d"); let renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true}); } catch(_) { return kbFallback(); }
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 50);
+  camera.position.set(0, 0.5, 7); camera.lookAt(0, 0.2, 0);
+  scene.add(new THREE.HemisphereLight(0xffffff, 0x2a1645, 0.75));
+  const key = new THREE.DirectionalLight(0xffffff, 1.15); key.position.set(3, 4, 5); scene.add(key);
+  const rim = new THREE.DirectionalLight(0xb88bff, 1.0); rim.position.set(-4, 1.5, -3); scene.add(rim);
+  const fill = new THREE.DirectionalLight(0x8e3bf5, 0.45); fill.position.set(0, -3, 2); scene.add(fill);
+
+  // linhas de camada da impressão 3D
+  const lc = document.createElement("canvas"); lc.width = 8; lc.height = 512;
+  const lx = lc.getContext("2d"); lx.fillStyle = "#fff"; lx.fillRect(0,0,8,512); lx.fillStyle = "#9a9a9a";
+  for (let y = 0; y < 512; y += 8) lx.fillRect(0, y, 8, 3);
+  const layers = new THREE.CanvasTexture(lc); layers.wrapS = layers.wrapT = THREE.RepeatWrapping;
+
+  const mat = c => new THREE.MeshStandardMaterial({color:new THREE.Color(c).convertSRGBToLinear(), roughness:.55, metalness:.04, bumpMap:layers, bumpScale:.005});
+  const mMain = mat(kb.main), mBase = mat(kb.base);
+  const g = new THREE.Group(); g.position.y = -0.2; scene.add(g);
+  const kbG = new THREE.Group(); g.add(kbG); const bcG = new THREE.Group(); bcG.visible = false; g.add(bcG);
+  const gold = new THREE.MeshStandardMaterial({color:0xd4a64a, metalness:.9, roughness:.28});
+  const lum = hex => { const c = new THREE.Color(hex); return .2126*c.r + .7152*c.g + .0722*c.b; };
+  function fitFont(ctx, txt, size, max){ ctx.font = `700 ${size}px Rajdhani, "Arial Narrow", sans-serif`; while (ctx.measureText(txt).width > max && size > 30) { size -= 4; ctx.font = `700 ${size}px Rajdhani, "Arial Narrow", sans-serif`; } }
+  function twoLines(t){ const w = ((t || "").trim() || " ").split(/\s+/); if (w.length < 2) return [w.join(" ")]; let best = 1, bl = Infinity; for (let i = 1; i < w.length; i++) { const m = Math.max(w.slice(0,i).join(" ").length, w.slice(i).join(" ").length); if (m < bl) { bl = m; best = i; } } return [w.slice(0,best).join(" "), w.slice(best).join(" ")]; }
+
+  // ---------- esmalte (kbG): frasco na cor principal, tampa na cor da base ----------
+  const bottle = new THREE.Shape(); const bw = .62, bh = .7, br = .2;
+  bottle.moveTo(-bw + br, -bh); bottle.lineTo(bw - br, -bh); bottle.quadraticCurveTo(bw, -bh, bw, -bh + br); bottle.lineTo(bw, bh - br); bottle.quadraticCurveTo(bw, bh, bw - br, bh);
+  bottle.lineTo(-bw + br, bh); bottle.quadraticCurveTo(-bw, bh, -bw, bh - br); bottle.lineTo(-bw, -bh + br); bottle.quadraticCurveTo(-bw, -bh, -bw + br, -bh);
+  const body = new THREE.Mesh(new THREE.ExtrudeGeometry(bottle, {depth:.7, bevelEnabled:true, bevelThickness:.08, bevelSize:.08, bevelSegments:4, curveSegments:24}), mMain);
+  body.position.set(0, -.45, -.35); kbG.add(body);
+  const neck = new THREE.Mesh(new THREE.CylinderGeometry(.24, .24, .16, 32), mBase); neck.position.y = .4; kbG.add(neck);
+  const capM = new THREE.Mesh(new THREE.CylinderGeometry(.3, .3, 1.0, 48), mBase); capM.position.y = .98; kbG.add(capM);
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(.14, .026, 12, 48), gold); ring.position.y = 1.62; ring.rotation.y = Math.PI/2; kbG.add(ring);
+  const tc = document.createElement("canvas"); tc.width = 1024; tc.height = 1024;
+  const tx = tc.getContext("2d"); const ttex = new THREE.CanvasTexture(tc); ttex.encoding = THREE.sRGBEncoding; ttex.anisotropy = 4;
+  const label = new THREE.Mesh(new THREE.PlaneGeometry(1.24, 1.24), new THREE.MeshStandardMaterial({map:ttex, transparent:true, roughness:.5, polygonOffset:true, polygonOffsetFactor:-2}));
+  label.position.set(0, -.45, .44); kbG.add(label);
+  function drawLabel(){
+    tx.clearRect(0,0,1024,1024);
+    tx.fillStyle = lum(kb.main) > .55 ? "#15131B" : "#FFFFFF"; tx.textAlign = "center"; tx.textBaseline = "middle";
+    const L = twoLines(kb.name);
+    if (L.length === 1) { fitFont(tx, L[0], 230, 860); tx.fillText(L[0], 512, 512); }
+    else { fitFont(tx, L[0], 210, 860); tx.fillText(L[0], 512, 400); fitFont(tx, L[1], 210, 860); tx.fillText(L[1], 512, 630); }
+    ttex.needsUpdate = true;
+  }
+
+  // ---------- chaveiro de boca (bcG): boca em relevo na frente, nome gravado no verso ----------
+  const W = 1.2;
+  function upperLip(sh){
+    sh.moveTo(-W, 0);
+    sh.bezierCurveTo(-.95, .26, -.62, .62, -.33, .6);
+    sh.bezierCurveTo(-.15, .58, -.06, .43, 0, .41);
+    sh.bezierCurveTo(.06, .43, .15, .58, .33, .6);
+    sh.bezierCurveTo(.62, .62, .95, .26, W, 0);
+  }
+  function lowerLip(sh){
+    sh.bezierCurveTo(1.0, -.36, .62, -.74, 0, -.74);
+    sh.bezierCurveTo(-.62, -.74, -1.0, -.36, -W, 0);
+  }
+  const mouthL2R = sh => { sh.bezierCurveTo(-.8, -.05, -.35, -.03, 0, .03); sh.bezierCurveTo(.35, -.03, .8, -.05, W, 0); };
+  const mouthR2L = sh => { sh.bezierCurveTo(.8, -.05, .35, -.03, 0, .03); sh.bezierCurveTo(-.35, -.03, -.8, -.05, -W, 0); };
+  const up = new THREE.Shape(); upperLip(up); mouthR2L(up);
+  const lo = new THREE.Shape(); lo.moveTo(-W, 0); mouthL2R(lo); lowerLip(lo);
+  const all = new THREE.Shape(); upperLip(all); lowerLip(all);
+  const puffy = {depth:.04, bevelEnabled:true, bevelThickness:.24, bevelSize:.1, bevelSegments:10, curveSegments:40};
+  const upM = new THREE.Mesh(new THREE.ExtrudeGeometry(up, puffy), mMain); upM.position.z = -.02;
+  const loM = new THREE.Mesh(new THREE.ExtrudeGeometry(lo, Object.assign({}, puffy, {bevelThickness:.28})), mMain); loM.position.z = -.02;
+  const back = new THREE.Mesh(new THREE.ExtrudeGeometry(all, {depth:.12, bevelEnabled:true, bevelThickness:.03, bevelSize:.1, bevelSegments:3, curveSegments:40}), mMain);
+  back.position.z = -.3;
+  // vinco entre os lábios
+  const mCrease = new THREE.MeshStandardMaterial({color:0x5a0d18, roughness:.7});
+  const cv = new THREE.CurvePath();
+  cv.add(new THREE.CubicBezierCurve3(new THREE.Vector3(-W + .12, .005, .17), new THREE.Vector3(-.8, -.05, .31), new THREE.Vector3(-.35, -.03, .3), new THREE.Vector3(0, .03, .3)));
+  cv.add(new THREE.CubicBezierCurve3(new THREE.Vector3(0, .03, .3), new THREE.Vector3(.35, -.03, .3), new THREE.Vector3(.8, -.05, .31), new THREE.Vector3(W - .12, .005, .17)));
+  const crease = new THREE.Mesh(new THREE.TubeGeometry(cv, 80, .028, 8, false), mCrease);
+  const lips = new THREE.Group(); lips.add(upM, loM, back, crease); lips.position.x = -.22; bcG.add(lips);
+  bcG.scale.setScalar(.82); bcG.position.x = -.05;
+  // argola e correntinha de bolinhas
+  const eye = new THREE.Mesh(new THREE.TorusGeometry(.1, .04, 12, 32), mMain); eye.position.set(W + .1 - .22, .06, -.24); bcG.add(eye);
+  const ball = new THREE.SphereGeometry(.034, 12, 10);
+  for (let i = 0; i < 26; i++) {
+    const t = i / 25 * Math.PI * 1.75 - Math.PI * .85;
+    const bm = new THREE.Mesh(ball, gold);
+    bm.position.set(W + .1 - .22 + .3 + Math.cos(t) * .3, .06 + .42 + Math.sin(t) * .42, -.24); bcG.add(bm);
+  }
+  // nome gravado no verso
+  const nc = document.createElement("canvas"); nc.width = 1024; nc.height = 512;
+  const nx = nc.getContext("2d"); const ntex = new THREE.CanvasTexture(nc); ntex.encoding = THREE.sRGBEncoding; ntex.anisotropy = 4;
+  const plate = new THREE.Mesh(new THREE.PlaneGeometry(1.9, .95), new THREE.MeshStandardMaterial({map:ntex, transparent:true, roughness:.6, polygonOffset:true, polygonOffsetFactor:-2}));
+  plate.rotation.y = Math.PI; plate.position.set(-.22, -.06, -.334); bcG.add(plate);
+  function drawPlate(){
+    nx.clearRect(0,0,1024,512);
+    const c = new THREE.Color(kb.main), hsl = {}; c.getHSL(hsl);
+    const deep = new THREE.Color().setHSL(hsl.h, Math.min(1, hsl.s * 1.05), hsl.l * .55).getStyle();
+    const lite = new THREE.Color().setHSL(hsl.h, hsl.s, Math.min(1, hsl.l * 1.25 + .06)).getStyle();
+    mCrease.color.setHSL(hsl.h, hsl.s, hsl.l * .45).convertSRGBToLinear();
+    nx.textAlign = "center"; nx.textBaseline = "middle";
+    const L = twoLines(kb.name);
+    const put = (t, y, size) => { fitFont(nx, t, size, 820); nx.fillStyle = lite; nx.fillText(t, 514, y + 4); nx.fillStyle = deep; nx.fillText(t, 512, y); };
+    if (L.length === 1) put(L[0], 256, 200); else { put(L[0], 176, 170); put(L[1], 346, 170); }
+    ntex.needsUpdate = true;
+  }
+  drawPlate();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawPlate);
+  kbSetPiece = p => { kbG.visible = p === "kb"; bcG.visible = p === "bc"; rx = p === "bc" ? .12 : .1; };
+
+  kbUpdate = () => { mMain.color.set(kb.main).convertSRGBToLinear(); mBase.color.set(kb.base).convertSRGBToLinear(); drawLabel(); drawPlate(); };
+  drawLabel();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawLabel);
+  // girar com o dedo ou mouse; gira sozinho quando ninguém mexe
+  let ry = .45, drag = null, idleAt = 0;
+  canvas.addEventListener("pointerdown", e => { drag = {x:e.clientX, y:e.clientY}; try { canvas.setPointerCapture(e.pointerId); } catch(_) {} });
+  canvas.addEventListener("pointermove", e => {
+    if (!drag) return;
+    ry += (e.clientX - drag.x) * .012; rx = Math.max(-.5, Math.min(.6, rx + (e.clientY - drag.y) * .006));
+    drag = {x:e.clientX, y:e.clientY}; idleAt = performance.now();
+  });
+  const end = () => { drag = null; idleAt = performance.now(); };
+  canvas.addEventListener("pointerup", end); canvas.addEventListener("pointercancel", end);
+
+  function resize(){ const r = $("stage").getBoundingClientRect(); if (!r.width) return; renderer.setSize(r.width, r.height, false); camera.aspect = r.width / r.height; camera.updateProjectionMatrix(); }
+  resize(); if ("ResizeObserver" in window) new ResizeObserver(resize).observe($("stage")); else addEventListener("resize", resize);
+
+  let visible = true;
+  if ("IntersectionObserver" in window) new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe($("stage"));
+  (function loop(t){
+    requestAnimationFrame(loop);
+    if (!visible) return;
+    if (!drag && t - idleAt > 1800) ry += .006;
+    g.rotation.set(rx, ry, 0);
+    renderer.render(scene, camera);
+  })(0);
+}
+initKB();
+choosePiece("bc");
+
+// ---------- Revelação em camadas ao rolar ----------
+(function(){
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const els = document.querySelectorAll("main section:not(.hero) .sec-head h2, .show-media, .rec-ph, .calc, .gallery .slot, .use, .lab-stage, .journey .step");
+  const show = el => { el.classList.add("in"); setTimeout(() => { el.style.transitionDelay = ""; }, 1500); };
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } }), {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+  els.forEach(el => {
+    const item = el.closest(".show") || el;
+    const i = Math.max(0, [...item.parentElement.children].indexOf(item));
+    el.style.transitionDelay = Math.min(i, 6) * 110 + "ms";
+    el.classList.add("rv"); io.observe(el);
+  });
+  document.documentElement.classList.add("rv-on");
+  // reforço: se o observador não disparar, revela pelo scroll
+  const check = () => document.querySelectorAll(".rv:not(.in)").forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight * .95 && r.bottom > 0) show(el); });
+  addEventListener("scroll", check, {passive:true}); setTimeout(check, 600);
+})();
+
+// ---------- Como trabalhamos: passo a passo ----------
+(function(){
+  const root = $("pp"); if (!root) return;
+  const STEPS = [
+    ["Conversa", "Entendemos o público, os serviços e as ações do seu espaço para sugerir o brinde certo."],
+    ["Modelagem 3D", "Desenhamos a peça em 3D com a sua logo e as suas cores."],
+    ["Aprovação", "Enviamos a prévia da peça pelo WhatsApp para você aprovar antes de produzir."],
+    ["Produção", "Imprimimos o lote no nosso estúdio. Nos brindes com NFC, também gravamos os chips."],
+    ["Entrega", "Brindes embalados e prontos para o balcão, com sugestão de uso."]
+  ];
+  const btns = [...root.querySelectorAll(".pp-step")], vis = [...root.querySelectorAll(".pp-v")];
+  let cur = 0, auto = true, timer = null;
+  function go(i){
+    cur = (i + STEPS.length) % STEPS.length;
+    btns.forEach((b, k) => { b.setAttribute("aria-selected", k === cur); b.classList.toggle("done", k < cur); });
+    vis.forEach((v, k) => {
+      v.classList.toggle("on", k === cur);
+      const vid = v.querySelector("video");
+      if (vid) { if (k === cur) { vid.muted = true; vid.play().catch(() => {}); } else vid.pause(); }
+    });
+    $("ppFill").style.width = (cur / (STEPS.length - 1) * 100) + "%";
+    $("ppNum").textContent = String(cur + 1).padStart(2, "0") + " / 05";
+    $("ppTitle").textContent = STEPS[cur][0];
+    $("ppDesc").textContent = STEPS[cur][1];
+  }
+  function tick(){ clearTimeout(timer); if (auto) timer = setTimeout(() => { go(cur + 1); tick(); }, 4500); }
+  const manual = i => { auto = false; clearTimeout(timer); go(i); };
+  btns.forEach((b, k) => b.addEventListener("click", () => manual(k)));
+  $("ppPrev").addEventListener("click", () => manual(cur - 1));
+  $("ppNext").addEventListener("click", () => manual(cur + 1));
+  go(0);
+  if ("IntersectionObserver" in window) {
+    let started = false;
+    new IntersectionObserver(es => { if (es[0].isIntersecting && !started) { started = true; tick(); } }, {threshold:.3}).observe(root);
+  } else tick();
+})();
+
+// ---------- simulador de ganho com o expositor ----------
+(function(){
+  if (!$("calc")) return;
+  const brl = v => "R$ " + Math.round(v).toLocaleString("pt-BR");
+  const num = id => Math.max(0, parseFloat(String($(id).value).replace(",", ".")) || 0);
+  function calc(){ const m = num("cQtd") * (num("cPreco") - num("cCusto")); $("cMes").textContent = brl(m); $("cAno").textContent = brl(m * 12); }
+  ["cQtd","cPreco","cCusto"].forEach(id => $(id).addEventListener("input", calc));
+  calc();
+})();
+
+// ---------- vídeos carregam só quando chegam perto da tela ----------
+(function(){
+  const vids = [...document.querySelectorAll("video[data-src]")];
+  const load = v => { if (v.getAttribute("src")) return; v.src = v.dataset.src; v.muted = true; v.loop = true; v.playsInline = true; v.play().catch(() => {}); };
+  if (!("IntersectionObserver" in window)) { vids.forEach(load); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { load(e.target); io.unobserve(e.target); } }), {rootMargin:"400px 0px"});
+  vids.forEach(v => io.observe(v));
+  // reforço: se o observador não disparar, carrega pelo scroll
+  const near = () => vids.forEach(v => { if (v.getAttribute("src")) return; const r = v.getBoundingClientRect(); if (r.width && r.top < innerHeight + 400 && r.bottom > -400) load(v); });
+  addEventListener("scroll", near, {passive:true}); addEventListener("resize", near); setTimeout(near, 300);
+})();
+</script>
+
+<script>
+// ---------- subcategorias (teste): filtra as peças pela área da profissional ----------
+(function(){
+  const CATS = [{"id":"todos","label":"Todos"},{"id":"nail","label":"Nail designer","h1":"Sua cliente sai do seu estúdio de unhas com a sua marca.","quem":"nail designer","ideia":"Chaveiro de esmalte, chaveiro com a logo do seu estúdio e certificado para as alunas do seu curso. Sob medida: chaveiro de lixa ou de alicate."},{"id":"lash","label":"Lash e brow designer","h1":"Sua cliente sai do seu estúdio de cílios com a sua marca.","quem":"lash e brow designer","ideia":"Chaveiro de cílios, porta-rímel e certificado para as alunas. Sob medida: porta-escovinha de cílios e chaveiro de pinça."},{"id":"harm","label":"Harmonização facial","h1":"Sua paciente sai da sua clínica com a sua marca.","quem":"harmonização facial","ideia":"Chaveiro de boca, porta-protetor labial, potinho para amostras de creme e porta-bijus de boca. Sob medida: chaveiro de seringa ou de frasco."},{"id":"dent","label":"Dentista","h1":"Seu paciente sai do consultório com a sua marca.","quem":"dentista","ideia":"Chaveiro de boca e chaveiros com a logo do consultório. Sob medida: chaveiro de dente, porta fio dental e porta-escova com o nome da clínica."},{"id":"salao","label":"Salão de beleza","h1":"Sua cliente sai do seu salão com a sua marca.","quem":"salão de beleza","ideia":"Pente com a logo, potinho de creme, porta-bijus e placas para a recepção. Sob medida: chaveiro de secador ou de tesoura."},{"id":"make","label":"Maquiadora","h1":"Sua cliente sai da maquiagem com a sua marca.","quem":"maquiadora","ideia":"Chaveiro de batom, porta-rímel, porta-protetor labial e limpador de pincéis. Sob medida: chaveiro de pincel ou de paleta."}], TAGS = {"estetica/video-07":["lash","make"],"estetica/video-02":["make","harm"],"estetica/video-09":["harm","salao"],"estetica/video-12":["harm","make","dent"],"estetica/video-19":["make"],"estetica/video-05":["make","harm"],"estetica/video-06":["*"],"estetica/video-17":["lash"],"estetica/video-13":["*"],"estetica/video-14":["*"],"estetica/video-15":["*"],"estetica/video-20":["harm","salao"],"estetica/video-04":["*"],"estetica/video-03":["*"],"estetica/video-18":["*"],"estetica/video-23":["*"],"estetica/video-24":["salao"],"estetica/video-26":["nail"],"estetica/video-10":["*"],"estetica/video-16":["make"],"estetica/video-21":["nail","lash","salao"],"estetica/video-22":["*"],"estetica/video-25":["*"],"Chaveiro de boca":["harm","make","dent"],"Chaveiro de esmalte":["nail"],"Porta-bijus com nome":["*"],"Porta-batom":["make"],"Porta-creme":["harm","salao"],"Borboleta":["*"],"Espelhinho e porta-rímel":["make","lash"],"Tags com logo":["*"],"Kit beleza":["*"],"certificados":["nail","lash"]};
+  const bar = document.getElementById("sub"); if (!bar) return;
+  const h1 = document.querySelector(".hero h1"), h1Orig = h1 ? h1.innerHTML : "";
+  const wa = document.querySelector("#contato .btn-primary"), waOrig = wa ? wa.href : "";
+  const keyOf = el => { const v = el.querySelector("video"), im = el.querySelector("img"); const raw = v ? (v.dataset.src || v.getAttribute("src") || "") : im ? im.getAttribute("src") || "" : ""; const m = raw.match(/media\/(.+)\.[a-z0-9]+$/i); return m ? m[1] : ""; };
+  const fits = (tags, c) => c === "todos" || !tags || tags.includes("*") || tags.includes(c);
+  function apply(c){
+    const cat = CATS.find(x => x.id === c) || CATS[0];
+    bar.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.c === c));
+    const on = bar.querySelector('[data-c="' + c + '"]'), row = bar.querySelector(".sub-chips"); if (on && row) row.scrollTo({left: on.offsetLeft - row.clientWidth / 2 + on.offsetWidth / 2, behavior: "smooth"});
+    document.querySelectorAll("#em-uso .show, #espaco .show").forEach(f => f.classList.toggle("sub-off", !fits(TAGS[keyOf(f)], c)));
+    if (window.GALLERY) document.querySelectorAll("#gallery .slot").forEach(sl => { const g = GALLERY[+sl.dataset.i]; sl.classList.toggle("sub-off", !fits(g && TAGS[g.name], c)); });
+    const cert = document.getElementById("certificados"); if (cert) cert.classList.toggle("sub-off", !fits(TAGS.certificados, c));
+    ["espaco"].forEach(id => { const sec = document.getElementById(id); if (sec) sec.classList.toggle("sub-off", !sec.querySelector(".show:not(.sub-off)")); });
+    const ideia = document.getElementById("subIdeia");
+    if (cat.ideia) { ideia.hidden = false; ideia.innerHTML = "<b>Para " + cat.quem + ":</b> " + cat.ideia; } else ideia.hidden = true;
+    if (h1) h1.innerHTML = cat.h1 ? cat.h1 + " <em>E leva para todo lugar.</em>" : h1Orig;
+    if (wa) wa.href = cat.quem ? "https://wa.me/5521985101880?text=" + encodeURIComponent("Olá, MAC3DOS! Vi o catálogo de estética e beleza. Sou " + cat.quem + " e quero conversar sobre brindes.") : waOrig;
+    try { history.replaceState(null, "", c === "todos" ? location.pathname : "#area=" + c); } catch(_) {}
+  }
+  bar.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; apply(b.dataset.c); const em = document.getElementById("em-uso"); if (em && em.getBoundingClientRect().top < 0) em.scrollIntoView({behavior:"smooth"}); });
+  const m = /#area=(\w+)/.exec(location.hash); apply(m ? m[1] : "todos");
+})();
+</script>
+<!-- visualizador:inicio -->
+<style>
+.vz-click{cursor:zoom-in}
+.show-media,.rec-ph{position:relative}
+.show-media::after,.rec-ph::after{content:"";position:absolute;right:10px;bottom:10px;width:30px;height:30px;border-radius:50%;background:rgba(11,10,14,.72) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6'/%3E%3Cpath d='M15 15l5 5M10.5 8v5M8 10.5h5'/%3E%3C/svg%3E") center/16px no-repeat;border:1px solid rgba(255,255,255,.2);pointer-events:none;opacity:.85}
+@media (max-width:760px){.show-media::after,.rec-ph::after{width:24px;height:24px;right:6px;bottom:6px;background-size:13px}}
+.vz{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:16px;background:rgba(6,5,9,.94);backdrop-filter:blur(6px)}
+.vz[hidden]{display:none}
+.vz-fig{margin:0;display:grid;gap:14px;justify-items:center;max-width:min(92vw,620px);width:100%}
+.vz-media{display:grid;place-items:center;width:100%}
+.vz-media img,.vz-media video{max-width:100%;max-height:62vh;border-radius:14px;display:block;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.vz-cap{display:grid;gap:4px;justify-items:center;text-align:center;color:var(--fg,#EDEBF0)}
+.vz-tag{font-family:var(--f-mono,monospace);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-soft,#B88BFF)}
+.vz-name{font-family:var(--f-title,sans-serif);font-size:1.3rem;font-weight:700;line-height:1.15}
+.vz-code{font-family:var(--f-mono,monospace);font-size:.72rem;color:var(--muted,#A39DB0)}
+.vz-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.vz-wa,.vz-share{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 20px;font-weight:700;font-size:.98rem;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.vz-wa{background:#25D366;color:#06260f}
+.vz-wa:hover,.vz-wa:focus-visible{background:#3be27a;outline:none}
+.vz-share{background:transparent;color:var(--fg,#EDEBF0);border:1px solid rgba(255,255,255,.25)}
+.vz-wa svg,.vz-share svg{width:20px;height:20px;flex:none}
+.vz-x,.vz-nav{position:fixed;z-index:1;border:1px solid rgba(255,255,255,.2);background:rgba(21,19,27,.85);color:#fff;cursor:pointer;font-family:inherit}
+.vz-x{top:14px;right:14px;border-radius:999px;padding:8px 14px;font-size:.85rem}
+.vz-nav{top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;font-size:1.4rem;line-height:1}
+.vz-prev{left:12px}.vz-next{right:12px}
+.vz-count{font-family:var(--f-mono,monospace);font-size:.68rem;color:var(--muted,#A39DB0)}
+@media (max-width:760px){.vz-nav{top:auto;bottom:14px;transform:none}.vz-media img,.vz-media video{max-height:56vh}.vz{padding:56px 12px 70px}}
+</style>
+<div class="vz" id="vz" hidden role="dialog" aria-modal="true" aria-label="Modelo ampliado">
+  <button type="button" class="vz-x" data-vz="close">Fechar ✕</button>
+  <button type="button" class="vz-nav vz-prev" data-vz="prev" aria-label="Anterior">‹</button>
+  <button type="button" class="vz-nav vz-next" data-vz="next" aria-label="Próximo">›</button>
+  <figure class="vz-fig">
+    <div class="vz-media" id="vzMedia"></div>
+    <figcaption class="vz-cap"><span class="vz-tag" id="vzTag"></span><strong class="vz-name" id="vzName"></strong><span class="vz-code" id="vzCode"></span></figcaption>
+    <div class="vz-actions">
+      <a class="vz-wa" id="vzWa" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>Quero este modelo</a>
+      <button type="button" class="vz-share" id="vzShare" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 14v5h14v-5"/></svg>Enviar a imagem</button>
+    </div>
+    <span class="vz-count" id="vzCount"></span>
+  </figure>
+</div>
+<script>
+(function(){
+  const PAGE = "estetica-teste.html", SEG = "Estética e beleza", SITE = "https://mac3dos.github.io/", WA = "5521985101880";
+  const box = document.getElementById("vz"); if (!box) return;
+  const $v = id => document.getElementById(id);
+  const SKIP = ".printer,.lab-stage,.pp,.hero,.vz,#lightbox";
+  const pathOf = el => { const raw = el.tagName === "VIDEO" ? (el.dataset.src || el.getAttribute("src") || "") : (el.getAttribute("src") || ""); const i = raw.indexOf("media/"); return i < 0 ? "" : raw.slice(i); };
+  const posterOf = el => { if (el.tagName !== "VIDEO") return pathOf(el); const p = el.getAttribute("poster") || ""; const i = p.indexOf("media/"); return i < 0 ? "" : p.slice(i); };
+  const codeOf = p => { const rest = p.replace(/^media\//, "").replace(/\.[a-z0-9]+$/i, ""); return (rest.includes("/") ? rest : "esportes/" + rest).replace(/\//g, "-").toUpperCase(); };
+  const txt = n => (n && n.textContent || "").replace(/\s+/g, " ").trim();
+  function info(el){
+    const fig = el.closest("figure"), slot = el.closest(".slot"), use = el.closest(".use");
+    let name = txt(fig && fig.querySelector("figcaption strong")) || (slot ? (slot.getAttribute("aria-label") || "").replace(/^Ampliar:\s*/, "") : "") || txt(use && use.querySelector("h3"));
+    let tag = txt(fig && fig.querySelector("figcaption span")) || txt(use && use.querySelector(".use-tag"));
+    const desc = el.getAttribute("alt") || el.getAttribute("aria-label") || "";
+    if (!name) { name = desc; }
+    return {name, tag, desc};
+  }
+  let list = [], cur = 0;
+  function collect(){
+    const seen = new Set();
+    list = [...document.querySelectorAll("main img, main video")].filter(el => !el.closest(SKIP) && pathOf(el)).filter(el => { const p = pathOf(el); if (seen.has(p)) return false; seen.add(p); return true; });
+    list.forEach(el => { el.classList.add("vz-click"); const s = el.closest(".slot"); if (s) s.classList.add("vz-click"); });
+  }
+  function message(it){ return "Olá, MAC3DOS! Vi no catálogo de " + SEG + " e quero este modelo:\n*" + it.name + "*\nCódigo: " + it.code + "\n" + SITE + PAGE + "#ref=" + it.code; }
+  function open(i){
+    cur = (i + list.length) % list.length;
+    const el = list[cur], p = pathOf(el), inf = info(el), code = codeOf(p);
+    const m = $v("vzMedia"); m.innerHTML = "";
+    if (el.tagName === "VIDEO") { const v = document.createElement("video"); v.src = p; v.poster = posterOf(el); v.autoplay = v.muted = v.loop = v.playsInline = true; v.controls = true; v.setAttribute("aria-label", inf.desc); m.appendChild(v); v.play().catch(() => {}); }
+    else { const im = document.createElement("img"); im.src = p; im.alt = inf.desc; m.appendChild(im); }
+    $v("vzTag").textContent = inf.tag; $v("vzName").textContent = inf.name; $v("vzCode").textContent = "Código " + code;
+    $v("vzCount").textContent = (cur + 1) + " de " + list.length;
+    const it = {name: inf.name, code, img: posterOf(el)};
+    $v("vzWa").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(message(it));
+    $v("vzShare").onclick = () => shareImg(it);
+    if (box.hidden) { box.hidden = false; document.documentElement.style.overflow = "hidden"; $v("vzWa").focus({preventScroll:true}); }
+    try { history.replaceState(null, "", "#ref=" + code); } catch(_) {}
+  }
+  function close(){ box.hidden = true; $v("vzMedia").innerHTML = ""; document.documentElement.style.overflow = ""; try { history.replaceState(null, "", location.pathname + location.search); } catch(_) {} }
+  async function shareImg(it){
+    try {
+      const r = await fetch(it.img); const b = await r.blob();
+      const f = new File([b], it.code.toLowerCase() + ".jpg", {type: b.type || "image/jpeg"});
+      if (navigator.canShare && navigator.canShare({files:[f]})) { await navigator.share({files:[f], text: message(it)}); return; }
+    } catch(_) { return; }
+    window.open($v("vzWa").href, "_blank");
+  }
+  if (navigator.canShare) { try { if (navigator.canShare({files:[new File([""], "a.jpg", {type:"image/jpeg"})]})) $v("vzShare").hidden = false; } catch(_) {} }
+  document.addEventListener("click", e => {
+    if (!box.hidden) return;
+    let el = e.target.closest("img,video");
+    if (!el) { const s = e.target.closest(".slot,.show-media,.rec-ph"); if (s) el = s.querySelector("img.on,video.on") || s.querySelector("img,video"); }
+    if (!el || el.closest(SKIP)) return;
+    const i = list.indexOf(el); if (i < 0) return;
+    e.preventDefault(); e.stopImmediatePropagation(); open(i);
+  }, true);
+  box.addEventListener("click", e => { const a = e.target.closest("[data-vz]"); if (a) { const k = a.dataset.vz; if (k === "close") close(); else open(cur + (k === "next" ? 1 : -1)); return; } if (e.target === box) close(); });
+  document.addEventListener("keydown", e => { if (box.hidden) return; if (e.key === "Escape") close(); if (e.key === "ArrowRight") open(cur + 1); if (e.key === "ArrowLeft") open(cur - 1); });
+  let sx = null; box.addEventListener("touchstart", e => { sx = e.touches[0].clientX; }, {passive:true});
+  box.addEventListener("touchend", e => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 60) open(cur + (dx < 0 ? 1 : -1)); }, {passive:true});
+  collect();
+  // link recebido pelo WhatsApp abre direto no modelo
+  const m = /#ref=([A-Z0-9-]+)/.exec(location.hash);
+  if (m) { const i = list.findIndex(el => codeOf(pathOf(el)) === m[1]); if (i >= 0) setTimeout(() => { list[i].scrollIntoView({block:"center"}); open(i); }, 400); }
+})();
+</script>
+<!-- visualizador:fim -->
+
+</body>
+</html>

@@ -9,6 +9,7 @@ const pages = [
   {src: 'mac3dos-academias.html', dst: 'esportes.html', seg: 'Esportes e bem-estar',  img: 'media/foto-09.jpg',   desc: 'Brindes úteis impressos em 3D para academias, estúdios, personal trainers e eventos esportivos.'},
   {src: 'mac3dos-criadores.html', dst: 'criadores.html', seg: 'Criadores de conteúdo', img: 'media/criadores/thumb.jpg', desc: 'Mini microfones, claquetes e acessórios impressos em 3D para criadores de conteúdo.'},
   {src: 'mac3dos-celulares.html', dst: 'celulares.html', seg: 'Celulares e tecnologia', img: 'media/celulares/thumb.jpg', desc: 'Brindes impressos em 3D para lojas de celular e assistências técnicas.'},
+  {src: 'mac3dos-estetica-teste.html', dst: 'estetica-teste.html', seg: 'Estética e beleza', img: 'media/estetica/thumb.jpg', desc: 'Brindes úteis impressos em 3D para estética e beleza.'},
   {src: 'mac3dos-estetica.html',  dst: 'estetica.html', seg: 'Estética e beleza',  img: 'media/estetica/thumb.jpg', desc: 'Brindes úteis impressos em 3D para estética e beleza.'},
 ];
 // links do claude.ai viram links entre as páginas do site
