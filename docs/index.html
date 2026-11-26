@@ -174,7 +174,7 @@ h1 span{color:var(--purple-soft)}
 
     <a class="world" href="criadores.html" data-i="2">
       <div class="shot">
-        <canvas class="pix" data-scene="criadores" role="img" aria-label="Cena em pixel art: mini microfone com cubo rosa, claquete batendo e celular gravando, com corações subindo"></canvas>
+        <canvas class="pix" data-scene="criadores" role="img" aria-label="Cena em pixel art: microfone com cubo rosa soltando ondas de som, claquete batendo e ring light com celular gravando"></canvas>
         <span class="tag">Mundo 3</span><span class="cursor">Selecionado</span>
         <h2 class="name">Criadores de conteúdo</h2>
       </div>
@@ -441,66 +441,102 @@ function pixelScene(cv, kind){
 
   function criadores(t, hz, fy){
     const bob = Math.round(Math.sin(t * 2.4) * 1.5);
-    const CHALK = col("#8d86a3"), SCR = [col("#24164a"), col("#3b2a6e")], CABLE = col("#e6e1ee");
+    const CHALK = col("#cfcbd8"), CHALK2 = col("#6f6880");
+    const STEEL = ["#1a1822","#34303f","#5a5568","#9a94ad","#e8e4f2"].map(col);
+    const SILV = [col("#6c6780"), col("#b9b4c8"), col("#f4f1fa")];
+    const LIGHT = [col("#ffe7b3"), col("#fff6dc"), col("#ffffff")];
 
-    // claquete, à esquerda: prancha preta com riscos de giz e barra listrada que abre e bate
-    const kx = Math.round(W * .2), kw = Math.round(U * .12), kh = Math.round(U * .14);
+    // claquete, à esquerda: prancha preta com quadro de giz e barra listrada que abre e bate
+    const kx = Math.round(W * .19), kw = Math.round(U * .14), kh = Math.round(U * .16);
     const x0 = kx - kw, x1 = kx + kw, y0 = fy - kh;
     shadow(kx, fy + 1, kw + 3, 2);
-    const chalkY = y0 + Math.round(kh * .45);
+    const r1 = y0 + Math.round(kh * .42), r2 = y0 + Math.round(kh * .72);
     shape(x0, y0, x1, fy, (x, y) => x >= x0 && x <= x1 && y >= y0 && y <= fy, (x, y) => {
-      let c = x === x0 ? DARKC[2] : DARKC[1];
-      if ((y === chalkY && x > x0 + 1 && x < x1 - 1) || (y > chalkY && y < fy - 1 && (x === kx || x === x0 + Math.round(kw * .6)))) c = CHALK;
-      if (y > y0 + 1 && y < chalkY - 1 && x > x0 + 2 && x < x1 - 2 && (y - y0) % 3 === 0 && (x * 7 + y) % 5 < 3) c = col("#d6d5dc");
+      let c = x <= x0 + 1 ? DARKC[2] : DARKC[1];
+      const inner = x > x0 + 2 && x < x1 - 2 && y > y0 + 1 && y < fy - 1;
+      if (inner && (y === r1 || y === r2)) c = CHALK2;
+      if (inner && y > r1 && x === kx) c = CHALK2;
+      // "títulos" escritos a giz
+      if (y === y0 + 3 && x > x0 + 3 && x < x1 - 3 && (x % 4) !== 0) c = CHALK;
+      if (y === y0 + 5 && x > x0 + 3 && x < kx + 2 && (x % 3) !== 0) c = CHALK;
+      if (y === r1 + 3 && ((x > x0 + 3 && x < kx - 2) || (x > kx + 2 && x < x1 - 3)) && (x % 3) !== 1) c = CHALK;
       put(x, y, c);
     });
-    const stripe = (u, v) => ((Math.floor(u) - Math.floor(v)) % 6 + 6) % 6 < 3 ? WHITE : DARKC[0];
-    shape(x0, y0 - 3, x1, y0 - 1, (x, y) => x >= x0 && x <= x1 && y >= y0 - 3 && y <= y0 - 1, (x, y) => put(x, y, stripe(x - x0, y)));
+    const stripe = (u, v) => ((Math.floor(u) - Math.floor(v)) % 8 + 8) % 8 < 4 ? WHITE : DARKC[0];
+    shape(x0, y0 - 4, x1, y0 - 1, (x, y) => x >= x0 && x <= x1 && y >= y0 - 4 && y <= y0 - 1, (x, y) => put(x, y, stripe(x - x0, y)));
     const ph = (t % 2.4) / 2.4;
-    const a = Math.max(0, ph < .75 ? .5 * Math.sin(ph / .75 * Math.PI / 2) : .5 * (1 - (ph - .75) / .06));
-    const pvx = x0, pvy = y0 - 4, L = x1 - x0, ca = Math.cos(a), sa = Math.sin(a);
-    const onBar = (x, y) => { const dx = x - pvx + .5, dy = y - pvy + .5, u = dx * ca - dy * sa, v = dx * sa + dy * ca; return u >= 0 && u <= L && v >= -2.6 && v <= .4; };
-    shape(x0, pvy - Math.ceil(L * .5) - 4, x1 + 1, pvy + 1, onBar, (x, y) => { const dx = x - pvx + .5, dy = y - pvy + .5; put(x, y, stripe(dx * ca - dy * sa, dx * sa + dy * ca)); });
+    const a = Math.max(0, ph < .72 ? .55 * Math.sin(ph / .72 * Math.PI / 2) : .55 * (1 - (ph - .72) / .06));
+    const pvx = x0, pvy = y0 - 5, L = x1 - x0, ca = Math.cos(a), sa = Math.sin(a);
+    const onBar = (x, y) => { const dx = x - pvx + .5, dy = y - pvy + .5, u = dx * ca - dy * sa, v = dx * sa + dy * ca; return u >= 0 && u <= L && v >= -3.6 && v <= .4; };
+    shape(x0, pvy - Math.ceil(L * .56) - 5, x1 + 1, pvy + 1, onBar, (x, y) => { const dx = x - pvx + .5, dy = y - pvy + .5; put(x, y, stripe(dx * ca - dy * sa, dx * sa + dy * ca)); });
+    put(x0, y0 - 5, SILV[2]); put(x0 + 1, y0 - 5, SILV[1]); put(x0, y0 - 4, SILV[1]);
+    // "clap!" quando bate
+    if (ph > .78 && ph < .9) [[-3, -9], [-5, -6], [-2, -12]].forEach(([dx, dy]) => { put(x1 + 2 - dx, y0 + dy, col("#ffc46b")); put(x1 + 3 - dx, y0 + dy - 1, col("#ffc46b")); });
 
-    // celular gravando, à direita: tela com REC piscando e cabo com protetor rosa
-    const px = Math.round(W * .8), pw = Math.round(U * .075), phh = Math.round(U * .23);
-    const qx0 = px - pw, qx1 = px + pw, qy0 = fy - phh;
-    shadow(px, fy + 1, pw + 3, 2);
-    shape(qx0, qy0, qx1, fy, (x, y) => x >= qx0 && x <= qx1 && y >= qy0 && y <= fy && !((y === qy0 || y === fy) && (x === qx0 || x === qx1)), (x, y) => {
-      const inScr = x > qx0 + 1 && x < qx1 - 1 && y > qy0 + 3 && y < fy - 3;
-      let c = x === qx0 + 1 || y === qy0 + 1 ? DARKC[2] : DARKC[0];
-      if (inScr) c = (y - qy0) / phh + dith(x, y) * .3 > .62 ? SCR[1] : SCR[0];
-      if (y === qy0 + 2 && Math.abs(x - px) <= 1) c = DARKC[1];
-      put(x, y, c);
+    // ring light com celular gravando, à direita
+    const rx = Math.round(W * .81), R = Math.round(U * .14), rcy = fy - Math.round(U * .31);
+    shadow(rx, fy + 1, R, 2);
+    // tripé
+    line(rx, rcy + R, rx, fy - 3, SILV[0]); line(rx + 1, rcy + R, rx + 1, fy - 3, SILV[1]);
+    line(rx, fy - 4, rx - Math.round(R * .7), fy, SILV[1]); line(rx + 1, fy - 4, rx + Math.round(R * .7) + 1, fy, SILV[0]); line(rx, fy - 4, rx, fy, SILV[0]);
+    // brilho em volta do anel
+    const pulse = .5 + .5 * Math.sin(t * 3);
+    for (let y = rcy - R - 3; y <= rcy + R + 3; y++) for (let x = rx - R - 3; x <= rx + R + 3; x++) {
+      const d = Math.hypot(x - rx + .5, y - rcy + .5);
+      if (d > R + .6 && d < R + 3 && dith(x, y) < .32 + pulse * .25) put(x, y, col("#ffd98a"));
+    }
+    shape(rx - R, rcy - R, rx + R, rcy + R, (x, y) => { const d = Math.hypot(x - rx + .5, y - rcy + .5); return d <= R && d >= R - 3; }, (x, y) => {
+      const d = Math.hypot(x - rx + .5, y - rcy + .5);
+      put(x, y, d > R - 1 ? LIGHT[0] : d > R - 2 ? LIGHT[2] : LIGHT[1]);
     });
-    if (Math.sin(t * 4) > -.2) { put(qx0 + 3, qy0 + 5, RED[2]); put(qx0 + 4, qy0 + 5, RED[2]); put(qx0 + 3, qy0 + 6, RED[2]); put(qx0 + 4, qy0 + 6, RED[3]); }
-    const PLAY = ["X...","XXX.","XXXX","XXX.","X..."], pcy = qy0 + Math.round(phh * .48);
-    PLAY.forEach((row, j) => [...row].forEach((ch, i) => { if (ch === "X") put(px - 1 + i, pcy - 2 + j, WHITE); }));
-    line(px + 1, fy + 1, px + 5, fy + 4, CABLE); line(px + 5, fy + 4, W - 1, fy + 7, CABLE);
-    for (let i = 0; i < 4; i++) { put(px + 1 + i, fy + 1 + Math.round(i * .75), PINK[1]); put(px + 1 + i, fy + 2 + Math.round(i * .75), PINK[0]); }
+    // celular no meio do anel: tela com REC e um rostinho gravando
+    const pw = Math.max(3, Math.round(R * .38)), phh = Math.round(R * 1.15);
+    const qx0 = rx - pw, qx1 = rx + pw, qy0 = rcy - Math.round(phh / 2), qy1 = qy0 + phh;
+    line(rx, qy1, rx, rcy + R - 2, SILV[1]);
+    shape(qx0, qy0, qx1, qy1, (x, y) => x >= qx0 && x <= qx1 && y >= qy0 && y <= qy1, (x, y) => {
+      const scr = x > qx0 && x < qx1 && y > qy0 + 1 && y < qy1 - 1;
+      put(x, y, scr ? ((y - qy0) / phh > .55 ? col("#4b2a7a") : col("#2a1a4a")) : DARKC[0]);
+    });
+    const fx = rx, fyy = qy0 + Math.round(phh * .45);
+    put(fx, fyy - 1, PINK[2]); put(fx - 1, fyy, PINK[2]); put(fx, fyy, PINK[2]); put(fx + 1, fyy, PINK[2]);
+    for (let x = fx - 2; x <= fx + 2; x++) put(x, fyy + 3, PINK[1]);
+    if (Math.sin(t * 4) > -.2) { put(qx0 + 1, qy0 + 2, RED[2]); put(qx0 + 2, qy0 + 2, RED[3]); }
 
-    // mini microfone no centro: grade redonda, cabo preto e cubo rosa com a logo
-    const mx = Math.round(W / 2), cs = Math.round(U * .2), hw = Math.max(2, Math.round(U * .028));
-    const cb = fy - Math.round(U * .12) + bob, ct = cb - cs, half = Math.round(cs / 2);
-    shadow(mx, fy + 1, half + 3, 3 - (bob > 0 ? 1 : 0));
-    box(mx - hw, cb, mx + hw, fy - 3 + bob, DARKC);
-    const hr = Math.round(U * .085), hcy = ct - hr - 1;
-    ball(mx, hcy, hr, IRON);
+    // microfone no centro: grade de metal, anel prateado, cubo rosa com a logo e cabo comprido
+    const mx = Math.round(W / 2), cs = Math.round(U * .18), hw = Math.max(2, Math.round(U * .026)), half = Math.round(cs / 2);
+    const fl = -2 + bob;
+    const cb = fy - Math.round(U * .2) + fl, ct = cb - cs;
+    shadow(mx, fy + 1, half + 2, 3 - (bob > 0 ? 1 : 0));
+    // cabo afinando para baixo
+    const hb = fy - 2 + fl;
+    shape(mx - hw, cb, mx + hw, hb, (x, y) => { const w = hw - (y - cb) / Math.max(1, hb - cb) * 1.2; return y >= cb && y <= hb && Math.abs(x - mx + .5) <= w + .5; }, (x, y) => put(x, y, x < mx - hw * .3 ? DARKC[2] : x > mx + hw * .4 ? DARKC[0] : DARKC[1]));
+    // anel prateado e cabeça
+    const hr = Math.round(U * .095), hcy = ct - hr - 2;
+    shape(mx - hw - 2, ct - 3, mx + hw + 2, ct - 1, (x, y) => x >= mx - hw - 2 && x <= mx + hw + 2 && y >= ct - 3 && y <= ct - 1, (x, y) => put(x, y, x < mx - hw ? SILV[2] : x > mx + hw ? SILV[0] : SILV[1]));
+    ball(mx, hcy, hr, STEEL);
     for (let y = hcy - hr + 1; y < hcy + hr; y++) for (let x = mx - hr + 1; x < mx + hr; x++) {
       const dx = x - mx + .5, dy = y - hcy + .5;
-      if (dx * dx + dy * dy < (hr - 1.2) * (hr - 1.2) && (x & 1) === 0 && (y & 1) === 0) put(x, y, IRON[0]);
+      if (dx * dx + dy * dy < (hr - 1) * (hr - 1) && (((x + y) & 3) === 0 || ((x - y) & 3) === 0)) put(x, y, (dx + dy < -hr * .4) ? STEEL[2] : STEEL[0]);
     }
-    for (let x = mx - hr + 1; x < mx + hr; x++) put(x, hcy + Math.round(hr * .35), IRON[3]);
-    box(mx - hw - 1, ct - 2, mx + hw + 1, ct - 1, DARKC);
+    for (let x = mx - hr + 1; x < mx + hr; x++) { put(x, hcy + Math.round(hr * .3), SILV[1]); put(x, hcy + Math.round(hr * .3) + 1, SILV[0]); }
+    put(mx - Math.round(hr * .45), hcy - Math.round(hr * .5), WHITE); put(mx - Math.round(hr * .45) + 1, hcy - Math.round(hr * .5), STEEL[4]);
+    // ondas de som saindo da cabeça
+    const wv = (t * 1.6) % 1;
+    [0, .5].forEach(off => {
+      const k = (wv + off) % 1, rr = hr + 2 + k * hr * 1.3, c = k < .5 ? col("#ffc46b") : col("#f2784b");
+      if (k > .85) return;
+      for (let ang = -.6; ang <= .6; ang += .08) [-1, 1].forEach(sd => put(mx + sd * Math.round(Math.cos(ang) * rr), hcy + Math.round(Math.sin(ang) * rr), c));
+    });
+    // cubo com a logo
     box(mx - half, ct, mx + half, cb, PINK);
     for (let x = mx - half + 1; x < mx + half; x++) put(x, ct, PINK[2]);
-    const lw = Math.max(5, Math.round(cs * .42));
+    const lw = Math.max(5, Math.round(cs * .44));
     logo(mx, ct + Math.round((cs - lw * 84 / 56) / 2) + 1, lw, PINK[0]);
 
     // corações e "play" subindo, como curtidas numa live
-    const HEART = [".X.X.","XXXXX","XXXXX",".XXX.","..X.."];
-    [[.35, 0], [.65, 18], [.93, 33], [.06, 9]].forEach(([fx, phs], i) => {
-      const yy = fy - 6 - ((t * 9 + phs) % (fy - 8)), xx = Math.round(W * fx) + Math.round(Math.sin(t * 2 + i) * 2);
+    const HEART = [".X.X.","XXXXX","XXXXX",".XXX.","..X.."], PLAY = ["X..","XX.","XXX","XX.","X.."];
+    [[.36, 0], [.64, 18], [.95, 33], [.04, 9]].forEach(([fxx, phs], i) => {
+      const yy = fy - 6 - ((t * 9 + phs) % (fy - 8)), xx = Math.round(W * fxx) + Math.round(Math.sin(t * 2 + i) * 2);
       const pat = i % 2 ? PLAY : HEART;
       pat.forEach((row, j) => [...row].forEach((ch, k) => { if (ch === "X") put(xx + k, yy + j, i % 2 ? col("#ffc46b") : (j === 1 && k === 1 ? WHITE : col("#ff6d9c"))); }));
     });
