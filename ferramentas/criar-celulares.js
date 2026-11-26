@@ -13,7 +13,7 @@ head = rep(head, [
   ['<span>Estética e beleza</span>', '<span>Celulares e tecnologia</span>'],
   ['</style>', `/* celulares e tecnologia */
 #pecas .uses{grid-template-columns:repeat(3,minmax(0,1fr))}
-.use-ph{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px}
+.use-ph{display:block;width:88px;height:88px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.1);box-shadow:0 10px 24px rgba(0,0,0,.45)}
 #pecas .use svg{aspect-ratio:4/3;max-width:none}
 #pecas .use svg{width:100%;max-width:220px;height:auto;justify-self:center;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5))}
 @media (max-width:900px){#pecas .uses{grid-template-columns:1fr}}
