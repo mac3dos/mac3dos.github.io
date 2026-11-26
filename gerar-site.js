@@ -8,6 +8,7 @@ const pages = [
   {src: 'mac3dos-inicio.html',    dst: 'index.html',     img: 'media/hub/thumb.jpg', desc: 'Escolha o seu segmento e veja os brindes 3D da MAC3DOS.'},
   {src: 'mac3dos-academias.html', dst: 'esportes.html',  img: 'media/foto-09.jpg',   desc: 'Brindes úteis impressos em 3D para academias, estúdios, personal trainers e eventos esportivos.'},
   {src: 'mac3dos-criadores.html', dst: 'criadores.html', img: 'media/criadores/thumb.jpg', desc: 'Mini microfones, claquetes e acessórios impressos em 3D para criadores de conteúdo.'},
+  {src: 'mac3dos-celulares.html', dst: 'celulares.html', img: 'media/celulares/thumb.jpg', desc: 'Brindes impressos em 3D para lojas de celular e assistências técnicas.'},
   {src: 'mac3dos-estetica.html',  dst: 'estetica.html',  img: 'media/estetica/thumb.jpg', desc: 'Brindes úteis impressos em 3D para estética e beleza.'},
 ];
 // links do claude.ai viram links entre as páginas do site
@@ -16,6 +17,7 @@ const links = {
   'https://claude.ai/artifact/4U7TmaHNAs8AMwY5WEkDiG': 'esportes.html',
   'https://claude.ai/artifact/ETYvWHitponzAwtcAbSjir': 'estetica.html',
   'https://claude.ai/artifact/K4pNWJgUQqCDG8v5TY74Cr': 'criadores.html',
+  'https://claude.ai/artifact/KrLbxkW37PHYMK9gMNyS8Z': 'celulares.html',
 };
 
 fs.rmSync(out, {recursive: true, force: true});
