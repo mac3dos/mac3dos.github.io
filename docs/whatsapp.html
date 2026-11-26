@@ -24,6 +24,7 @@
   --fg:#F2F0F7; --muted:#A49FB2;
   --purple:#8E3BF5; --purple-soft:#B88BFF; --purple-deep:#3A1C61;
   --gold:#E8C26A; --on-gold:#120B1F;
+  --wa:#25D366; --on-wa:#06301A;
   --f-title:"Oxanium","Rajdhani",system-ui,sans-serif;
   --f-display:"Rajdhani","Arial Narrow",system-ui,sans-serif;
   --f-body:"IBM Plex Sans",system-ui,sans-serif;
@@ -104,13 +105,21 @@ h1 span{color:var(--purple-soft)}
 .resumo li{display:flex;gap:10px;font-size:.95rem}
 .resumo li::before{content:"◆";color:var(--purple-soft);flex:none}
 .resumo b{font-weight:500}
-.msg{margin:0;font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+.falta{margin:0;text-align:center;font-family:var(--f-title);font-weight:800;font-size:1.6rem;line-height:1.05;text-wrap:balance}
+.explica{margin:0;text-align:center;color:var(--muted);font-size:.95rem}
+.dica{margin:-4px 0 0;text-align:center;color:var(--muted);font-size:.8rem}
+.msg{display:grid;gap:8px;font-size:.85rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+.msg-tit{margin:0;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-soft)}
+.msg .resumo li{font-size:.88rem}
 .msg q{color:var(--fg)}
 
-.cta{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:var(--purple);color:var(--fg);
-  font-family:var(--f-title);font-weight:700;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;border-radius:12px;padding:16px 18px;
-  box-shadow:0 10px 30px rgba(142,59,245,.45);transition:transform .15s ease,box-shadow .15s ease}
-.cta:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(142,59,245,.6)}
+/* botão verde do WhatsApp, pulsando até a pessoa tocar */
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;background:var(--wa);color:var(--on-wa);
+  font-family:var(--f-title);font-weight:800;font-size:1.08rem;letter-spacing:.06em;text-transform:uppercase;border-radius:14px;padding:18px 18px;
+  box-shadow:0 10px 30px rgba(37,211,102,.35);transition:transform .15s ease;animation:chama 1.6s ease-out infinite}
+.cta.foi{animation:none}
+@keyframes chama{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6),0 10px 30px rgba(37,211,102,.35)}80%,100%{box-shadow:0 0 0 14px rgba(37,211,102,0),0 10px 30px rgba(37,211,102,.35)}}
+.cta:hover{transform:translateY(-2px)}
 .cta:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .cta svg{width:22px;height:22px;flex:none}
 .ghost{display:block;text-align:center;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-family:var(--f-title);font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:var(--purple-soft)}
@@ -132,7 +141,7 @@ h1 span{color:var(--purple-soft)}
 
 .anim{animation:entra .28s ease both}
 @keyframes entra{from{opacity:.001;transform:translateY(8px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.floor,.press::before,.anim,.selo{animation:none}.opt,.cta{transition:none}}
+@media (prefers-reduced-motion:reduce){.floor,.press::before,.anim,.selo,.cta{animation:none}.opt,.cta{transition:none}}
 </style>
 
 <div class="arena" aria-hidden="true"><div class="floor"></div><div class="scan"></div></div>
@@ -642,6 +651,8 @@ function trilha(cv, getAlvo, quem){
   var ctx = cv.getContext('2d');
   var pos = 0, t0 = 0;
   var NODES = [18, 58, 98, 140];
+  // onde o personagem para: casas 1, 2 e 3, esperando antes da bandeira (orçamento pronto) e na bandeira (tocou em enviar)
+  var POS = [18, 58, 98, 124, 140];
   var HERO = [
     "..PPPPP..",
     ".PPPPPPP.",
@@ -683,9 +694,9 @@ function trilha(cv, getAlvo, quem){
     rows.forEach(function(r, j){ for(var i=0;i<r.length;i++){ var ch = r[i]; if(PAL[ch]) px(x0+i, y0+j, PAL[ch]); } });
   }
   function draw(ms){
-    var t = ms / 1000, alvo = Math.min(3, getAlvo());
+    var t = ms / 1000, alvo = Math.min(4, getAlvo());
     ctx.setTransform(1, 0, 0, 1, 0, -TOPO);
-    var dest = NODES[alvo]; var cur = NODES[0] + pos;
+    var dest = POS[alvo]; var cur = NODES[0] + pos;
     var andando = Math.abs(dest - cur) > .5;
     if(andando) pos += Math.sign(dest - cur) * Math.min(1.2, Math.abs(dest - cur));
     cur = NODES[0] + pos;
@@ -713,14 +724,15 @@ function trilha(cv, getAlvo, quem){
         ctx.fillStyle = '#8d86a3'; ctx.fillRect(nx, 18, 1, 26);
         var wave = Math.round(Math.sin(t*5)*1);
         ctx.fillStyle = '#07040d'; ctx.fillRect(nx+1, 17+wave, 15, 11);
-        ctx.fillStyle = alvo >= 3 ? '#25d366' : '#1f7a55'; ctx.fillRect(nx+1, 18+wave, 14, 9);
+        // pronto para enviar: a bandeira pisca chamando; depois de tocar, fica acesa
+        ctx.fillStyle = alvo >= 4 || (alvo === 3 && Math.floor(t*3) % 2) ? '#25d366' : '#1f7a55'; ctx.fillRect(nx+1, 18+wave, 14, 9);
         ctx.fillStyle = '#ffffff';
         [[5,2],[6,2],[7,2],[8,2],[4,3],[9,3],[4,4],[9,4],[4,5],[9,5],[5,6],[6,6],[7,6],[8,6],[4,7]].forEach(function(p){ px(nx+1+p[0]+1, 18+wave+p[1]-1, '#ffffff'); });
         ctx.fillStyle = '#07040d'; ctx.fillRect(nx-3, 44, 7, 2);
       }
     });
     // personagem
-    var chegou = alvo >= 3 && !andando;
+    var chegou = alvo >= 4 && !andando;
     // chegou na bandeira: pula de alegria
     var bob = andando ? (Math.floor(t*10)%2) : chegou ? Math.round(Math.abs(Math.sin(t*6))*4) : Math.round(Math.sin(t*3)*.6);
     var frame = andando && Math.floor(t*10)%2 ? HERO2 : HERO;
@@ -735,7 +747,7 @@ function trilha(cv, getAlvo, quem){
     }
   }
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches, last = 0;
-  (function loop(ms){ requestAnimationFrame(loop); if(ms - last < 66) return; last = ms; if(still){ pos = NODES[Math.min(3,getAlvo())] - NODES[0]; } draw(ms); })(0);
+  (function loop(ms){ requestAnimationFrame(loop); if(ms - last < 66) return; last = ms; if(still){ pos = POS[Math.min(4,getAlvo())] - NODES[0]; } draw(ms); })(0);
 }
 </script>
 <script>
@@ -779,10 +791,12 @@ function trilha(cv, getAlvo, quem){
   var mundoTag = document.getElementById('mundo-tag');
   var NOMES = {inicio:'Mundo ?', academia:'Mundo 1', estetica:'Mundo 2', criadores:'Mundo 3', celulares:'Mundo 4', eventos:'Evento'};
   requestAnimationFrame(function(){ for(var i=0;i<cenas.length;i++) pixelScene(cenas[i], cenas[i].dataset.scene); });
-  trilha(document.getElementById('trilha'), function(){ return atual; }, 'gato');
+  var enviado = false;
+  trilha(document.getElementById('trilha'), function(){ return atual + (enviado ? 1 : 0); }, 'gato');
 
   function barra(){
-    faseTxt.textContent = atual < FASES.length ? 'Fase ' + (atual+1) + '/3' : 'Pronto';
+    enviado = false;
+    faseTxt.textContent = atual < FASES.length ? 'Fase ' + (atual+1) + '/3' : 'Falta enviar';
     var k = atual > 0 && escolhas.negocio ? escolhas.negocio.scene : 'inicio';
     for(var i=0;i<cenas.length;i++) cenas[i].classList.toggle('off', cenas[i].dataset.scene !== k);
     mundoTag.textContent = atual > 0 && escolhas.negocio ? (k === 'inicio' ? 'Seu mundo' : NOMES[k]) : 'Mundo ?';
@@ -822,19 +836,29 @@ function trilha(cv, getAlvo, quem){
       : 'Olá, MAC3DOS! Vim pelo Instagram. Meu negócio é de ' + n.msg + ', quero ' + q.msg + ' de brindes 3D com a minha logo, ' + p.msg + '.';
 
     var card = el('div','card');
-    card.appendChild(el('span','selo','◆ Orçamento desbloqueado ◆'));
+    var selo = el('span','selo','◆ Último passo ◆');
+    card.appendChild(selo);
+    card.appendChild(el('h3','falta','Falta só enviar!'));
+    card.appendChild(el('p','explica','Seu orçamento ainda não chegou até a gente. Toque no botão verde para mandar a mensagem pelo WhatsApp.'));
+
+    var a = el('a','cta'); a.href = wa(texto); a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3Z"/></svg>';
+    a.appendChild(document.createTextNode('Enviar no WhatsApp ▶'));
+    card.appendChild(a);
+    var dica = el('p','dica','O WhatsApp abre com a mensagem escrita. Lá, é só apertar enviar.');
+    card.appendChild(dica);
+    a.addEventListener('click', function(){
+      enviado = true; a.classList.add('foi');
+      selo.textContent = '◆ Quase lá ◆';
+      faseTxt.textContent = 'No WhatsApp';
+      dica.textContent = 'Abriu o WhatsApp? Aperte enviar na conversa. Não abriu? Chame no (21) 98510-1880.';
+    });
+
     var ul = el('ul','resumo');
     [['Negócio', n.name], ['Quantidade', q.name], ['Prazo', p.name]].forEach(function(r){
       var li = el('li'); var s = el('span'); s.appendChild(el('b',null,r[0] + ': ')); s.appendChild(document.createTextNode(r[1])); li.appendChild(s); ul.appendChild(li);
     });
-    card.appendChild(ul);
-
-    var a = el('a','cta'); a.href = wa(texto); a.target = '_blank'; a.rel = 'noopener';
-    a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.6-.3Z"/></svg>';
-    a.appendChild(document.createTextNode('Falar no WhatsApp'));
-    card.appendChild(a);
-
-    var m = el('p','msg'); m.appendChild(document.createTextNode('Mensagem que vai pronta: ')); m.appendChild(el('q',null,texto));
+    var m = el('div','msg'); m.appendChild(el('p','msg-tit','O que vai na mensagem')); m.appendChild(ul); m.appendChild(el('q',null,texto));
     card.appendChild(m);
     stage.appendChild(card);
 

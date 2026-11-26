@@ -572,6 +572,8 @@ function trilha(cv, getAlvo, quem){
   var ctx = cv.getContext('2d');
   var pos = 0, t0 = 0;
   var NODES = [18, 58, 98, 140];
+  // onde o personagem para: casas 1, 2 e 3, esperando antes da bandeira (orçamento pronto) e na bandeira (tocou em enviar)
+  var POS = [18, 58, 98, 124, 140];
   var HERO = [
     "..PPPPP..",
     ".PPPPPPP.",
@@ -613,9 +615,9 @@ function trilha(cv, getAlvo, quem){
     rows.forEach(function(r, j){ for(var i=0;i<r.length;i++){ var ch = r[i]; if(PAL[ch]) px(x0+i, y0+j, PAL[ch]); } });
   }
   function draw(ms){
-    var t = ms / 1000, alvo = Math.min(3, getAlvo());
+    var t = ms / 1000, alvo = Math.min(4, getAlvo());
     ctx.setTransform(1, 0, 0, 1, 0, -TOPO);
-    var dest = NODES[alvo]; var cur = NODES[0] + pos;
+    var dest = POS[alvo]; var cur = NODES[0] + pos;
     var andando = Math.abs(dest - cur) > .5;
     if(andando) pos += Math.sign(dest - cur) * Math.min(1.2, Math.abs(dest - cur));
     cur = NODES[0] + pos;
@@ -643,14 +645,15 @@ function trilha(cv, getAlvo, quem){
         ctx.fillStyle = '#8d86a3'; ctx.fillRect(nx, 18, 1, 26);
         var wave = Math.round(Math.sin(t*5)*1);
         ctx.fillStyle = '#07040d'; ctx.fillRect(nx+1, 17+wave, 15, 11);
-        ctx.fillStyle = alvo >= 3 ? '#25d366' : '#1f7a55'; ctx.fillRect(nx+1, 18+wave, 14, 9);
+        // pronto para enviar: a bandeira pisca chamando; depois de tocar, fica acesa
+        ctx.fillStyle = alvo >= 4 || (alvo === 3 && Math.floor(t*3) % 2) ? '#25d366' : '#1f7a55'; ctx.fillRect(nx+1, 18+wave, 14, 9);
         ctx.fillStyle = '#ffffff';
         [[5,2],[6,2],[7,2],[8,2],[4,3],[9,3],[4,4],[9,4],[4,5],[9,5],[5,6],[6,6],[7,6],[8,6],[4,7]].forEach(function(p){ px(nx+1+p[0]+1, 18+wave+p[1]-1, '#ffffff'); });
         ctx.fillStyle = '#07040d'; ctx.fillRect(nx-3, 44, 7, 2);
       }
     });
     // personagem
-    var chegou = alvo >= 3 && !andando;
+    var chegou = alvo >= 4 && !andando;
     // chegou na bandeira: pula de alegria
     var bob = andando ? (Math.floor(t*10)%2) : chegou ? Math.round(Math.abs(Math.sin(t*6))*4) : Math.round(Math.sin(t*3)*.6);
     var frame = andando && Math.floor(t*10)%2 ? HERO2 : HERO;
@@ -665,7 +668,7 @@ function trilha(cv, getAlvo, quem){
     }
   }
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches, last = 0;
-  (function loop(ms){ requestAnimationFrame(loop); if(ms - last < 66) return; last = ms; if(still){ pos = NODES[Math.min(3,getAlvo())] - NODES[0]; } draw(ms); })(0);
+  (function loop(ms){ requestAnimationFrame(loop); if(ms - last < 66) return; last = ms; if(still){ pos = POS[Math.min(4,getAlvo())] - NODES[0]; } draw(ms); })(0);
 }
 
 (function(){
