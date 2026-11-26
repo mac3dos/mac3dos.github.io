@@ -92,6 +92,14 @@ const main = `<main id="inicio">
           <figcaption><span>Na cor que você quiser</span><strong>iPhone laranja</strong></figcaption>
         </figure>
         <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/celulares/video-07.mp4" poster="media/celulares/video-07.jpg" autoplay muted loop playsinline aria-label="Protetor de cabo marrom com coração escrito Raquel sendo colocado no cabo do carregador"></video></div>
+          <figcaption><span>Com o nome do cliente</span><strong>Protetor de cabo</strong></figcaption>
+        </figure>
+        <figure class="show">
+          <div class="show-media"><video preload="none" data-src="media/celulares/video-08.mp4" poster="media/celulares/video-08.jpg" autoplay muted loop playsinline aria-label="Protetor de cabo pink em forma de coração escrito Gabi sendo encaixado no cabo"></video></div>
+          <figcaption><span>Coração e zigue-zague</span><strong>Protetor pink</strong></figcaption>
+        </figure>
+        <figure class="show">
           <div class="show-media"><video preload="none" data-src="media/estetica/video-13.mp4" poster="media/estetica/video-13.jpg" autoplay muted loop playsinline aria-label="Chaveiro verde em forma de coração com logo que abre e vira suporte de celular"></video></div>
           <figcaption><span>Vira suporte de celular</span><strong>Chaveiro porta-celular</strong></figcaption>
         </figure>
@@ -109,7 +117,7 @@ const main = `<main id="inicio">
       <div class="uses">
         <article class="use"><img class="use-ph" src="media/celulares/video-04.jpg" alt="Chaveiro de iPhone prata abrindo uma lata" loading="lazy"><span class="use-tag">Chaveiro abridor</span><h3>Chaveiro de iPhone com a logo da loja</h3><p>Miniatura de iPhone que também abre lata. A logo da loja vai nas costas, no lugar da maçã.</p></article>
         <article class="use"><img class="use-ph" src="media/estetica/video-13.jpg" alt="Chaveiro de coração verde que vira suporte de celular" loading="lazy"><span class="use-tag">Vira suporte</span><h3>Chaveiro porta-celular</h3><p>Abre e vira um suporte para apoiar o celular na mesa. Pode ter o formato da logo da sua loja.</p></article>
-        <article class="use"><svg viewBox="0 0 240 200" aria-hidden="true">${CABLE(30, 10, 1.05, '#8E3BF5', 'SUA LOJA')}${CABLE(120, 18, 1, '#F48FB1', 'LOJA')}</svg><span class="use-tag">Protetor de cabo</span><h3>Protetor de cabo personalizado</h3><p>Protege a ponta do cabo do carregador, que é onde ele quebra, e leva o nome ou a marca da sua loja.</p></article>
+        <article class="use"><img class="use-ph" src="media/celulares/foto-01.jpg" alt="Protetores de cabo em coração com organizador em zigue-zague, em cinco cores, com nomes e embalados em cartela da loja" loading="lazy"><span class="use-tag">Protetor de cabo</span><h3>Protetor de cabo personalizado</h3><p>Coração com o nome que protege a ponta do cabo e organizador em zigue-zague que segura o fio. Vai numa cartela com a logo da sua loja.</p></article>
       </div>
     </div>
   </section>

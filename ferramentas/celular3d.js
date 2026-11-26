@@ -1,11 +1,11 @@
 // ---------- Chaveiro de iPhone e protetor de cabo em 3D ----------
 const KB_COLORS = [
   ["Preto","#1C1B21"],["Branco","#EDEBF0"],["Grafite","#4A4858"],["Prata","#C9C6D2"],["Dourado","#D4A64A"],["Roxo","#8E3BF5"],
-  ["Lilás","#B9A3E8"],["Rosa","#F48FB1"],["Vermelho","#D7263D"],["Azul","#1E7BE0"],["Verde","#3EC17B"],["Laranja","#F28C28"]
+  ["Lilás","#B9A3E8"],["Rosa","#F48FB1"],["Vermelho","#D7263D"],["Azul","#1E7BE0"],["Verde","#3EC17B"],["Laranja","#F28C28"],["Pink","#E4567B"]
 ];
 const PIECES = {
   ip: {main:"#8E3BF5", base:"#1C1B21", lblMain:"Cor do chaveiro", lblBase:"Cor da câmera"},
-  cb: {main:"#8E3BF5", base:"#EDEBF0", lblMain:"Cor do protetor", lblBase:"Cor do cabo"}
+  cb: {main:"#E4567B", base:"#EDEBF0", lblMain:"Cor do protetor", lblBase:"Cor do cabo"}
 };
 const kb = {piece:"ip", name:"SUA LOJA"};
 let kbUpdate = () => {}, kbSetPiece = () => {};
@@ -97,34 +97,41 @@ function initKB(){
   }
   ipG.scale.setScalar(.95);
 
-  // ---------- protetor de cabo: cabo, conector e capa espiral com o nome ----------
+  // ---------- protetor de cabo: coração com o nome na ponta do cabo, organizador em zigue-zague e etiqueta ----------
   const mCable = mat("#EDEBF0");
-  const path = new THREE.CatmullRomCurve3([new THREE.Vector3(0, -.3, 0), new THREE.Vector3(0, -1.0, 0), new THREE.Vector3(.2, -1.5, .1), new THREE.Vector3(.8, -1.7, .2), new THREE.Vector3(1.5, -1.6, .1)]);
-  const cable = new THREE.Mesh(new THREE.TubeGeometry(path, 60, .09, 16, false), mCable); cbG.add(cable);
-  const plug = new THREE.Mesh(new THREE.BoxGeometry(.42, .8, .26), mCable); plug.position.y = .95; cbG.add(plug);
-  const tip = new THREE.Mesh(new THREE.BoxGeometry(.26, .32, .09), new THREE.MeshStandardMaterial({color:0xc9c6d2, metalness:.85, roughness:.25})); tip.position.y = 1.5; cbG.add(tip);
-  // capa do protetor: cilindro com o nome em volta
-  const sc = document.createElement("canvas"); sc.width = 1024; sc.height = 256;
-  const sx = sc.getContext("2d"); const stex = new THREE.CanvasTexture(sc); stex.encoding = THREE.sRGBEncoding; stex.anisotropy = 4;
-  const mSleeve = new THREE.MeshStandardMaterial({map:stex, roughness:.5, bumpMap:layers, bumpScale:.004});
-  const sleeve = new THREE.Mesh(new THREE.CylinderGeometry(.24, .2, 1.1, 48, 1, true), mSleeve); sleeve.position.y = .05; cbG.add(sleeve);
-  const capTop = new THREE.Mesh(new THREE.TorusGeometry(.22, .05, 12, 40), mMain); capTop.rotation.x = Math.PI / 2; capTop.position.y = .6; cbG.add(capTop);
-  const capBot = new THREE.Mesh(new THREE.TorusGeometry(.19, .05, 12, 40), mMain); capBot.rotation.x = Math.PI / 2; capBot.position.y = -.5; cbG.add(capBot);
-  // espiral que segura o cabo
-  const spiral = []; for (let i = 0; i <= 120; i++) { const t = i / 120, a = t * Math.PI * 2 * 5; spiral.push(new THREE.Vector3(Math.cos(a) * .15, -.55 - t * .7, Math.sin(a) * .15)); }
-  const spring = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(spiral), 300, .035, 8, false), mMain); cbG.add(spring);
+  const cable = new THREE.Mesh(new THREE.CylinderGeometry(.06, .06, 3.4, 16), mCable); cable.position.y = -.35; cbG.add(cable);
+  const plug = new THREE.Mesh(new THREE.BoxGeometry(.3, .55, .2), mCable); plug.position.y = 1.55; cbG.add(plug);
+  const tip = new THREE.Mesh(new THREE.BoxGeometry(.2, .26, .07), new THREE.MeshStandardMaterial({color:0xc9c6d2, metalness:.85, roughness:.25})); tip.position.y = 1.95; cbG.add(tip);
+  // coração
+  const hs = new THREE.Shape(); hs.moveTo(0, -.55); hs.bezierCurveTo(-.15, -.4, -.62, -.12, -.6, .2); hs.bezierCurveTo(-.58, .5, -.18, .58, 0, .32); hs.bezierCurveTo(.18, .58, .58, .5, .6, .2); hs.bezierCurveTo(.62, -.12, .15, -.4, 0, -.55);
+  const heart = new THREE.Mesh(new THREE.ExtrudeGeometry(hs, {depth:.14, bevelEnabled:true, bevelThickness:.05, bevelSize:.04, bevelSegments:4, curveSegments:32}), mMain);
+  heart.position.set(0, .95, -.07); cbG.add(heart);
+  const hc = document.createElement("canvas"); hc.width = 1024; hc.height = 512;
+  const hx = hc.getContext("2d"); const htex = new THREE.CanvasTexture(hc); htex.encoding = THREE.sRGBEncoding; htex.anisotropy = 4;
+  const hLabel = new THREE.Mesh(new THREE.PlaneGeometry(1.15, .58), new THREE.MeshStandardMaterial({map:htex, transparent:true, roughness:.5, polygonOffset:true, polygonOffsetFactor:-2}));
+  hLabel.position.set(0, 1.0, .2); hLabel.rotation.z = .3; cbG.add(hLabel);
+  // organizador em zigue-zague, achatado, em volta do cabo
+  const zz = []; for (let i = 0; i <= 8; i++) { const y = .3 - i * .17; zz.push(new THREE.Vector3(i % 2 ? .3 : -.3, y, 0)); }
+  const zpath = new THREE.CurvePath(); for (let i = 0; i < zz.length - 1; i++) { const p0 = zz[i], p1 = zz[i + 1]; zpath.add(new THREE.CubicBezierCurve3(p0, new THREE.Vector3(p0.x, p0.y - .09, 0), new THREE.Vector3(p1.x, p1.y + .09, 0), p1)); }
+  const zig = new THREE.Mesh(new THREE.TubeGeometry(zpath, 240, .055, 10, false), mMain); zig.scale.z = 1.6; cbG.add(zig);
+  // etiqueta com o nome embaixo
+  const tc2 = document.createElement("canvas"); tc2.width = 512; tc2.height = 256;
+  const tx2 = tc2.getContext("2d"); const ttex2 = new THREE.CanvasTexture(tc2); ttex2.encoding = THREE.sRGBEncoding; ttex2.anisotropy = 4;
+  const mTag = new THREE.MeshStandardMaterial({map:ttex2, roughness:.5});
+  const tag = new THREE.Mesh(new THREE.BoxGeometry(.62, .32, .16), [mMain, mMain, mMain, mMain, mTag, mTag]); tag.position.y = -1.3; cbG.add(tag);
   function drawSleeve(){
-    const P = PIECES.cb;
-    sx.fillStyle = P.main; sx.fillRect(0, 0, 1024, 256);
-    sx.globalAlpha = .08; sx.fillStyle = "#000"; for (let y = 0; y < 256; y += 8) sx.fillRect(0, y, 1024, 3); sx.globalAlpha = 1;
-    sx.textAlign = "center"; sx.textBaseline = "middle"; sx.fillStyle = lum(P.main) > .55 ? "#1C1B21" : "#FFFFFF";
+    const P = PIECES.cb, ink = lum(P.main) > .55 ? "#1C1B21" : "#FFFFFF";
     const t = (kb.name || "").trim() || " ";
-    fitFont(sx, t, 120, 440); sx.fillText(t, 256, 132); sx.fillText(t, 768, 132);
-    stex.needsUpdate = true;
+    hx.clearRect(0, 0, 1024, 512); hx.textAlign = "center"; hx.textBaseline = "middle"; hx.fillStyle = ink;
+    hx.font = `italic 700 190px Georgia, "Times New Roman", serif`; let sz = 190; while (hx.measureText(t).width > 820 && sz > 50) { sz -= 6; hx.font = `italic 700 ${sz}px Georgia, "Times New Roman", serif`; }
+    hx.fillText(t, 512, 256); htex.needsUpdate = true;
+    tx2.fillStyle = P.main; tx2.fillRect(0, 0, 512, 256); tx2.textAlign = "center"; tx2.textBaseline = "middle"; tx2.fillStyle = ink;
+    sz = 110; tx2.font = `italic 700 ${sz}px Georgia, "Times New Roman", serif`; while (tx2.measureText(t).width > 440 && sz > 30) { sz -= 6; tx2.font = `italic 700 ${sz}px Georgia, "Times New Roman", serif`; }
+    tx2.fillText(t, 256, 132); ttex2.needsUpdate = true;
   }
-  cbG.position.set(-.3, .1, 0); cbG.scale.setScalar(1.05);
+  cbG.position.set(0, -.05, 0); cbG.scale.setScalar(.9);
 
-  kbSetPiece = p => { ipG.visible = p === "ip"; cbG.visible = p === "cb"; $("kbHint").textContent = p === "ip" ? "Arraste para ver o nome atrás" : "Arraste para girar"; };
+  kbSetPiece = p => { ipG.visible = p === "ip"; cbG.visible = p === "cb"; try { ry = p === "ip" ? 2.6 : .25; } catch(_) {} $("kbHint").textContent = p === "ip" ? "Arraste para ver o nome atrás" : "Arraste para girar"; };
   kbUpdate = () => {
     const P = PIECES[kb.piece];
     mMain.color.copy(lin(P.main)); mBase.color.copy(lin(P.base));
