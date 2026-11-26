@@ -550,6 +550,7 @@ html.rv-on .rv:not(.in){opacity:0;transform:translateY(28px) scale(.98)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+.printer svg.piece{position:absolute;inset:0;width:100%;height:100%}
 </style>
 
 <header class="top">
@@ -571,9 +572,20 @@ html.rv-on .rv:not(.in){opacity:0;transform:translateY(28px) scale(.98)}
         <p class="lead">Chaveiros de boca, esmalte e borboleta, porta-batom e porta-creme que abrem, espelhinhos com a sua logo. Brindes úteis que vão direto para a bolsa da cliente.</p>
         <div class="taglines"><span>Quem usa lembra</span><span>Brindes úteis. Marcas inesquecíveis.</span></div>
       </div>
-      <div class="printer" role="img" aria-label="Impressora 3D MAC3DOS imprimindo o símbolo da marca">
+      <div class="printer" role="img" aria-label="Impressora 3D MAC3DOS imprimindo um chaveiro de boca">
         <img src="media/impressora-vazia.jpg" alt="">
-        <img class="piece" src="media/impressora.jpg" alt="">
+        <svg class="piece" viewBox="0 0 900 900" aria-hidden="true"><defs>
+<linearGradient id="pzL" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8FB2"/><stop offset=".45" stop-color="#E4405F"/><stop offset="1" stop-color="#7a1030"/></linearGradient>
+<linearGradient id="pzL2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C8243E"/><stop offset=".5" stop-color="#E4405F"/><stop offset="1" stop-color="#6a0d28"/></linearGradient>
+<linearGradient id="pzG" x1="0" x2="1"><stop offset="0" stop-color="#fff2c9"/><stop offset=".5" stop-color="#d4a64a"/><stop offset="1" stop-color="#7a5418"/></linearGradient>
+</defs>
+<ellipse cx="463" cy="590" rx="88" ry="7" fill="#000" opacity=".5"/>
+<path d="M373 530C385 507 410 480 435 482C450 483 458 494 463 496C468 494 476 483 491 482C516 480 541 507 553 530C530 534 495 532 463 536C431 532 396 534 373 530Z" fill="url(#pzL)" stroke="#B88BFF" stroke-opacity=".5" stroke-width="2"/>
+<path d="M373 530C396 534 431 532 463 536C495 532 530 534 553 530C540 562 505 586 463 586C421 586 386 562 373 530Z" fill="url(#pzL2)" stroke="#B88BFF" stroke-opacity=".35" stroke-width="2"/>
+<path d="M378 531C400 535 432 533 463 537C494 533 526 535 548 531" fill="none" stroke="#4a0816" stroke-width="4" stroke-linecap="round"/>
+<path d="M405 497C418 488 430 487 441 492" fill="none" stroke="#FFD1DC" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="438" cy="560" rx="22" ry="7" fill="#fff" opacity=".35"/>
+<circle cx="544" cy="492" r="8" fill="none" stroke="url(#pzG)" stroke-width="4"/><circle cx="549.0" cy="478" r="3.2" fill="url(#pzG)"/><circle cx="551.3" cy="470" r="3.2" fill="url(#pzG)"/><circle cx="552.7" cy="462" r="3.2" fill="url(#pzG)"/><circle cx="552.9" cy="454" r="3.2" fill="url(#pzG)"/><circle cx="551.7" cy="446" r="3.2" fill="url(#pzG)"/><circle cx="549.6" cy="438" r="3.2" fill="url(#pzG)"/></svg>
         <div class="glow"></div>
         <div class="layer"></div>
       </div>

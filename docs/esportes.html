@@ -529,6 +529,7 @@ html.rv-on .rv:not(.in){opacity:0;transform:translateY(28px) scale(.98)}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+.printer svg.piece{position:absolute;inset:0;width:100%;height:100%}
 </style>
 
 <header class="top">
@@ -550,9 +551,24 @@ html.rv-on .rv:not(.in){opacity:0;transform:translateY(28px) scale(.98)}
         <p class="lead">Mini kettlebells que guardam cápsulas, coqueteleiras e anilhas em miniatura, tampas de lata em forma de anilha. Brindes úteis que vão para a mochila e para a chave do carro, com o nome da sua marca.</p>
         <div class="taglines"><span>Quem usa lembra</span><span>Brindes úteis. Marcas inesquecíveis.</span></div>
       </div>
-      <div class="printer" role="img" aria-label="Impressora 3D MAC3DOS imprimindo o símbolo da marca">
+      <div class="printer" role="img" aria-label="Impressora 3D MAC3DOS imprimindo uma anilha com a logo da marca">
         <img src="media/impressora-vazia.jpg" alt="">
-        <img class="piece" src="media/impressora.jpg" alt="">
+        <svg class="piece" viewBox="0 0 900 900" aria-hidden="true"><defs>
+<radialGradient id="pzA" cx="34%" cy="28%" r="85%"><stop offset="0" stop-color="#D4B8FF"/><stop offset=".45" stop-color="#8E3BF5"/><stop offset="1" stop-color="#2a1150"/></radialGradient>
+<linearGradient id="pzE" x1="0" x2="1"><stop offset="0" stop-color="#6a2cc4"/><stop offset="1" stop-color="#1c0c33"/></linearGradient>
+<radialGradient id="pzH" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c9c4d8"/><stop offset="1" stop-color="#5e5870"/></radialGradient>
+</defs>
+<ellipse cx="468" cy="590" rx="86" ry="7" fill="#000" opacity=".5"/>
+<circle cx="476" cy="508" r="80" fill="url(#pzE)"/>
+<circle cx="463" cy="508" r="80" fill="url(#pzA)"/>
+<path d="M395 470a78 78 0 0 1 106-38" fill="none" stroke="#F3EAFF" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+<circle cx="463" cy="508" r="70" fill="none" stroke="#1c0c33" stroke-opacity=".55" stroke-width="3"/>
+<circle cx="463" cy="508" r="40" fill="none" stroke="#1c0c33" stroke-opacity=".45" stroke-width="2.5"/>
+<circle cx="463" cy="508" r="21" fill="url(#pzH)"/>
+<circle cx="463" cy="508" r="8.5" fill="#0b0712"/>
+<text x="463" y="467" text-anchor="middle" font-family="Oxanium, sans-serif" font-weight="700" font-size="24" fill="#F3EAFF">20</text>
+<text x="463" y="565" text-anchor="middle" font-family="Oxanium, sans-serif" font-weight="700" font-size="18" fill="#F3EAFF" letter-spacing="2">KG</text>
+<g transform="translate(395 491) scale(0.4)"><polygon points="0,2 27,31 0,58" fill="#E9DBFF"/><polygon points="56,0 56,58 6,58" fill="#8E3BF5"/><polygon points="0,58 56,58 28,84" fill="#3A1C61"/></g><g transform="translate(509 491) scale(0.4)"><polygon points="0,2 27,31 0,58" fill="#E9DBFF"/><polygon points="56,0 56,58 6,58" fill="#8E3BF5"/><polygon points="0,58 56,58 28,84" fill="#3A1C61"/></g></svg>
         <div class="glow"></div>
         <div class="layer"></div>
       </div>
