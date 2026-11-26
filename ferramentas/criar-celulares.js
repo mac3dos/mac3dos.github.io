@@ -42,7 +42,7 @@ const PRINTED = `<svg class="piece" viewBox="0 0 900 900" aria-hidden="true"><de
 <circle cx="434" cy="420" r="7" fill="#07060a" stroke="#4a4858" stroke-width="2"/><circle cx="434" cy="442" r="7" fill="#07060a" stroke="#4a4858" stroke-width="2"/><circle cx="455" cy="431" r="7" fill="#07060a" stroke="#4a4858" stroke-width="2"/>
 <circle cx="494" cy="418" r="6" fill="none" stroke="#2a1150" stroke-width="3"/>
 <circle cx="494" cy="398" r="13" fill="none" stroke="url(#pzG)" stroke-width="4"/>
-${LOGO(448, 488, .5, ["#ffffff","#E9DBFF","#3A1C61"])}
+${LOGO(453.6, 480.4, .3, ["#ffffff","#E9DBFF","#3A1C61"])}
 </svg>`;
 
 const main = `<main id="inicio">

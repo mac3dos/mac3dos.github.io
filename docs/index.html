@@ -582,8 +582,8 @@ function pixelScene(cv, kind){
       for (let y = -lr; y <= lr; y++) for (let x = -lr; x <= lr; x++) if (x * x + y * y <= lr * lr + .5) put(lcx + x, lcy + y, (x === -lr + 1 && y === -lr + 1) || (lr === 1 && x === -1 && y === -1) ? SILV[2] : DARKC[0]);
     });
     put(x1 - 3, y0 + 3, DARKC[0]); put(x1 - 4, y0 + 3, DARKC[0]); put(x1 - 3, y0 + 4, DARKC[0]); put(x1 - 4, y0 + 4, DARKC[0]);
-    const lw2 = Math.max(5, Math.round(pw * .5));
-    logo(mx, y0 + Math.round(phh * .46), lw2, PH[0]);
+    const lw2 = Math.max(4, Math.round(pw * .3));
+    logo(mx, y0 + Math.round((phh - lw2 * 84 / 56) / 2), lw2, PH[0]);
     const ringX = x1 - 3, ringY = y0 - 4, ringR = Math.max(2, Math.round(U * .028));
     for (let a = 0; a < 6.28; a += .25) put(ringX + Math.round(Math.cos(a) * ringR), ringY + Math.round(Math.sin(a) * ringR), Math.sin(a) < 0 ? GOLD[3] : GOLD[1]);
     if (Math.sin(t * 3) > .2) { const sx = x0 + 2, sy = y0 + Math.round(phh * .75); put(sx, sy, WHITE); put(sx, sy - 1, PH[3]); put(sx, sy + 1, PH[3]); }
